@@ -1,0 +1,22 @@
+{
+  "name": "www",
+  "version": "0.0.0",
+  "homepage": "https://github.com/moguzhanataman/fikrimuhal-staj",
+  "authors": [
+    "M. Oğuzhan Ataman <thekhug@gmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0"
+  }
+}
