@@ -1,65 +1,62 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../css/index.css"/>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>Hello World</title>
+    <script src="http://jsconsole.com/remote.js?D04C4B56-57F6-446B-8365-866B16C533BA"></script>
     <style>
         .password button {
-            border-radius: 50%;
-            border: 0;
-            width: 100px;
-            height: 100px;
-            font-size: 28px;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        font-size: 50px;
         }
+
         .password {
-            display: table;
-            margin: 0 auto;
+        margin-left: 150px;
         }
-        .zero {
-            display: table;
-            margin: 0 auto;
-        }
-        .password button {
-            margin: 5px;
-        }
-        #password {
-            width: 100%;
-            border-radius: 20px;
-            background-color: #ccc;
-        }
+
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <div class="login-form">
-            <div class="user-select">
-                resim1 resim2 resim3
-            </div>
-            <div class="password">
-                <input type="password" name="" id="password"/>
-                <div class="clearfix"></div>
+<div class="container">
+    <div class="login-form">
+        <div class="user-select">
+            resim1 resim2 resim3
+        </div>
+        <div class="password">
+            <div class="row">
                 <button>1</button>
                 <button>2</button>
                 <button>3</button>
-                <div class="clearfix"></div>
-
+            </div>
+            <div class="row">
                 <button>4</button>
                 <button>5</button>
                 <button>6</button>
-                <div class="clearfix"></div>
-
+            </div>
+            <div class="row">
                 <button>7</button>
                 <button>8</button>
                 <button>9</button>
-                <div class="clearfix"></div>
-
-                <div class="zero"><button>0</button></div>
+            </div>
+            <div class="row">
+                <div style="margin-left: 100px">
+                    <button>0</button>
+                </div>
             </div>
         </div>
     </div>
-
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+            app.initialize();
+        </script>
 </body>
 </html>
