@@ -15,7 +15,7 @@ Bir sonraki çalışma günü yapılması planlananlar
 - Client uygulamalarının arayüzünün tasarlanması.
 - Arayüz dinamizmi ve kod organizasyonunun sağlanması için angularjs öğrenilmesi ve PhoneGap ile birlikte kullanılması.
 
-19/09/2014
+19/08/2014
 ---------------
 - Projenin tamamı için mobil wireframe hazırlandı.
 - Projede gerekecek olan dataların ne, nasıl, hangi sıra ile, ne zaman ve sıklıkta, hangi yöntem ile çekileceğine karar verildi.
@@ -25,4 +25,16 @@ Bir sonraki çalışma günü yapılması planlananlar
 -----------------------------------------------
 - Müşteri listesinin görsel arayüzü tasarlanacak.
 - Login sayfasının ve müşteri listesinin angularJS ile client sidenın yazılması.
-- Phonegap ve iBeacon plugini dokümantasyonunu üzerine çalışılması. 
+- Phonegap ve iBeacon plugini dökümantasyonunu üzerine çalışılması.
+
+20/08/2014
+--------------
+- Bütün ekranlar için taslak arayüz hazırlandı. Hepsi bir routinge bağlandı.
+- JSON api yazılmasına başlandı
+
+
+Bir sonraki çalışma günü yapılması planlananlar
+-----------------------------------------------
+- Ekranlar arasında kaydırma hareketi ile geçişler
+- Server client arasında JSON alışveriş yapılacak
+- ionic ve angularJS frameworkünün dökümantasyonu üzerine çalışma
