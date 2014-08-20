@@ -32,9 +32,8 @@ Bir sonraki çalışma günü yapılması planlananlar
 - Bütün ekranlar için taslak arayüz hazırlandı. Hepsi bir routinge bağlandı.
 - JSON api yazılmasına başlandı
 
-
 Bir sonraki çalışma günü yapılması planlananlar
 -----------------------------------------------
 - Ekranlar arasında kaydırma hareketi ile geçişler
 - Server client arasında JSON alışveriş yapılacak
-- ionic ve angularJS frameworkünün dökümantasyonu üzerine çalışma
+- ionic ve angularJS frameworkünün dökümantasyonu üzerine çalışma 
