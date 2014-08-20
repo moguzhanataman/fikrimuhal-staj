@@ -113,3 +113,33 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+.password button {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    font-size: 50px;
+}
+
+.password {
+    margin-left: 150px;
+}
+
+.user-info img{
+    float: left;
+    margin: 10px 10px 0 0;
+}
+.col-xs-6 img {
+    float: left;
+    margin: 10px 10px 0 0;
+}
+.product-recommendations {
+    padding: 20px 0;
+    text-align: center;
+    background-color: #eee;
+}
+.price-tag {
+    font-size: 36px;
+    font-style: italic;
+    font-family: Georgia;
+}
