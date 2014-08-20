@@ -5,3 +5,4 @@ employee_client/node_modules
 customer_client/platforms
 customer_client/.idea
 
+npm-debug.log
