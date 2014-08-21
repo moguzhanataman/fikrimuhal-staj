@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12 user-info">
-            <img class="thumbnail" src="../img/avatar-big.png" width="300" height="300"/>
+            <img class="thumbnail" src="img/avatar-big.png" width="300" height="300"/>
             <h1>M. Oğuzhan Ataman</h1>
             <a href="#goShoppingCart">Sepete Git</a>
         </div>
@@ -9,253 +9,33 @@
 
     <div class="row">
         <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
+            <div class="row" ng-repeat="product in productList.left"  >    
+                <div class="col-xs-12" ng-show="!showActions" ng-swipe-left="showActions = true">
+                    <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                    <h2>{{product.id}}</h2>
+                    <p>{{product.description}}</p>
+                    <p>{{product.fiyat}}</p>
+                </div>
+            </div>
         </div>
         <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
+            <div class="row" ng-repeat="product in productList.right"  >    
+                <div class="col-xs-12" ng-show="!showActions" ng-swipe-left="showActions = true">
+                    <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                    <h2>{{product.id}}</h2>
+                    <p>{{product.description}}</p>
+                    <p>{{product.fiyat}}</p>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div><div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-        <div class="col-xs-6">
-            <img class="thumbnail" src="../img/placeholder_large.png" width="200" height="200"/>
-            <h2>Ürün İsmi</h2>
-            <p>Fiyat: 200TL</p>
-            <p>Kampanya bilgileri</p>
-        </div>
-    </div>
+
 </div>
+
+    <pre>
+    xxx
+        {{
+            productList | json
+        }}
+        xx
+    </pre>
