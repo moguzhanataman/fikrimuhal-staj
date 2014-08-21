@@ -37,3 +37,15 @@ Bir sonraki çalışma günü yapılması planlananlar
 - Ekranlar arasında kaydırma hareketi ile geçişler
 - Server client arasında JSON alışveriş yapılacak
 - ionic ve angularJS frameworkünün dökümantasyonu üzerine çalışma 
+
+21/08/2014
+-------------
+- Personel client için müşteri öneri sayfası ve alışveriş sepetinin dataları otomatik olarak oluşturacak modül yazıldı
+- JSON üretecek api için gereksinimler belirlenip kodlanmaya başlandı
+
+Bir sonraki çalışma günü yapılması planlananlar
+-----------------------------------------------
+- Ekranlar arasında kaydırma hareketi ile geçişler
+- Serverdan gelecek olan JSON ile sayfaların otomatik oluşturulması
+- Ionic ve angularJS frameworkünün dökümantasyonu üzerine çalışma
+- JSON için REST api araştırması
