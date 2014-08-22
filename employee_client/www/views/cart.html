@@ -27,41 +27,61 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <div class="productDetail" animation="slide-left-right-ios7" ng-show="!showAction" ng-swipe-left="showAction = true">
-                <div class="col-xs-6" >
-                    <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
-                    <h2>Ürün İsmi</h2>
-                    <p>Fiyat: 200TL</p>
-                    <p>Kampanya bilgileri</p>
-                </div>
-                <div class="col-xs-3">
-                    <h2>Birim Fiyatı</h2>
-                    <p class="price-tag">100TL</p>
-                </div>
-                <div class="col-xs-3">
-                    <h2>Kampanyalı Fiyatı</h2>
-                    <p class="price-tag">75TL</p>
-                </div>
+            <div class="productDetail">
+                <ion-slide-box on-slide-changed="slideHasChanged(product,$index)" active-slide="sliderState" show-pager="false">
+                    <ion-slide>
+                        <div class="box green deneme" style="background-color:green;" height="200"><h1><br><br><br><br>EKLE<br><br><br><br><br></h1></div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="col-xs-6" >
+                            <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                            <h2>Ürün İsmi</h2>
+                            <p>Fiyat: 200TL</p>
+                            <p>Kampanya bilgileri</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <h2>Birim Fiyatı</h2>
+                            <p class="price-tag">100TL</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <h2>Kampanyalı Fiyatı</h2>
+                            <p class="price-tag">75TL</p>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box red deneme" style="background-color:red;" height="200"><h1><br><br><br><br>İPTAL<br><br><br><br><br></h1></div>
+                    </ion-slide>
+                </ion-slide-box>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
             <div class="productDetail" animation="slide-left-right-ios7" ng-show="!showActions" ng-swipe-left="showActions = true">
-                <div class="col-xs-6" >
-                    <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
-                    <h2>Ürün İsmi</h2>
-                    <p>Fiyat: 200TL</p>
-                    <p>Kampanya bilgileri</p>
-                </div>
-                <div class="col-xs-3">
-                    <h2>Birim Fiyatı</h2>
-                    <p class="price-tag">100TL</p>
-                </div>
-                <div class="col-xs-3">
-                    <h2>Kampanyalı Fiyatı</h2>
-                    <p class="price-tag">75TL</p>
-                </div>
+                <ion-slide-box on-slide-changed="slideHasChanged(product,$index)" active-slide="sliderState" show-pager="false">
+                    <ion-slide>
+                        <div class="box green deneme" style="background-color:green;" height="200"><h1><br><br><br><br>EKLE<br><br><br><br><br></h1></div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="col-xs-6" >
+                            <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                            <h2>Ürün İsmi</h2>
+                            <p>Fiyat: 200TL</p>
+                            <p>Kampanya bilgileri</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <h2>Birim Fiyatı</h2>
+                            <p class="price-tag">100TL</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <h2>Kampanyalı Fiyatı</h2>
+                            <p class="price-tag">75TL</p>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box red deneme" style="background-color:red;" height="200"><h1><br><br><br><br>İPTAL<br><br><br><br><br></h1></div>
+                    </ion-slide>
+                </ion-slide-box>
             </div>
         </div>
     </div>

@@ -1,5 +1,4 @@
 var fikrimuhalStaj = angular.module('fikrimuhalStaj', ['ionic'/*,'ngRoute'*/]);
-
 	// create the controller and inject Angular's $scope
 
 fikrimuhalStaj.run(function($ionicPlatform) {
@@ -72,34 +71,7 @@ fikrimuhalStaj.run(function($ionicPlatform) {
   $urlRouterProvider.otherwise('/login');
 
 });
-/*
-fikrimuhalStaj.config(function(/*$routeProvider) {
-		/*$routeProvider
 
-			// route for the home page
-			.when('/', {
-				templateUrl : 'views/login.html',
-				controller  : 'mainController'
-			})
-
-			// route for the about page
-			.when('/goCustomerList', {
-				templateUrl : 'views/customer_list.html',
-				controller  : 'costumerListController'
-			})
-
-			// route for the contact page
-			.when('/goCustomerDetails', {
-				templateUrl : 'views/customer_detail.html',
-				controller  : 'customerDetailController'
-			})
-
-			.when('/goShoppingCart', {
-				templateUrl : 'views/cart.html',
-				controller  : 'cartController'
-			});
-	});
-*/
 	fikrimuhalStaj.controller('mainController', function($scope) {
 
 		// create a message to display in our view
@@ -134,11 +106,36 @@ fikrimuhalStaj.config(function(/*$routeProvider) {
 			}
 		};
 
+		$scope.sliderState = 1;
 		$scope.productList = {left:listL, right:listR};
+
+		/* TODO  lodash kur lodashle sil */
+		function slideHasChanged(product,index,listNo){
+			console.log(" id " , product.id , " index " , index);
+
+			if(index == 2){
+
+				var indexofProductL = listL.indexOf(product);
+				console.log("indexofProductL", indexofProductL);
+				
+				if (indexofProductL > -1 ) {
+					listL.splice(indexofProductL,1);
+				}
+
+				var indexofProductR = listR.indexOf(product);
+				console.log("indexofProductR", indexofProductR);
+				
+				if (indexofProductR > -1) {
+					listR.splice(indexofProductR,1);
+				}
+			}
+		}
+		$scope.slideHasChanged = slideHasChanged;
 	});
 
 	fikrimuhalStaj.controller('cartController', function($scope) {
 		$scope.message = 'Ürün listesi';
+		$scope.sliderState = 1;
 	});
 
 	fikrimuhalStaj.controller('SlideController', function($scope) {
