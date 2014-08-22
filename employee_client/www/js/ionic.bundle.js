@@ -20,7 +20,6 @@
  */
 
 (function() {
-
 // Create namespaces
 //
 window.ionic = {
