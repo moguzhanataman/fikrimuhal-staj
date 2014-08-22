@@ -104,13 +104,11 @@ fikrimuhalStaj.config(function(/*$routeProvider) {
 
 		// create a message to display in our view
 		$scope.message = 'Şifreniniz girin!';
-		console.log("main cotroller logger")
 	});
 
 
 	fikrimuhalStaj.controller('customerListController', function($scope) {
 		$scope.message = 'Müşteri seçin.';
-		console.log("customer list controller logger")
 	});
 
 	fikrimuhalStaj.controller('customerDetailController', function($scope) {
