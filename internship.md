@@ -49,3 +49,8 @@ Bir sonraki çalışma günü yapılması planlananlar
 - Serverdan gelecek olan JSON ile sayfaların otomatik oluşturulması
 - Ionic ve angularJS frameworkünün dökümantasyonu üzerine çalışma
 - JSON için REST api araştırması
+
+22/08/2014
+----------
+- Ürün öneri sayfası ve alışveriş sepeti sayfalarındali kaydırma efekti düzeltildi
+- Ekranların hepsi ionic framework ile yeniden düzenlenmeye başlandı
