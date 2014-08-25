@@ -1,17 +1,22 @@
 # Fikrimuhal-staj API DOC
 
 ## products
-[list](fikrimuhal-staj.api.products.list.md)
+[<code>GET</code> products](api/product/GET_products.md)
+[<code>GET</code> products/popular](api/product/GET_products_popular.md)
 
 ## customer
-[list](fikrimuhal-staj.api.customer.list.md)
-[photos](fikrimuhal-staj.api.customer.photos.md)
+[<code>GET</code> customers](api/customer/GET_customers.md)
+[<code>GET</code> customer/:id](api/customer/GET_customer_id.md)
+[<code>GET</code> customer/:id/cart](api/customer/GET_customer_id_cart.md)
+[<code>GET</code> customer/photos](api/customer/GET_customer_photos.md)
 
 ## employee
-[list](fikrimuhal-staj.api.employee.list.md)
+[<code>GET</code> employees](api/employee/GET_employees.md)
+[<code>GET</code> employee/:id](api/employee/GET_employee_id.md)
 
 ## campaign
-[list](fikrimuhal-staj.api.campaign.list.md)
+[<code>GET</code> campaign](api/campaign/GET_campaign.md)
+[<code>GET</code> campaign/:id](api/campaign/GET_campaign_id.md)
 
 ## iBeacon
 
