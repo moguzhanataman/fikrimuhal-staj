@@ -1,11 +1,24 @@
 <div class="row" ng-controller="PostsCtrlAjax">
     <div class="col col-50">
-        <div ng-repeat="dene in customerList"  >    
-            <div class="col">
+        <div class="row" ng-repeat="customer in customerList.left"  >
+            <div class="col"><a href="#/customerDetail">
                 <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
-                <h2>{{dene.customers.id}}</h2>
-                <p>{{dene.customers.name}}</p>
-                <p>{{dene.customers.photo}}</p>
+                <h2>{{customer.id}}</h2>
+                <p>{{customer.name}}</p>
+                <p>{{customer.photo}}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col col-50">
+        <div class="row" ng-repeat="customer in customerList.right"  >    
+            <div class="col"><a href="#/customerDetail">
+                <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                <h2>{{customer.id}}</h2>
+                <p>{{customer.name}}</p>
+                <p>{{customer.photo}}</p>
+                </a>
             </div>
         </div>
     </div>

@@ -16,7 +16,7 @@ fikrimuhalStaj.run(function($ionicPlatform) {
 })
 
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $urlRouterProvider){
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -70,7 +70,9 @@ fikrimuhalStaj.run(function($ionicPlatform) {
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 
-});
+  /* Access-Control-Allow-Origin hatasını düzeltmek için konuldu releasede kaldırılacak*/ /* TODO releseade kalkacak*/
+
+}]);
 
 fikrimuhalStaj.controller('mainController', function($scope) {
 
@@ -94,6 +96,8 @@ fikrimuhalStaj.controller('customerDetailController', function($scope) {
 		{ "id":45, "description":"Ürün", "fiyat":605 },
 		{ "id":55, "description":"Ürün", "fiyat":606 }
 	];
+
+	/* TODO bir listeyi ikiye ayıracak fonksiyon yazılacak */
 
 	var listL = [];
 	var listR = [];
@@ -150,9 +154,22 @@ fikrimuhalStaj.controller('SlideController', function($scope) {
 });
 
 fikrimuhalStaj.controller('PostsCtrlAjax', function($scope, $http) {
-	$http({method: 'GET', url: 'http://192.168.1.11:9000/api/customer '}).success(function(data)
+	$http({method: 'GET', url: config.api.urls.customerList }).success(function(data)
 	{
-		$scope.costumerList = data; // response data
-		console.log("afasdf");
+		var customerlistL = [];
+		var customerlistR = [];
+
+		/* TODO bir listeyi ikiye ayıracak fonksiyon yazılacak */
+
+		for (var i = 0; i <= data.customers.length - 1 ; i++) {
+			 
+			if (i % 2 == 0){
+				customerlistL.push(data.customers[i]);
+			}else{
+			 customerlistR.push(data.customers[i]);
+			}
+		};
+
+		$scope.customerList = {left:customerlistL, right:customerlistR};
 	});
 })
