@@ -6,7 +6,10 @@
 Returns customers cart
 
 ## Return format
-- **cart** — The cart object
+- **id** — ID of cart
+- **customerId** — Customer ID
+- **employeeId** — Employee ID
+- **itemList** — Product Array
 
 ## Errors
 None

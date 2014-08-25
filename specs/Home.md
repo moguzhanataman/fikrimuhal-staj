@@ -15,7 +15,7 @@
 [<code>GET</code> employee/:id](api/employee/GET_employee_id.md)
 
 ## campaign
-[<code>GET</code> campaign](api/campaign/GET_campaign.md)
+[<code>GET</code> campaigns](api/campaign/GET_campaigns.md)
 [<code>GET</code> campaign/:id](api/campaign/GET_campaign_id.md)
 
 ## iBeacon
