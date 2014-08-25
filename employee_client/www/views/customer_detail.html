@@ -1,65 +1,63 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-12 user-info">
-            <img class="thumbnail" src="img/avatar-big.png" width="300" height="300"/>
-            <h1>M. Oğuzhan Ataman</h1>
-            <a href="#/cart">Sepete Git</a>
-        </div>
+<div class="row">
+    <div class="col col-20 user-info">
+        <img class="thumbnail" src="img/avatar-big.png" width="300" height="300"/>
+        <h1>M. Oğuzhan Ataman</h1>
+        <a href="#/cart">Sepete Git</a>
     </div>
+</div>
 
-    <div class="row">
-        <div class="col-xs-6">
-            <div class="row" ng-repeat="product in productList.left"  >
-                <div class="col-xs-12">
-                    <ion-slide-box on-slide-changed="slideHasChanged(product,$index)" active-slide="sliderState" show-pager="false">
-                        <ion-slide>
-                            <div class="box green deneme" style="background-color:green;" height="200"><h1><br><br><br><br>EKLE<br><br><br><br><br></h1></div>
-                        </ion-slide>
-                        <ion-slide>
-                            <div>
-                                <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
-                                <h2>{{product.id}}</h2>
-                                <p>{{product.description}}</p>
-                                <p>{{product.fiyat}}</p></div>
-                        </ion-slide>
-                        <ion-slide>
-                            <div class="box red deneme" style="background-color:red;" height="200"><h1><br><br><br><br>İPTAL<br><br><br><br><br></h1></div>
-                        </ion-slide>
-                    </ion-slide-box>
-                </div>
-            </div>
-        </div>
-        <style>
-        .deneme{
-            margin-top: 40px;
-            width: 500px;
-            height: 190px;
-        }
-        </style>
-        <div class="col-xs-6">
-            <div class="row" ng-repeat="product in productList.right"  >    
-                <div class="col-xs-12">
-                    <ion-slide-box on-slide-changed="slideHasChanged(product,$index)" active-slide="sliderState" show-pager="false">
-                        <ion-slide>
-                            <div class="box green deneme" style="background-color:green;" height="200"><h1><br><br><br><br>EKLE<br><br><br><br><br></h1></div>
-                        </ion-slide>
-                        <ion-slide>
-                            <div>
-                                <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
-                                <h2>{{product.id}}</h2>
-                                <p>{{product.description}}</p>
-                                <p>{{product.fiyat}}</p>
-                                </div>
-                        </ion-slide>
-                        <ion-slide>
-                            <div class="box red deneme" style="background-color:red;" height="200"><h1><br><br><br><br>İPTAL<br><br><br><br><br></h1></div>
-                        </ion-slide>
-                    </ion-slide-box>
-                </div>
+<div class="row">
+    <div class="col col-50">
+        <div class="row" ng-repeat="product in productList.left"  >
+            <div class="col">
+                <ion-slide-box on-slide-changed="slideHasChanged(product,$index)" active-slide="sliderState" show-pager="false">
+                    <ion-slide>
+                        <div class="col" style="background-color:green;" ><h1><br><br><br><br>EKLE<br><br><br><br><br></h1></div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="col">
+                            <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                            <h2>{{product.id}}</h2>
+                            <p>{{product.description}}</p>
+                            <p>{{product.fiyat}}</p>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="col" style="background-color:red;"><h1><br><br><br><br>İPTAL<br><br><br><br><br></h1></div>
+                    </ion-slide>
+                </ion-slide-box>
             </div>
         </div>
     </div>
-
+    <style>
+    .deneme{
+        margin-top: 40px;
+        width: 500px;
+        height: 190px;
+    }
+    </style>
+    <div class="col col-50">
+        <div class="row" ng-repeat="product in productList.right"  >    
+            <div class="col">
+                <ion-slide-box on-slide-changed="slideHasChanged(product,$index)" active-slide="sliderState" show-pager="false">
+                    <ion-slide>
+                        <div class="col" style="background-color:green;" height="200"><h1><br><br><br><br>EKLE<br><br><br><br><br></h1></div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="col">
+                            <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                            <h2>{{product.id}}</h2>
+                            <p>{{product.description}}</p>
+                            <p>{{product.fiyat}}</p>
+                        </div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="col" style="background-color:red;"><h1><br><br><br><br>İPTAL<br><br><br><br><br></h1></div>
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+        </div>
+    </div>
 </div>
 
     <pre>

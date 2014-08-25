@@ -1,17 +1,17 @@
 <div class="container-fluid">
     <div class="row user-info">
-        <div class="col-xs-12">
+        <div class="col">
             <img class="thumbnail" src="img/avatar-big.png" width="100" height="100"/>
             <h1>M. Oğuzhan Ataman</h1>
             <button class="btn btn-success">Alışverişi Bitir</button>
         </div>
 </div>
 <div class="row">
-        <div class="col-xs-6">
+        <div class="col col-50">
             <h2>Toplam Bedel</h2>
             <p class="price-tag">200 TL</p>
         </div>
-        <div class="col-xs-6">
+        <div class="col col-50">
             <h2>Kampanya Bilgisi</h2>
             <ul>
             <li>Kampanya İsmi: Anneler Günü</li>
@@ -21,68 +21,69 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col col-offset-33">
             <h2>Sepetteki Ürünler</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
-            <div class="productDetail">
-                <ion-slide-box on-slide-changed="slideHasChanged(product,$index)" active-slide="sliderState" show-pager="false">
-                    <ion-slide>
-                        <div class="box green deneme" style="background-color:green;" height="200"><h1><br><br><br><br>EKLE<br><br><br><br><br></h1></div>
-                    </ion-slide>
-                    <ion-slide>
-                        <div class="col-xs-6" >
+        <div class="col">
+            <ion-slide-box on-slide-changed="slideHasChanged(product,$index)" active-slide="sliderState" show-pager="false">
+                <ion-slide>
+                    <div class="col" style="background-color:green;"><h1><br><br><br><br>EKLE<br><br><br><br><br></h1></div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="row">
+                        <div class="col col-50" style="float:left;">
                             <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
                             <h2>Ürün İsmi</h2>
                             <p>Fiyat: 200TL</p>
                             <p>Kampanya bilgileri</p>
                         </div>
-                        <div class="col-xs-3">
+                        <div class="col col-25">
                             <h2>Birim Fiyatı</h2>
                             <p class="price-tag">100TL</p>
                         </div>
-                        <div class="col-xs-3">
+                        <div class="col col-25">
                             <h2>Kampanyalı Fiyatı</h2>
                             <p class="price-tag">75TL</p>
                         </div>
-                    </ion-slide>
-                    <ion-slide>
-                        <div class="box red deneme" style="background-color:red;" height="200"><h1><br><br><br><br>İPTAL<br><br><br><br><br></h1></div>
-                    </ion-slide>
-                </ion-slide-box>
-            </div>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="col" style="background-color:red;"><h1><br><br><br><br>İPTAL<br><br><br><br><br></h1></div>
+                </ion-slide>
+            </ion-slide-box>
         </div>
     </div>
+
     <div class="row">
-        <div class="col-xs-12">
-            <div class="productDetail" animation="slide-left-right-ios7" ng-show="!showActions" ng-swipe-left="showActions = true">
-                <ion-slide-box on-slide-changed="slideHasChanged(product,$index)" active-slide="sliderState" show-pager="false">
-                    <ion-slide>
-                        <div class="box green deneme" style="background-color:green;" height="200"><h1><br><br><br><br>EKLE<br><br><br><br><br></h1></div>
-                    </ion-slide>
-                    <ion-slide>
-                        <div class="col-xs-6" >
+        <div class="col">
+            <ion-slide-box on-slide-changed="slideHasChanged(product,$index)" active-slide="sliderState" show-pager="false">
+                <ion-slide>
+                    <div class="col" style="background-color:green;"><h1><br><br><br><br>EKLE<br><br><br><br><br></h1></div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="row">
+                        <div class="col col-50">
                             <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
                             <h2>Ürün İsmi</h2>
                             <p>Fiyat: 200TL</p>
                             <p>Kampanya bilgileri</p>
                         </div>
-                        <div class="col-xs-3">
+                        <div class="col col-25">
                             <h2>Birim Fiyatı</h2>
                             <p class="price-tag">100TL</p>
                         </div>
-                        <div class="col-xs-3">
+                        <div class="col col-25">
                             <h2>Kampanyalı Fiyatı</h2>
                             <p class="price-tag">75TL</p>
                         </div>
-                    </ion-slide>
-                    <ion-slide>
-                        <div class="box red deneme" style="background-color:red;" height="200"><h1><br><br><br><br>İPTAL<br><br><br><br><br></h1></div>
-                    </ion-slide>
-                </ion-slide-box>
-            </div>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                    <div class="row" style="background-color:red;"><h1><br><br><br><br>İPTAL<br><br><br><br><br></h1></div>
+                </ion-slide>
+            </ion-slide-box>
         </div>
     </div>
 </div>
