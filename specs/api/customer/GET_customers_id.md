@@ -1,4 +1,4 @@
-# Customers
+# Customer
 
     GET api/customers/:id
 
