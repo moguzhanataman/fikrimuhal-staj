@@ -18,23 +18,26 @@ http://localhost:9000/api/products
 **Return**
 ``` json
 [
-   {
-      "id": 3,
-      "name": "Ürün 1",
-      "price": 10.5,
-      "photo": "photourl"
-   },
-   {
-      "id": 2,
-      "name": "Ürün 2",
-      "price": 95,
-      "photo": "photourl"
-   },
-   {
-      "id": 1,
-      "name": "Ürün 3",
-      "price": 35.99,
-      "photo": "photourl"
-   }
+  {
+    "id": 3,
+    "name": "Falan filan",
+    "price": 10.5,
+    "popularity": 3,
+    "photo": "photourl"
+  },
+  {
+    "id": 2,
+    "name": "Kot pantolon",
+    "price": 95,
+    "popularity": 2,
+    "photo": "photourl"
+  },
+  {
+    "id": 1,
+    "name": "Kırmızı tişört",
+    "price": 35.99,
+    "popularity": 1,
+    "photo": "photourl"
+  }
 ]
 ```
