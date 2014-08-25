@@ -1,46 +1,12 @@
-<div class="container-fluid">
-    <div class="row">
-        <a href="#/customerDetail">
-            <div class="col col-50">
-                <img class="thumbnail" src="img/avatar-big.png" width="100" height="100"/>
-                <h2>M. Oğuzhan Ataman</h2>
-                <p>Mesafe: 3m</p>
-                <p>Other Info</p>
+<div class="row" ng-controller="PostsCtrlAjax">
+    <div class="col col-50">
+        <div ng-repeat="dene in customerList"  >    
+            <div class="col">
+                <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                <h2>{{dene.customers.id}}</h2>
+                <p>{{dene.customers.name}}</p>
+                <p>{{dene.customers.photo}}</p>
             </div>
-        </a>
-        <div class="col col-50">
-            <img class="thumbnail" src="img/avatar-big.png" width="100" height="100"/>
-            <h2>Kasım Süzen</h2>
-            <p>Mesafe: 3m</p>
-            <p>Other Info</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col col-50">
-            <img class="thumbnail" src="img/avatar-big.png" width="100" height="100"/>
-            <h2>M. Oğuzhan Ataman</h2>
-            <p>Mesafe: 3m</p>
-            <p>Other Info</p>
-        </div>
-        <div class="col col-50">
-            <img class="thumbnail" src="img/avatar-big.png" width="100" height="100"/>
-            <h2>Kasım Süzen</h2>
-            <p>Mesafe: 3m</p>
-            <p>Other Info</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col col-50">
-            <img class="thumbnail" src="img/avatar-big.png" width="100" height="100"/>
-            <h2>M. Oğuzhan Ataman</h2>
-            <p>Mesafe: 3m</p>
-            <p>Other Info</p>
-        </div>
-        <div class="col col-50">
-            <img class="thumbnail" src="img/avatar-big.png" width="100" height="100"/>
-            <h2>Kasım Süzen</h2>
-            <p>Mesafe: 3m</p>
-            <p>Other Info</p>
         </div>
     </div>
 </div>
