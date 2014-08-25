@@ -28,4 +28,6 @@ object CustomerController extends Controller {
       Ok(customerJson)
     }.getOrElse(NotFound)
   }
+
+  def cart(id: String) = TODO
 }

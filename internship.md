@@ -54,3 +54,8 @@ Bir sonraki çalışma günü yapılması planlananlar
 ----------
 - Ürün öneri sayfası ve alışveriş sepeti sayfalarındali kaydırma efekti düzeltildi
 - Ekranların hepsi ionic framework ile yeniden düzenlenmeye başlandı
+
+25/08/2014
+----------
+- JSON API Dökümantasyonu yazıldı.
+- Back-end'in bazı temel işlevler için json döndürmesi sağlandı.

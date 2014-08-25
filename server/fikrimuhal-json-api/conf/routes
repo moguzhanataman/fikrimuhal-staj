@@ -10,13 +10,12 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 GET     /api/customer               controllers.customer.CustomerController.list()
 GET     /api/customer/:id           controllers.customer.CustomerController.get(id)
+GET     /api/customer/:id/cart      controllers.customer.CustomerController.cart(id)
 
 GET     /api/employee               controllers.employee.EmployeeController.list()
 GET     /api/employee/:id           controllers.employee.EmployeeController.get(id)
 
 GET     /api/products/popular       controllers.product.ProductController.popular()
-GET     /api/popular-products       controllers.product.ProductController.popular()
-GET     /api/popular-products/:num  controllers.product.ProductController.popularLimit(num)
 
 GET     /api/cart                   controllers.cart.CartController.list()
 GET     /api/cart/:id               controllers.cart.CartController.get(id)
