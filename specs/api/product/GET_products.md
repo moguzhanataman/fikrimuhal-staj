@@ -20,23 +20,20 @@ http://localhost:9000/api/products
 [
   {
     "id": 3,
-    "name": "Falan filan",
+    "name": "Product 1",
     "price": 10.5,
-    "popularity": 3,
     "photo": "photourl"
   },
   {
     "id": 2,
-    "name": "Kot pantolon",
+    "name": "Product 2",
     "price": 95,
-    "popularity": 2,
     "photo": "photourl"
   },
   {
     "id": 1,
-    "name": "Kırmızı tişört",
+    "name": "Product 3",
     "price": 35.99,
-    "popularity": 1,
     "photo": "photourl"
   }
 ]
