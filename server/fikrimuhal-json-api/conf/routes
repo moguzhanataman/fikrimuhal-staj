@@ -14,6 +14,7 @@ GET     /api/customer/:id           controllers.customer.CustomerController.get(
 GET     /api/employee               controllers.employee.EmployeeController.list()
 GET     /api/employee/:id           controllers.employee.EmployeeController.get(id)
 
+GET     /api/products/popular       controllers.product.ProductController.popular()
 GET     /api/popular-products       controllers.product.ProductController.popular()
 GET     /api/popular-products/:num  controllers.product.ProductController.popularLimit(num)
 
