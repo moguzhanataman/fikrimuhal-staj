@@ -11,23 +11,7 @@ import model.Product
  */
 
 object ProductController extends Controller {
-//  implicit val productWrites = new Writes[Product] {
-//    def writes(product: Product) = Json.obj(
-//      "id" -> product.id,
-//      "name" -> product.name,
-//      "price" -> product.price,
-//      "popularity" -> product.popularity,
-//      "photo" -> product.photo
-//    )
-//  }
 
-  implicit val productWrites: Writes[Product] = (
-    (JsPath \ "id").write[Int] and
-      (JsPath \ "name").write[String] and
-      (JsPath \ "price").write[BigDecimal] and
-      (JsPath \ "popularity").write[Int] and
-      (JsPath \ "photo").write[String]
-    )(unlift(Product.unapply))
 
   /**
    * Take most popular n Products

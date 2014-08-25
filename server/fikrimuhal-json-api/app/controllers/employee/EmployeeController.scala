@@ -12,11 +12,6 @@ import play.api.mvc.{Action, Controller}
 
 object EmployeeController extends Controller {
 
-  implicit val cartWrites: Writes[Employee] = (
-    (JsPath \ "id").write[Int] and
-      (JsPath \ "name").write[String] and
-      (JsPath \ "photo").write[String]
-    )(unlift(Employee.unapply))
 
   def list() = Action {
     val employeesAsMap = Map("employees" -> Employee.all)

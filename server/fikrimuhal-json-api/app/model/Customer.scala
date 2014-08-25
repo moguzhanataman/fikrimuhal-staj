@@ -8,6 +8,9 @@ package model
 case class Customer(id: Int, name: String, previousPurchases: Seq[Product], photo: String)
 
 object Customer {
+  import play.api.libs.json._
+  implicit val jsonConverter = Json.format[Customer]
+
   val products = model.Product.dummy
   val dummy = Seq(
     Customer(1, "Ahmet", Seq(products(0), products(1)), "photourl"),

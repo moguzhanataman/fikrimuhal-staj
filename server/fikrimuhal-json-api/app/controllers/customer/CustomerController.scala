@@ -11,12 +11,7 @@ import play.api.mvc.{Action, Controller}
  * Created by oguzhan on 8/20/14.
  */
 object CustomerController extends Controller {
-  implicit val customerWrites: Writes[Customer] = (
-    (JsPath \ "id").write[Int] and
-      (JsPath \ "name").write[String] and
-      (JsPath \ "previousPurchases").lazyWrite(Writes.traversableWrites[model.Product](ProductController.productWrites)) and
-      (JsPath \ "photo").write[String]
-    )(unlift(Customer.unapply))
+
 
   def list() = Action {
     val customerAsMap = Map("customers" -> Customer.dummy)

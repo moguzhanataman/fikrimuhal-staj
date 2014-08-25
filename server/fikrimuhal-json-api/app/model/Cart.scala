@@ -8,6 +8,9 @@ import play.api.libs.json._
 case class Cart(id: Int, customerId: Int, employeeId: Int, itemList: Seq[Product])
 
 object Cart {
+  import play.api.libs.json._
+  implicit val jsonConverter = Json.format[Cart]
+
   val products = model.Product.dummy
   val dummy = Seq(
     Cart(1, 2, 3, products),
