@@ -1,4 +1,4 @@
-var fikrimuhalStaj = angular.module('fikrimuhalStaj', ['ionic'/*,'ngRoute'*/]);
+var fikrimuhalStaj = angular.module('fikrimuhalStaj', ['ionic']);
 	// create the controller and inject Angular's $scope
 
 fikrimuhalStaj.run(function($ionicPlatform) {
@@ -14,7 +14,6 @@ fikrimuhalStaj.run(function($ionicPlatform) {
     }
   });
 })
-
 
 .config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $urlRouterProvider){
 
@@ -74,11 +73,23 @@ fikrimuhalStaj.run(function($ionicPlatform) {
 
 }]);
 
-fikrimuhalStaj.controller('mainController', function($scope) {
-
+fikrimuhalStaj.controller('mainController', [ '$scope' ,'loginService' , function($scope,loginService) {
+	console.log("main controller called");
+	var employeePromise= loginService.auth();
+	console.log("employee", employeePromise);
+	employeePromise.then(function ( e ){
+		$scope.employee = e ;
+		console.log("sucess oldu", e )
+	}).catch(function ( e ){
+		console.log("hata oldu", e )
+	}).finally(function (){
+		console.log("finally")
+	})
 	// create a message to display in our view
 	$scope.message = 'Şifreniniz girin!';
-});
+	$scope.employee = "bekleniyor";
+
+}]);
 
 
 fikrimuhalStaj.controller('customerListController', function($scope) {
@@ -96,6 +107,8 @@ fikrimuhalStaj.controller('customerDetailController', function($scope) {
 		{ "id":45, "description":"Ürün", "fiyat":605 },
 		{ "id":55, "description":"Ürün", "fiyat":606 }
 	];
+
+	var productCart= [{}];
 
 	/* TODO bir listeyi ikiye ayıracak fonksiyon yazılacak */
 
@@ -118,6 +131,7 @@ fikrimuhalStaj.controller('customerDetailController', function($scope) {
 	function slideHasChanged(product,index,listNo){
 		console.log(" id " , product.id , " index " , index);
 
+		/* This if  */
 		if(index == 2){
 
 			var indexofProductL = listL.indexOf(product);
@@ -133,6 +147,11 @@ fikrimuhalStaj.controller('customerDetailController', function($scope) {
 			if (indexofProductR > -1) {
 				listR.splice(indexofProductR,1);
 			}
+		}
+
+		if (index == 0)
+		{
+
 		}
 	}
 	$scope.slideHasChanged = slideHasChanged;
@@ -173,3 +192,10 @@ fikrimuhalStaj.controller('PostsCtrlAjax', function($scope, $http) {
 		$scope.customerList = {left:customerlistL, right:customerlistR};
 	});
 })
+
+
+function MainCtrl($scope, $ionicSideMenuDelegate) {
+  $scope.toggleLeftSideMenu = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+};
+}

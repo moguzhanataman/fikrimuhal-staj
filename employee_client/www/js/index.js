@@ -1,49 +1,103 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+angular.module('ionicApp', ['ionic'])
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+.config(function($stateProvider, $urlRouterProvider) {
 
-        console.log('Received Event: ' + id);
+  $stateProvider
+    .state('eventmenu', {
+      url: "/event",
+      abstract: true,
+      templateUrl: "event-menu.html"
+    })
+    .state('eventmenu.home', {
+      url: "/home",
+      views: {
+        'menuContent' :{
+          templateUrl: "home.html"
+        }
+      }
+    })
+    .state('eventmenu.checkin', {
+      url: "/check-in",
+      views: {
+        'menuContent' :{
+          templateUrl: "check-in.html",
+          controller: "CheckinCtrl"
+        }
+      }
+    })
+    .state('eventmenu.attendees', {
+      url: "/attendees",
+      views: {
+        'menuContent' :{
+          templateUrl: "attendees.html",
+          controller: "AttendeesCtrl"
+        }
+      }
+    })
+  
+  $urlRouterProvider.otherwise("/event/home");
+})
+
+.controller('MainCtrl', function($scope, $ionicSideMenuDelegate) {
+  $scope.attendees = [
+    { firstname: 'Nicolas', lastname: 'Cage' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Keanu', lastname: 'Reeves' },
+    { firstname: 'Steven', lastname: 'Seagal' }
+  ];
+  
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+})
+
+.controller('CheckinCtrl', function($scope) {
+  $scope.showForm = true;
+  
+  $scope.shirtSizes = [
+    { text: 'Large', value: 'L' },
+    { text: 'Medium', value: 'M' },
+    { text: 'Small', value: 'S' }
+  ];
+  
+  $scope.attendee = {};
+  $scope.submit = function() {
+    if(!$scope.attendee.firstname) {
+      alert('Info required');
+      return;
     }
-};
+    $scope.showForm = false;
+    $scope.attendees.push($scope.attendee);
+  };
+  
+})
+
+.controller('AttendeesCtrl', function($scope) {
+  
+  $scope.activity = [];
+  $scope.arrivedChange = function(attendee) {
+    var msg = attendee.firstname + ' ' + attendee.lastname;
+    msg += (!attendee.arrived ? ' has arrived, ' : ' just left, '); 
+    msg += new Date().getMilliseconds();
+    $scope.activity.push(msg);
+    if($scope.activity.length > 3) {
+      $scope.activity.splice(0, 1);
+    }
+  };
+  
+});

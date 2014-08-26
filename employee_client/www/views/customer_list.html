@@ -1,7 +1,7 @@
 <div class="row" ng-controller="PostsCtrlAjax">
     <div class="col col-50">
         <div class="row" ng-repeat="customer in customerList.left"  >
-            <div class="col"><a href="#/customerDetail">
+            <div class="col"><a href="#/customerDetail?activecustomerId=customer.id">
                 <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
                 <h2>{{customer.id}}</h2>
                 <p>{{customer.name}}</p>
