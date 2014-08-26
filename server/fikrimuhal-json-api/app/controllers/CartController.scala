@@ -1,10 +1,8 @@
-package controllers.cart
+package controllers
 
-import controllers.product.ProductController
 import model.Cart
 import play.api.Logger
 import play.api.libs.json._
-import play.api.libs.functional.syntax._
 import play.api.mvc.{Action, Controller}
 
 
@@ -14,7 +12,7 @@ import play.api.mvc.{Action, Controller}
 object CartController extends Controller {
 
   def list() = Action {
-    val cartAsMap = Map("carts" -> Cart.dummy)
+    val cartAsMap = Map("carts" -> Cart.all)
     val cartsJson = Json.toJson(cartAsMap)
 
     Logger.debug(Json.prettyPrint(cartsJson))

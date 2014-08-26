@@ -1,10 +1,8 @@
-package controllers.customer
+package controllers
 
-import controllers.product.ProductController
 import model.Customer
 import play.api.Logger
-import play.api.libs.functional.syntax._
-import play.api.libs.json.{JsPath, Writes, _}
+import play.api.libs.json._
 import play.api.mvc.{Action, Controller}
 
 /**
@@ -14,7 +12,7 @@ object CustomerController extends Controller {
 
 
   def list() = Action {
-    val customerAsMap = Map("customers" -> Customer.dummy)
+    val customerAsMap = Map("customers" -> Customer.all)
     val customerAsJson = Json.toJson(customerAsMap)
 
     Logger.debug(Json.prettyPrint(customerAsJson))

@@ -1,10 +1,9 @@
-package controllers.product
+package controllers
 
-import play.api.libs.functional.syntax._
-import play.api.libs.json.{JsPath, Json, Writes}
-import play.api.mvc.{Action, Controller}
-import play.api.Logger
 import model.Product
+import play.api.Logger
+import play.api.libs.json.Json
+import play.api.mvc.{Action, Controller}
 
 /**
  * Created by oguzhan on 8/20/14.
@@ -12,15 +11,17 @@ import model.Product
 
 object ProductController extends Controller {
 
+  def list() = Action {
+    Ok("ok")
+  }
+
+  def popular() = popularLimit("10")
 
   /**
    * Take most popular n Products
    * @param limit product number
    * @return
    */
-
-  def popular() = popularLimit("10")
-
   def popularLimit(limit: String) = Action {
     val products = Product.takeMostPopular(limit.toInt)
     val productsJson = Json.toJson(products)
