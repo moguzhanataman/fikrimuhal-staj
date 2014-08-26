@@ -17,6 +17,8 @@ object Product {
     Product(3, "Falan filan", 10.50, 3, "photourl")
   )
 
+  def get(id: Int) = Product.all.find(_.id == id)
+
   /**
    * Sort data by popularity in ascending order
    * @param limit how many items will be shown

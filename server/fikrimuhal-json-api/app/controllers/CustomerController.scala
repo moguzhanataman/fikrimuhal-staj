@@ -1,6 +1,6 @@
 package controllers
 
-import model.Customer
+import model.{Product, Customer}
 import play.api.Logger
 import play.api.libs.json._
 import play.api.mvc.{Action, Controller}
@@ -36,5 +36,7 @@ object CustomerController extends Controller {
     }.getOrElse(NotFound)
   }
 
-  def getCustomerProducts(id: Int) = TODO
+  def getCustomerProducts(id: Int) = Action {
+    Ok(Json.toJson(Product.all))
+  }
 }
