@@ -29,11 +29,11 @@ object CustomerController extends Controller {
   }
 
   def getCustomerPhoto(id: Int) = Action {
-    val customer = Customer.get(id)
-    customer match {
-      case Some(customer) => Ok(customer.photoData)
-      case None => NotFound
-    }
+    Customer.get(id).map { customer =>
+      Ok(Json.toJson(
+        Map("id" -> Json.toJson(customer.id), "photoData" -> Json.toJson(customer.photoData))
+      ))
+    }.getOrElse(NotFound)
   }
 
   def getCustomerProducts(id: Int) = TODO
