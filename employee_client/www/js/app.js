@@ -1,4 +1,4 @@
-var fikrimuhalStaj = angular.module('fikrimuhalStaj', ['ionic'/*,'ngRoute'*/]);
+var fikrimuhalStaj = angular.module('fikrimuhalStaj', ['ionic']);
 	// create the controller and inject Angular's $scope
 
 fikrimuhalStaj.run(function($ionicPlatform) {
@@ -15,7 +15,6 @@ fikrimuhalStaj.run(function($ionicPlatform) {
   });
 })
 
-
 .config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $urlRouterProvider){
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -30,12 +29,10 @@ fikrimuhalStaj.run(function($ionicPlatform) {
 		    views:{
 			    'main':{
 				    templateUrl: "views/login.html",
-				    controller: 'mainController'
+				    controller: 'LoginCtrl'
 		    }
 	    }
     })
-
-
     // Each tab has its own nav history stack:
 
     .state('customerList', {
@@ -65,6 +62,15 @@ fikrimuhalStaj.run(function($ionicPlatform) {
           controller: 'cartController'
         }
       }
+    })
+    .state('attendees', {
+      url: "/attendees",
+      views: {
+        'main' :{
+          templateUrl: "views/attendees.html",
+          controller: "AttendeesCtrl"
+        }
+      }
     });
 
   // if none of the above states are matched, use this as the fallback
@@ -74,11 +80,51 @@ fikrimuhalStaj.run(function($ionicPlatform) {
 
 }]);
 
-fikrimuhalStaj.controller('mainController', function($scope) {
+fikrimuhalStaj.controller('MainCtrl', function($scope, $ionicSideMenuDelegate) {
+  $scope.attendees = [
+    { firstname: 'Nicolas', lastname: 'Cage' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Keanu', lastname: 'Reeves' },
+    { firstname: 'Steven', lastname: 'Seagal' }
+  ];
+  
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+})
 
+fikrimuhalStaj.controller('LoginCtrl', [ '$scope' ,'loginService' , function($scope,loginService) {
+	console.log("main controller called");
+	var employeePromise= loginService.auth();
+	console.log("employee", employeePromise);
+	employeePromise.then(function ( e ){
+		$scope.employee = e ;
+		console.log("sucess oldu", e )
+	}).catch(function ( e ){
+		console.log("hata oldu", e )
+	}).finally(function (){
+		console.log("finally")
+	})
 	// create a message to display in our view
 	$scope.message = 'Şifreniniz girin!';
-});
+	$scope.employee = "bekleniyor";
+
+}]);
 
 
 fikrimuhalStaj.controller('customerListController', function($scope) {
@@ -96,6 +142,8 @@ fikrimuhalStaj.controller('customerDetailController', function($scope) {
 		{ "id":45, "description":"Ürün", "fiyat":605 },
 		{ "id":55, "description":"Ürün", "fiyat":606 }
 	];
+
+	var productCart= [{}];
 
 	/* TODO bir listeyi ikiye ayıracak fonksiyon yazılacak */
 
@@ -118,6 +166,7 @@ fikrimuhalStaj.controller('customerDetailController', function($scope) {
 	function slideHasChanged(product,index,listNo){
 		console.log(" id " , product.id , " index " , index);
 
+		/* This if  */
 		if(index == 2){
 
 			var indexofProductL = listL.indexOf(product);
@@ -133,6 +182,11 @@ fikrimuhalStaj.controller('customerDetailController', function($scope) {
 			if (indexofProductR > -1) {
 				listR.splice(indexofProductR,1);
 			}
+		}
+
+		if (index == 0)
+		{
+
 		}
 	}
 	$scope.slideHasChanged = slideHasChanged;
@@ -173,3 +227,18 @@ fikrimuhalStaj.controller('PostsCtrlAjax', function($scope, $http) {
 		$scope.customerList = {left:customerlistL, right:customerlistR};
 	});
 })
+
+.controller('AttendeesCtrl', function($scope) {
+  
+  $scope.activity = [];
+  $scope.arrivedChange = function(attendee) {
+    var msg = attendee.firstname + ' ' + attendee.lastname;
+    msg += (!attendee.arrived ? ' has arrived, ' : ' just left, '); 
+    msg += new Date().getMilliseconds();
+    $scope.activity.push(msg);
+    if($scope.activity.length > 3) {
+      $scope.activity.splice(0, 1);
+    }
+  };
+  
+});

@@ -59,3 +59,9 @@ Bir sonraki çalışma günü yapılması planlananlar
 ----------
 - JSON API Dökümantasyonu yazıldı.
 - Back-end'in bazı temel işlevler için json döndürmesi sağlandı.
+- Front-endde müşteri listesi ve müşteriye öneri listesi sayfası serverdan alınan json dosyaları ile dinamik olarak oluşturulmaya başlandı
+- Bütün ekranlar ionic framewrok ile yeniden tasarlandı ve grid sistemi bootstrapten ionic'e geçirildi.
+
+Bir sonraki çalışma günü yapılması planlananlar
+-----------------------------------------------
+- Side menu yapılacak ve GUI düzeltmeleri ve güzelleştirmeleri

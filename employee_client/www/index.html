@@ -1,56 +1,52 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
 
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html lang="en">
-<head>
-   
+  <html ng-app="fikrimuhalStaj">
+  <head>
     <meta charset="utf-8">
-    <title>Staj Client</title>
-    <script src="js/conf.js"></script>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>Side Menus</title>
+
+    <link rel="stylesheet" href="css/ionic.min.css">
     <script src="js/ionic.bundle.min.js"></script>
+    <script src="js/conf.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
-    <link rel="stylesheet" href="css/ionic.min.css">
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <!-- uyarı nedeniyle kaldırıldı WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <style>
-    html{
-        overflow: scroll !important; /* debug için releasede kaldırılacaktır overflow gizleyerek mouse ile scroll etmeyi engelliyor */
-    }
-    </style>
-</head>
-<body ng-app="fikrimuhalStaj"  animation="slide-left-right-ios7">
+    <script src="js/services/loginService.js"></script>
+  </head>
 
-<div id="main">
+  <body ng-cloak ng-controller="MainCtrl">
 
-    <ion-nav-view name="main"></ion-nav-view>
+      <ion-side-menus>
 
-</div>
+        <ion-side-menu-content>
+          <ion-nav-bar class="bar-positive">
+            <ion-nav-back-button class="button-icon ion-arrow-left-c">
+            </ion-nav-back-button>
+          </ion-nav-bar>
+          <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon" ng-click="toggleLeft()">
+            </button>
+          </ion-nav-buttons>
+          <ion-nav-view animation="no-animation" name="main"></ion-nav-view>
+        </ion-side-menu-content> 
 
+        <ion-side-menu side="left">
+          <ion-header-bar class="bar-assertive">
+            <h1 class="title">Left Menu</h1>
+          </ion-header-bar>
+          <ion-content>
+            <ul class="list">
+              <!-- Note each link has the 'menu-close' attribute so the menu auto closes when clicking on one of these links -->
+              <a href="#/login" class="item" menu-close>login</a>
+              <a href="#/customerList" class="item" menu-close>customer List</a>
+              <a href="#/customerDetail" class="item" menu-close>customer Detail</a>
+              <a href="#/cart" class="item" menu-close>cart</a>
+              <a href="#/attendees" class="item" menu-close>Attendees</a>
+            </ul>
+          </ion-content>
+        </ion-side-menu>
 
-<script type="text/javascript" src="cordova.js"></script>
-
-
-</body>
+      </ion-side-menus>
+  </body>
 </html>
