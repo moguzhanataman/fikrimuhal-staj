@@ -8,35 +8,27 @@ GET     /                           controllers.Application.index
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
-GET     /api/customer               controllers.CustomerController.list()
-GET     /api/customer/:id           controllers.CustomerController.get(id)
-GET     /api/customer/:id/cart      controllers.CustomerController.cart(id)
+# My JSON API
 
-GET     /api/employee               controllers.EmployeeController.list()
-GET     /api/employee/:id           controllers.EmployeeController.get(id)
-
-GET     /api/products               controllers.ProductController.list()
-GET     /api/products/popular       controllers.ProductController.popular()
-
-GET     /api/cart                   controllers.CartController.list()
-GET     /api/cart/:id               controllers.CartController.get(id)
-
-
-
-
+# +
 GET     /api/employees                      controllers.EmployeeController.list()
-GET     /api/employees/:id                  controllers.EmployeeController.get(id)
+GET     /api/employees/:id                  controllers.EmployeeController.get(id: Int)
 
-GET     /api/customers/current              controllers.CustomerController.currentCustomersList()
-GET     /api/customers/:id                  controllers.CustomerController.getCustomer(id)
-GET     /api/customers/:id/photo            controllers.CustomerController.getCustomerPhoto(id)
-GET     /api/customers/:id/products         controllers.CustomerController.getCustomerProducts(id)
+# +
+GET     /api/customers                      controllers.CustomerController.getAllCustomerList()
+GET     /api/customers/current              controllers.CustomerController.getCurrentCustomerList()
+GET     /api/customers/:id                  controllers.CustomerController.getCustomer(id: Int)
+GET     /api/customers/:id/photo            controllers.CustomerController.getCustomerPhoto(id: Int)
+GET     /api/customers/:id/products         controllers.CustomerController.getCustomerProducts(id: Int)
 
 GET     /api/products                       controllers.ProductController.list()
 
-GET     /api/customers/:id/cart             controllers.CartController.getCart(id)
-POST    /api/customers/:id/cart             controllers.CartController.updateCart(id)
-DELETE  /api/customers/:id/cart
-GET     /api/customers/:id/cart/checkout
+GET     /api/customers/:id/cart             controllers.CartController.getCart(id: Int)
+POST    /api/customers/:id/cart             controllers.CartController.updateCart(id: Int)
+DELETE  /api/customers/:id/cart             controllers.CartController.deleteCart(id: Int)
+GET     /api/customers/:id/cart/checkout    controllers.CartController.checkoutCart(id: Int)
+
+
+
 
 

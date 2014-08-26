@@ -19,7 +19,11 @@ object CartController extends Controller {
     Ok(cartsJson)
   }
 
-  def get(id: String) = Action {
+  def getCart(id: Int) = Action {
     NotImplemented
   }
+
+  def deleteCart(id: Int) = TODO
+  def updateCart(id: Int) = TODO
+  def checkoutCart(id: Int) = TODO
 }

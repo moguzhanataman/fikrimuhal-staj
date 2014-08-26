@@ -10,8 +10,7 @@ import play.api.mvc.{Action, Controller}
  */
 object CustomerController extends Controller {
 
-
-  def list() = Action {
+  def getAllCustomerList() = Action {
     val customerAsMap = Map("customers" -> Customer.all)
     val customerAsJson = Json.toJson(customerAsMap)
 
@@ -19,13 +18,23 @@ object CustomerController extends Controller {
     Ok(customerAsJson)
   }
 
+  def getCurrentCustomerList() = getAllCustomerList()
+
   // TODO
-  def get(id: String) = Action {
-    Customer.get(id.toInt).map { e =>
+  def getCustomer(id: Int) = Action {
+    Customer.get(id).map { e =>
       val customerJson = Json.toJson(e)
       Ok(customerJson)
     }.getOrElse(NotFound)
   }
 
-  def cart(id: String) = TODO
+  def getCustomerPhoto(id: Int) = Action {
+    val customer = Customer.get(id)
+    customer match {
+      case Some(customer) => Ok(customer.photoData)
+      case None => NotFound
+    }
+  }
+
+  def getCustomerProducts(id: Int) = TODO
 }

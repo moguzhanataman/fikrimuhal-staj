@@ -20,8 +20,8 @@ object EmployeeController extends Controller {
     Ok(employeesJson)
   }
 
-  def get(id: String) = Action {
-    Employee.get(id.toInt).map { e =>
+  def get(id: Int) = Action {
+    Employee.get(id).map { e =>
       val empJson = Json.toJson(e)
       Ok(empJson)
     }.getOrElse(NotFound)

@@ -3,7 +3,7 @@ package model
 /**
  * Created by oguzhan on 8/21/14.
  */
-case class Employee(id: Int, name: String, photo: String)
+case class Employee(id: Int, name: String, photoData: String, hash: String)
 
 object Employee {
 
@@ -12,8 +12,8 @@ object Employee {
   implicit val jsonConverter = Json.format[Employee]
 
   val all = Seq(
-    Employee(1, "M. Oğuzhan Ataman", "photourl"),
-    Employee(2, "Kasım Süzen", "photourl")
+    Employee(1, "M. Oğuzhan Ataman", "photourl", "hash"),
+    Employee(2, "Kasım Süzen", "photourl", "hash")
   )
 
   def filterById(id: Int) = all.filter(id == _.id)
