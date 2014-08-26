@@ -29,12 +29,10 @@ fikrimuhalStaj.run(function($ionicPlatform) {
 		    views:{
 			    'main':{
 				    templateUrl: "views/login.html",
-				    controller: 'mainController'
+				    controller: 'LoginCtrl'
 		    }
 	    }
     })
-
-
     // Each tab has its own nav history stack:
 
     .state('customerList', {
@@ -64,6 +62,15 @@ fikrimuhalStaj.run(function($ionicPlatform) {
           controller: 'cartController'
         }
       }
+    })
+    .state('attendees', {
+      url: "/attendees",
+      views: {
+        'main' :{
+          templateUrl: "views/attendees.html",
+          controller: "AttendeesCtrl"
+        }
+      }
     });
 
   // if none of the above states are matched, use this as the fallback
@@ -73,7 +80,35 @@ fikrimuhalStaj.run(function($ionicPlatform) {
 
 }]);
 
-fikrimuhalStaj.controller('mainController', [ '$scope' ,'loginService' , function($scope,loginService) {
+fikrimuhalStaj.controller('MainCtrl', function($scope, $ionicSideMenuDelegate) {
+  $scope.attendees = [
+    { firstname: 'Nicolas', lastname: 'Cage' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Jean-Claude', lastname: 'Van Damme' },
+    { firstname: 'Keanu', lastname: 'Reeves' },
+    { firstname: 'Steven', lastname: 'Seagal' }
+  ];
+  
+  $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+})
+
+fikrimuhalStaj.controller('LoginCtrl', [ '$scope' ,'loginService' , function($scope,loginService) {
 	console.log("main controller called");
 	var employeePromise= loginService.auth();
 	console.log("employee", employeePromise);
@@ -193,9 +228,17 @@ fikrimuhalStaj.controller('PostsCtrlAjax', function($scope, $http) {
 	});
 })
 
-
-function MainCtrl($scope, $ionicSideMenuDelegate) {
-  $scope.toggleLeftSideMenu = function() {
-    $ionicSideMenuDelegate.toggleLeft();
-};
-}
+.controller('AttendeesCtrl', function($scope) {
+  
+  $scope.activity = [];
+  $scope.arrivedChange = function(attendee) {
+    var msg = attendee.firstname + ' ' + attendee.lastname;
+    msg += (!attendee.arrived ? ' has arrived, ' : ' just left, '); 
+    msg += new Date().getMilliseconds();
+    $scope.activity.push(msg);
+    if($scope.activity.length > 3) {
+      $scope.activity.splice(0, 1);
+    }
+  };
+  
+});
