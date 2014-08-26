@@ -14,7 +14,6 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET     /api/employees                      controllers.EmployeeController.list()
 GET     /api/employees/:id                  controllers.EmployeeController.get(id: Int)
 
-# +
 GET     /api/customers                      controllers.CustomerController.getAllCustomerList()
 GET     /api/customers/current              controllers.CustomerController.getCurrentCustomerList()
 GET     /api/customers/:id                  controllers.CustomerController.getCustomer(id: Int)
