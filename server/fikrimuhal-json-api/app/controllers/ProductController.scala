@@ -12,14 +12,14 @@ import play.api.mvc.{Action, Controller}
 object ProductController extends Controller {
 
   def list() = Action {
-    Ok("ok")
+    Ok(Json.toJson(Product.all))
   }
 
   def popular() = popularLimit("10")
 
   /**
    * Take most popular n Products
-   * @param limit product number
+   * @param limit how many product do we want
    * @return
    */
   def popularLimit(limit: String) = Action {

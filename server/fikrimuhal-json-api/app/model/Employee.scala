@@ -6,7 +6,9 @@ package model
 case class Employee(id: Int, name: String, photo: String)
 
 object Employee {
+
   import play.api.libs.json._
+
   implicit val jsonConverter = Json.format[Employee]
 
   val all = Seq(
@@ -15,5 +17,6 @@ object Employee {
   )
 
   def filterById(id: Int) = all.filter(id == _.id)
-  def get(id: Int) : Option[Employee] = all.find(id == _.id)
+
+  def get(id: Int): Option[Employee] = all.find(id == _.id)
 }
