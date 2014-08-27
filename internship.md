@@ -71,6 +71,8 @@ Bir sonraki çalışma günü yapılması planlananlar
 - Hatalı ionic tagleri düzeltildi
 - Giriş ekranı ve müşteri ürün öneri sayfasında GUI düzeltilmeleri yapıldı
 - Side menu eklendi
+* api baştan tasarlandı
+* git'ten yeni branch açıp api implementasyonunu değiştirmeye başladım.
 
 Bir sonraki çalışma günü yapılması planlananlar
 -----------------------------------------------
