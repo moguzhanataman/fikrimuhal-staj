@@ -6,3 +6,9 @@ customer_client/platforms
 customer_client/.idea
 node_modules/
 npm-debug.log
+employee_client/.gradle/*
+employee_client/employee_client.iml
+employee_client/gradle/wrapper/gradle-wrapper.jar
+employee_client/gradle/wrapper/gradle-wrapper.properties
+employee_client/gradlew
+employee_client/gradlew.bat
