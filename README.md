@@ -12,6 +12,7 @@ Kullanılacak Teknolojiler
 - Scala
 - Play Framework
 - iBeacon
+- Lo-Dash
 
 Masaüstü browserda çalıştırmak için
 
