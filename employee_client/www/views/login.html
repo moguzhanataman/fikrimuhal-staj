@@ -1,39 +1,68 @@
 <ion-view title="Login Screen">
-    <ion-content>
+    <ion-content has-bouncing="false">
         <div class="row">
             <div class="col">
-                <div class="user-select">
-                    <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
-                    <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
-                    <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
-                </div>
-                <div class="row">
-                    <div class="col col-67 col-offset-25">
-                        <div class="row">
-                            <h1><a href="#/customerList">Skip To Customer List</a></h1>
-                        </div>
-                        <div class="row">
-                            <button class="button button-positive">1</button>
-                            <button class="button button-positive">2</button>
-                            <button class="button button-positive">3</button>
-                        </div>
-                        <div class="row">
-                            <button class="button button-positive">4</button>
-                            <button class="button button-positive">5</button>
-                            <button class="button button-positive">6</button>
-                        </div>
-                        <div class="row">
-                            <button class="button button-positive">7</button>
-                            <button class="button button-positive">8</button>
-                            <button class="button button-positive">9</button>
-                        </div>
-                        <div class="row">
-                            <div class="col col-center">
-                                <button class="button button-positive">0</button>
-                            </div>
-                        </div>
+
+                <ion-scroll has-bouncing="true" scrollbar-x="false" scrollbar-y="false" direction="x" style="width: 100%; height: 200px;white-space: nowrap;">
+                    <div class="user-select" id="login-employee-list">
+                        <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                        <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                        <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                        <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                        <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+
                     </div>
+                </ion-scroll>
+                <div class="row">
+
+                    <div class="col" class="center">
+                        <form id="ios" class="pin-form">
+
+                            <input class="left" type="password" value="x" maxlength="1"/>
+                            <input class="left" type="password" maxlength="1"/>
+                            <input class="left" type="password" maxlength="1"/>
+                            <input class="left" type="password" maxlength="1"/>
+                        </form>
+                    </div>
+
                 </div>
+                <div id="pin-code">
+
+                    <div class="row">
+                        <div class="col col-20"></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">1</a></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">2</a></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">3</a></div>
+                        <div class="col col-20"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col col-20"></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">4</a></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">5</a></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">6</a></div>
+                        <div class="col col-20"></div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col col-20"></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">7</a></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">8</a></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">9</a></div>
+                        <div class="col col-20"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-20"></div>
+                        <div class="col col-20"></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">0</a></div>
+                        <div class="col col-20"></div>
+                        <div class="col col-20"></div>
+                    </div>
+
+
+                </div>
+
             </div>
         </div>
     </ion-content>
