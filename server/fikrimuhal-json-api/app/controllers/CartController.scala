@@ -20,10 +20,32 @@ object CartController extends Controller {
   }
 
   def getCart(id: Int) = Action {
-    NotImplemented
+    Ok(Json.toJson(Cart.getCartByUserId(id)))
+  }
+
+  def updateCart(id: Int) = Action(parse.json) { request =>
+    //    (request.body).asOpt[Seq[Cart]].map { cart =>
+    //      Ok("Hello " + cart.pid + "\n" + cart.quantity + "\n")
+    //    }.getOrElse {
+    //      BadRequest("Missing parameter [name]\n")
+    //    }
+
+    request.body.validate[Seq[Cart]] map { cart =>
+      Logger.debug(cart.toString)
+      Ok(Json.toJson(Cart.getCartByUserId(id)))
+    } getOrElse (NotFound("Error: JSON format is wrong"))
+
   }
 
   def deleteCart(id: Int) = TODO
-  def updateCart(id: Int) = TODO
-  def checkoutCart(id: Int) = TODO
+
+  def checkoutCart(id: Int) = Action {
+    Ok(Json.toJson(Cart.checkoutCartByUserId(id)))
+  }
+
+  def _seedDatabase = Action {
+    Cart._seedDatabase
+    Ok("Database seeded")
+  }
+
 }
