@@ -21,12 +21,18 @@ GET     /api/customers/:id                  controllers.CustomerController.getCu
 GET     /api/customers/:id/photo            controllers.CustomerController.getCustomerPhoto(id: Int)
 GET     /api/customers/:id/products         controllers.CustomerController.getCustomerProducts(id: Int)
 
+# Implemented
 GET     /api/products                       controllers.ProductController.list()
 
+# Implemented Except DELETE Request
 GET     /api/customers/:id/cart             controllers.CartController.getCart(id: Int)
 POST    /api/customers/:id/cart             controllers.CartController.updateCart(id: Int)
 DELETE  /api/customers/:id/cart             controllers.CartController.deleteCart(id: Int)
 GET     /api/customers/:id/cart/checkout    controllers.CartController.checkoutCart(id: Int)
+
+# Test Purposes
+GET     /api/test/POST/customers/:id/cart   controllers.TestController.testUpdateCart(id: Int)
+GET     /api/test/customers/cart/seed       controllers.CartController._seedDatabase
 
 
 
