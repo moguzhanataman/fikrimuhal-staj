@@ -2,7 +2,6 @@ fikrimuhalStaj.controller('LoginCtrl', [ '$scope', '$state' , 'loginService' , f
 
     $scope.checkPasscode = function checkPasscode(employeeId, pass) {
 
-        console.log("employee id is", employeeId, "pass is ", pass);
 
         if (loginService.auth(employeeId, pass) == true) {
 
@@ -22,7 +21,7 @@ fikrimuhalStaj.controller('LoginCtrl', [ '$scope', '$state' , 'loginService' , f
 
     $scope.employees = loginService.employees();
 
-    if (loginService.isAuth()) {
+    if (loginService.isLoggedin()) {
         $scope.selectedEmployeeId = loginService.loggedinEmployee().id;
     }
 

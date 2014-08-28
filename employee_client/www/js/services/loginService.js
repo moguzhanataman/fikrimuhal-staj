@@ -24,7 +24,6 @@ app.factory('loginService', ['$http', '$q' , function loginService($http, $q) {
         var employee = _.find(mockEmployees, {'id': employeeId, 'passwordHash': hashedPasscode});
         if (employee) {
             _loggedinEmployee = employee;
-            console.log("auth  employee:", employee);
         }
         else {
             //A kullanıcı login olmuşdurumda iken
@@ -33,9 +32,7 @@ app.factory('loginService', ['$http', '$q' , function loginService($http, $q) {
             logout();
         }
 
-        var isauth = isAuth();
-        console.log("auth:", isauth);
-        return isauth;
+        return  isLoggedin();
     }
 
     /**
@@ -57,13 +54,8 @@ app.factory('loginService', ['$http', '$q' , function loginService($http, $q) {
     /**
      * @return {boolean} true for acknowledge users, false for unknown user
      */
-    function isAuth() {
-        /*
-         if(_loggedinEmployee) {
-         return true;
-         } else {
-         return false;
-         }*/
+    function isLoggedin() {
+
         return !!_loggedinEmployee;
     }
 
@@ -87,7 +79,8 @@ app.factory('loginService', ['$http', '$q' , function loginService($http, $q) {
         'auth': auth,
         'employees': getEmployees,
         'loggedinEmployee': loggedinEmployee,
-        'isAuth': isAuth,
+        'isAuth': isLoggedin,
+        'isLoggedin':isLoggedin,
         'logout': logout
     }
 }]);
