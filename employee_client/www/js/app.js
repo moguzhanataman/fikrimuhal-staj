@@ -1,7 +1,7 @@
 var fikrimuhalStaj = angular.module('fikrimuhalStaj', ['ionic', 'ngAudio']);
 // create the controller and inject Angular's $scope
 
-fikrimuhalStaj.run(['$ionicPlatform','$rootScope', '$state','loginService',function ($ionicPlatform,$rootScope,$state,loginService) {
+fikrimuhalStaj.run(['$ionicPlatform', '$rootScope', '$state', 'loginService', function ($ionicPlatform, $rootScope, $state, loginService) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -13,22 +13,23 @@ fikrimuhalStaj.run(['$ionicPlatform','$rootScope', '$state','loginService',funct
             StatusBar.styleDefault();
         }
     });
-    
 
-    $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){ 
-        /*console.log("event change caught toState", toState);
+
+     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+        console.log("event change caught toState", toState);
         console.log("event change caught fromState", fromState);
         console.log("event change caught toParams", toParams);
-        console.log("event change caught fromParams",fromParams);
-        
-        if(toState.name != "login" && !loginService.isAuth() ){
+        console.log("event change caught fromParams", fromParams);
+
+        if (toState.name != "login" && !loginService.isAuth()) {
             event.preventDefault();
-            //$state.go('login');
+            $state.go('login');
         }
-        */
-        // transitionTo() promise will be rejected with 
+
+        // transitionTo() promise will be rejected with
         // a 'transition prevented' error
-    })
+    });
+
 }])
 
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
@@ -97,7 +98,7 @@ fikrimuhalStaj.run(['$ionicPlatform','$rootScope', '$state','loginService',funct
 
     }]);
 
-fikrimuhalStaj.controller('MainCtrl', function ($scope, $ionicSideMenuDelegate,ngAudio) {
+fikrimuhalStaj.controller('MainCtrl', function ($scope, $ionicSideMenuDelegate, ngAudio) {
     $scope.attendees = [
         { firstname: 'Nicolas', lastname: 'Cage' },
         { firstname: 'Jean-Claude', lastname: 'Van Damme' },
@@ -125,7 +126,7 @@ fikrimuhalStaj.controller('MainCtrl', function ($scope, $ionicSideMenuDelegate,n
     };
 
 
-    $scope.audioClick = function() {
+    $scope.audioClick = function () {
         ngAudio.play('tockAudio');
     }
 });

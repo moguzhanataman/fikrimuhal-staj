@@ -1,39 +1,48 @@
 fikrimuhalStaj.controller('LoginCtrl', [ '$scope', '$state' , 'loginService' , function ($scope, $state, loginService) {
 
-    $scope.checkPasscode = function checkPasscode(employeeId, pass){
-        console.log("employee id is", employeeId, "pass is ",pass);
-        
-        if(loginService.auth(employeeId, pass) == true){
-            $state.go('customerList');
+    $scope.checkPasscode = function checkPasscode(employeeId, pass) {
+
+        console.log("employee id is", employeeId, "pass is ", pass);
+
+        if (loginService.auth(employeeId, pass) == true) {
+
+            //BUG #STAJA-7 ,
+            //$state.go('customerList');
+            //START workaround
+            setTimeout(function () {
+                $state.go('customerList');
+            }, 0);
+            //END workaround
+
+        } else {
+            //Kullanıcı hata sifre girer ise
+            $scope.selectedEmployeeId = null;
         }
-    }
+    };
 
     $scope.employees = loginService.employees();
-    if(loginService.isAuth()){
-        $scope.currentEmployeeId = loginService.loggedinEmployee().id;
+
+    if (loginService.isAuth()) {
+        $scope.selectedEmployeeId = loginService.loggedinEmployee().id;
     }
 
 }]);
 
-fikrimuhalStaj.controller('passcodeCtrl',['$scope',function($scope){
+fikrimuhalStaj.controller('passcodeCtrl', ['$scope', function ($scope) {
+    var parentScope = $scope.$parent;
+
+    /* bir ust scope dan parent.selectedEmployeeId geliyor,
+    Directive e cevrilince buna gerek kalmayacak. */
+    /*parent.selectedEmployeeId*/
 
     var employees = $scope.employees;
-
-    var selectedEmployee = {'id': $scope.currentEmployeeId};
     var pinCounter = 1;
-    var currentPasscodeValue = undefined;
-    var pins ={
-            '1': "2",
-            '2': "4",
-            '3': "8",
-            '4': "5"
-        }
+    var currentPasscodeValue;
+    var pins = {};
 
-    resetPins();
 
     function combinePins(pinObject) {
-        var pass = "" + pinObject[1] + pinObject[2] + pinObject[3] + pinObject[4];
-        return pass;
+        return "" + pinObject[1] + pinObject[2] + pinObject[3] + pinObject[4];
     }
 
     /* currentPasscodeValue resetleme daha sonrası loginCtrlye lazım */
@@ -45,31 +54,34 @@ fikrimuhalStaj.controller('passcodeCtrl',['$scope',function($scope){
         pins[4] = "";
     }
 
-    function passcodeReady(){
-        $scope.checkPasscode(selectedEmployee.id,currentPasscodeValue);
+    function passcodeReady() {
         resetPins();
+        $scope.checkPasscode(parentScope.selectedEmployeeId, currentPasscodeValue);
     }
 
     function selectEmployee(id) {
-        selectedEmployee.id = id;
+        parentScope.selectedEmployeeId = id;
         resetPins();
     }
 
-    function addPin(number){
-        pins[pinCounter++] = number;
-        if(pinCounter == 5)
-        {
-            currentPasscodeValue=combinePins(pins);
-            passcodeReady();
+    function addPin(number) {
+        if (parentScope.selectedEmployeeId) {
+            pins[pinCounter++] = number;
+            if (pinCounter == 5) {
+                currentPasscodeValue = combinePins(pins);
+                passcodeReady();
+            }
+        } else{
+            alert("Kullanıcı seçin")
         }
     }
 
     resetPins();
 
-    $scope.employees=employees;
-    $scope.selectedEmployee = selectedEmployee; 
+    $scope.employees = employees;
+//    $scope.selectedEmployee = selectedEmployee;
     $scope.pins = pins;
     $scope.selectEmployee = selectEmployee;
     $scope.addPin = addPin;
 
-}])
+}]);
