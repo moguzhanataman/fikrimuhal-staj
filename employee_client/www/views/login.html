@@ -1,16 +1,20 @@
 <ion-view title="Login Screen">
     <ion-content has-bouncing="false">
-        <div class="row">
+        <div class="row" ng-controller="passcodeCtrl">
             <div class="col">
 
-                <ion-scroll has-bouncing="true" scrollbar-x="false" scrollbar-y="false" direction="x" style="width: 100%; height: 200px;white-space: nowrap;">
-                    <div class="user-select" id="login-employee-list">
-                        <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
-                        <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
-                        <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
-                        <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
-                        <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                <style type="text/css">
 
+                    .user-selected {
+                        background-color: red;
+                    } 
+
+                </style>
+
+                <ion-scroll has-bouncing="true" scrollbar-x="false" scrollbar-y="false" direction="x" style="width: 100%; height: 200px;white-space: nowrap;">
+                    <div ng-class="{'user-selected' : selectedEmployeeId == it.id}" id="login-employee-list" ng-repeat="it in employees" ng-click="selectEmployee(it.id)">
+                        <img class="thumbnail" ng-src="{{it.photoUrl}}" width="200" height="200"/>
+                        <span>{{it.id}}</span>
                     </div>
                 </ion-scroll>
                 <div class="row">
@@ -18,10 +22,10 @@
                     <div class="col" class="center">
                         <form id="ios" class="pin-form">
 
-                            <input class="left" type="password" value="x" maxlength="1"/>
-                            <input class="left" type="password" maxlength="1"/>
-                            <input class="left" type="password" maxlength="1"/>
-                            <input class="left" type="password" maxlength="1"/>
+                            <input class="left" type="text" maxlength="1" ng-model="passcode.pins.1"/>
+                            <input class="left" type="text" maxlength="1" ng-model="passcode.pins.2"/>
+                            <input class="left" type="text" maxlength="1" ng-model="passcode.pins.3"/>
+                            <input class="left" type="text" maxlength="1" ng-model="passcode.pins.4"/>
                         </form>
                     </div>
 
@@ -30,26 +34,26 @@
 
                     <div class="row">
                         <div class="col col-20"></div>
-                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">1</a></div>
-                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">2</a></div>
-                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">3</a></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button" ng-click="addPin(1)">1</a></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button" ng-click="addPin(2)">2</a></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button" ng-click="addPin(3)">3</a></div>
                         <div class="col col-20"></div>
                     </div>
 
                     <div class="row">
                         <div class="col col-20"></div>
-                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">4</a></div>
-                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">5</a></div>
-                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">6</a></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button" ng-click="addPin(4)">4</a></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button" ng-click="addPin(5)">5</a></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button" ng-click="addPin(6)">6</a></div>
                         <div class="col col-20"></div>
                     </div>
 
 
                     <div class="row">
                         <div class="col col-20"></div>
-                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">7</a></div>
-                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">8</a></div>
-                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button">9</a></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button" ng-click="addPin(7)">7</a></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button" ng-click="addPin(8)">8</a></div>
+                        <div class="col"><a on-touch="audioClick()" href="#" class="round-button" ng-click="addPin(9)">9</a></div>
                         <div class="col col-20"></div>
                     </div>
                     <div class="row">
