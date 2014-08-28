@@ -17,8 +17,9 @@ fikrimuhalStaj.controller('PostsCtrlAjax', function ($scope, $http) {
             } else {
                 customerlistR.push(data.customers[i]);
             }
-        };
+        }
+
 
         $scope.customerList = {left: customerlistL, right: customerlistR};
     });
-})
+});

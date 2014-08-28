@@ -15,7 +15,7 @@ fikrimuhalStaj.run(['$ionicPlatform', '$rootScope', '$state', 'loginService', fu
     });
 
 
-     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
         console.log("event change caught toState", toState);
         console.log("event change caught fromState", fromState);
         console.log("event change caught toParams", toParams);

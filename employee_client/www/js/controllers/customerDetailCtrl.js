@@ -9,10 +9,6 @@ fikrimuhalStaj.controller('customerDetailController', function ($scope) {
         { "id": 55, "description": "Ürün", "fiyat": 606 }
     ];
 
-    var productCart = [
-        {}
-    ];
-
     /* TODO bir listeyi ikiye ayıracak fonksiyon yazılacak */
 
     var listL = [];
@@ -26,7 +22,7 @@ fikrimuhalStaj.controller('customerDetailController', function ($scope) {
             listR.push(list[i]);
         }
     }
-    ;
+
 
     $scope.sliderState = 1;
     $scope.productList = {left: listL, right: listR};
@@ -59,7 +55,8 @@ fikrimuhalStaj.controller('customerDetailController', function ($scope) {
     }
 
     $scope.slideHasChanged = slideHasChanged;
-});fikrimuhalStaj.controller('customerDetailController', function ($scope) {
+});
+fikrimuhalStaj.controller('customerDetailController', function ($scope) {
     $scope.message = 'Ürün seçin';
     var list = [
         { "id": 5, "description": "Ürün", "fiyat": 601 },
@@ -70,9 +67,6 @@ fikrimuhalStaj.controller('customerDetailController', function ($scope) {
         { "id": 55, "description": "Ürün", "fiyat": 606 }
     ];
 
-    var productCart = [
-        {}
-    ];
 
     /* TODO bir listeyi ikiye ayıracak fonksiyon yazılacak */
 
@@ -87,7 +81,7 @@ fikrimuhalStaj.controller('customerDetailController', function ($scope) {
             listR.push(list[i]);
         }
     }
-    ;
+
 
     $scope.sliderState = 1;
     $scope.productList = {left: listL, right: listR};
