@@ -1,4 +1,4 @@
-fikrimuhal-staj
+gitfikrimuhal-staj
 ===============
 
 18/08/2014
@@ -77,4 +77,14 @@ Bir sonraki çalışma günü yapılması planlananlar
 Bir sonraki çalışma günü yapılması planlananlar
 -----------------------------------------------
 - GUI düzeltmeleri ve güzelleştirmeleri
-- Her bir ekranlar için ayrı servicelerin yazılması 
+- Her bir ekranlar için ayrı servicelerin yazılması
+
+27/08/2014
+----------
+- GUI de düzeltmeler ve geliştirmeler
+- Sepet ve müşteri listesi serverdan alınan json ile oluşturuldu
+
+Bir sonraki çalışma günü yapılması planlananlar
+-----------------------------------------------
+- Controllerların ayrı dosyalara gönderilmesi ve controllerların tamamlanması
+- Her bir ekranlar için ayrı servicelerin yazılması
