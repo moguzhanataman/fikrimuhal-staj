@@ -1,27 +1,18 @@
-fikrimuhalStaj.controller('LoginCtrl', [ '$scope' , 'loginService' , function ($scope, loginService) {
-    
-    var employeePromise = loginService.auth();
-    console.log("employee", employeePromise);
-
-    employeePromise.then(function (e) {
-        $scope.employee = e;
-        console.log("sucess oldu", e)
-    }).catch(function (e) {
-        console.log("hata oldu", e)
-    }).finally(function () {
-        console.log("finally")
-    });
-    
-    // create a message to display in our view
-    $scope.message = 'Şifreniniz girin!';
-    $scope.employee = "bekleniyor";
+fikrimuhalStaj.controller('LoginCtrl', [ '$scope', '$state' , 'loginService' , function ($scope, $state, loginService) {
 
     $scope.checkPasscode = function checkPasscode(employeeId, pass){
         console.log("employee id is", employeeId, "pass is ",pass);
+        
+        if(loginService.auth(employeeId, pass) == true){
+            $state.go('customerList');
+        }
     }
 
-    $scope.employees =;
-    $scope.currentEmployeeId = 2;
+    $scope.employees = loginService.employees();
+    if(loginService.isAuth()){
+        $scope.currentEmployeeId = loginService.loggedinEmployee().id;
+    }
+
 }]);
 
 fikrimuhalStaj.controller('passcodeCtrl',['$scope',function($scope){

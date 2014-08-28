@@ -1,7 +1,7 @@
 var fikrimuhalStaj = angular.module('fikrimuhalStaj', ['ionic', 'ngAudio']);
 // create the controller and inject Angular's $scope
 
-fikrimuhalStaj.run(function ($ionicPlatform) {
+fikrimuhalStaj.run(['$ionicPlatform','$rootScope', '$state','loginService',function ($ionicPlatform,$rootScope,$state,loginService) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -13,7 +13,23 @@ fikrimuhalStaj.run(function ($ionicPlatform) {
             StatusBar.styleDefault();
         }
     });
-})
+    
+
+    $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){ 
+        /*console.log("event change caught toState", toState);
+        console.log("event change caught fromState", fromState);
+        console.log("event change caught toParams", toParams);
+        console.log("event change caught fromParams",fromParams);
+        
+        if(toState.name != "login" && !loginService.isAuth() ){
+            event.preventDefault();
+            //$state.go('login');
+        }
+        */
+        // transitionTo() promise will be rejected with 
+        // a 'transition prevented' error
+    })
+}])
 
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
