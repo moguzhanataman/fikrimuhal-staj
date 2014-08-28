@@ -67,8 +67,6 @@ fikrimuhalStaj.controller('passcodeCtrl',['$scope',function($scope){
 
     function selectEmployee(id) {
         selectedEmployee.id = id;
-        console.log("selectedEmployee.id", selectedEmployee.id)
-        console.log("scope selectedEmployee.id", $scope.selectedEmployee);
         resetPins();
     }
 
