@@ -115,136 +115,17 @@ fikrimuhalStaj.controller('MainCtrl', function ($scope, $ionicSideMenuDelegate,n
     }
 });
 
-fikrimuhalStaj.controller('customerListController', function ($scope) {
-    $scope.message = 'Müşteri seçin.';
-});
+fikrimuhalStaj.controller('AttendeesCtrl', function ($scope) {
 
-
-fikrimuhalStaj.controller('customerDetailController', function ($scope) {
-    $scope.message = 'Ürün seçin';
-    var list = [
-        { "id": 5, "description": "Ürün", "fiyat": 601 },
-        { "id": 15, "description": "Ürün", "fiyat": 602 },
-        { "id": 25, "description": "Ürün", "fiyat": 603 },
-        { "id": 35, "description": "Ürün", "fiyat": 604 },
-        { "id": 45, "description": "Ürün", "fiyat": 605 },
-        { "id": 55, "description": "Ürün", "fiyat": 606 }
-    ];
-
-    var productCart = [
-        {}
-    ];
-
-    /* TODO bir listeyi ikiye ayıracak fonksiyon yazılacak */
-
-    var listL = [];
-    var listR = [];
-
-    for (var i = 0; i <= list.length - 1; i++) {
-
-        if (i % 2 == 0) {
-            listL.push(list[i]);
-        } else {
-            listR.push(list[i]);
+    $scope.activity = [];
+    $scope.arrivedChange = function (attendee) {
+        var msg = attendee.firstname + ' ' + attendee.lastname;
+        msg += (!attendee.arrived ? ' has arrived, ' : ' just left, ');
+        msg += new Date().getMilliseconds();
+        $scope.activity.push(msg);
+        if ($scope.activity.length > 3) {
+            $scope.activity.splice(0, 1);
         }
-    }
-    ;
+    };
 
-    $scope.sliderState = 1;
-    $scope.productList = {left: listL, right: listR};
-
-    /* TODO  lodash kur lodashle sil */
-    function slideHasChanged(product, index, listNo) {
-        console.log(" id ", product.id, " index ", index);
-
-        /* This if  */
-        if (index == 2) {
-
-            var indexofProductL = listL.indexOf(product);
-            console.log("indexofProductL", indexofProductL);
-
-            if (indexofProductL > -1) {
-                listL.splice(indexofProductL, 1);
-            }
-
-            var indexofProductR = listR.indexOf(product);
-            console.log("indexofProductR", indexofProductR);
-
-            if (indexofProductR > -1) {
-                listR.splice(indexofProductR, 1);
-            }
-        }
-
-        if (index == 0) {
-
-        }
-    }
-
-    $scope.slideHasChanged = slideHasChanged;
 });
-
-fikrimuhalStaj.controller('cartController', function ($scope) {
-    $scope.message = 'Ürün listesi';
-    $scope.sliderState = 1;
-    $scope.campaign = { 'name': "anneler günü", 'discount': 159, 'totalAfterDiscount': 1800 }
-    var mockCartItems = [
-    					{'id':5, 'name':"kazak", 'price':100, 'amount':1,'subPrice':9100,'discountedPrice':90},
-    					{'id':415, 'name':"kazak", 'price':100, 'amount':2,'subPrice':8100,'discountedPrice':80},
-    					{'id':435, 'name':"kazak", 'price':100, 'amount':3,'subPrice':7100,'discountedPrice':700},
-    					{'id':455, 'name':"kazak", 'price':100, 'amount':4,'subPrice':6100,'discountedPrice':600},
-    					{'id':456, 'name':"kazak", 'price':100, 'amount':5,'subPrice':5100,'discountedPrice':500},
-    					{'id':4545, 'name':"kazak", 'price':100, 'amount':1,'subPrice':4100,'discountedPrice':400},
-    					{'id':458, 'name':"kazak", 'price':100, 'amount':1,'subPrice':3100,'discountedPrice':300},
-    					{'id':459, 'name':"kazak", 'price':100, 'amount':1,'subPrice':2100,'discountedPrice':200},
-    					{'id':451, 'name':"kazak", 'price':100, 'amount':1,'subPrice':1100,'discountedPrice':100},
-    					{'id':453, 'name':"kazak", 'price':100, 'amount':1,'subPrice':-100,'discountedPrice':1100},
-						];
-
-    $scope.cart = {'cartItems':mockCartItems, 'totalPrice' : 1959};
-    $scope.currentCustomer = {'name': "Hakkı Özveren Bayraktaşıyan", 'id': 15 };
-});
-
-fikrimuhalStaj.controller('SlideController', function ($scope) {
-
-    $scope.currentSlide = 1;
-
-    $scope.slideChanged = function (currSlide) {
-        $scope.currentSlide = currSlide;
-        console.log('Active Slide=' + $scope.currentSlide);
-    }
-});
-
-fikrimuhalStaj.controller('PostsCtrlAjax', function ($scope, $http) {
-    $http({method: 'GET', url: config.api.urls.customerList }).success(function (data) {
-        var customerlistL = [];
-        var customerlistR = [];
-
-        /* TODO bir listeyi ikiye ayıracak fonksiyon yazılacak */
-
-        for (var i = 0; i <= data.customers.length - 1; i++) {
-
-            if (i % 2 == 0) {
-                customerlistL.push(data.customers[i]);
-            } else {
-                customerlistR.push(data.customers[i]);
-            }
-        };
-
-        $scope.customerList = {left: customerlistL, right: customerlistR};
-    });
-})
-
-    .controller('AttendeesCtrl', function ($scope) {
-
-        $scope.activity = [];
-        $scope.arrivedChange = function (attendee) {
-            var msg = attendee.firstname + ' ' + attendee.lastname;
-            msg += (!attendee.arrived ? ' has arrived, ' : ' just left, ');
-            msg += new Date().getMilliseconds();
-            $scope.activity.push(msg);
-            if ($scope.activity.length > 3) {
-                $scope.activity.splice(0, 1);
-            }
-        };
-
-    });
