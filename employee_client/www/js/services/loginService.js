@@ -6,6 +6,15 @@ app.factory('loginService',['$http', '$q' ,function loginService($http,$q) {
 		// body...
 	}
 
+	var mockEmployees= [
+        {'id':1,'photoUrl':"/img/placeholder_large.png"},
+        {'id':2,'photoUrl':"/img/placeholder_large.png"},
+        {'id':3,'photoUrl':"/img/placeholder_large.png"},
+        {'id':4,'photoUrl':"/img/placeholder_large.png"},
+        {'id':5,'photoUrl':"/img/placeholder_large.png"},
+        {'id':6,'photoUrl':"/img/placeholder_large.png"}
+    ];
+
 	function auth(password){
 
 	var deferred = $q.defer();
@@ -26,16 +35,18 @@ app.factory('loginService',['$http', '$q' ,function loginService($http,$q) {
 		};
 
 		var customerList = {left:customerlistL, right:customerlistR};
+		
 		deferred.resolve(customerList);
 		console.log("customerList", customerList);
-	}).error(function (d) {
-		console.log("error d", d);
-		deferred.reject("hata oldu");
-	});
+		}).error(function (d) {
+			console.log("error d", d);
+			deferred.reject("hata oldu");
+		});
 
 		console.log("auth has been called");
 		return deferred.promise;
 	}
+
 	return {
 		auth:auth,
 		update:updateEmployee

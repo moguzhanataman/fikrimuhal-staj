@@ -11,6 +11,7 @@ fikrimuhalStaj.controller('LoginCtrl', [ '$scope' , 'loginService' , function ($
     }).finally(function () {
         console.log("finally")
     });
+    
     // create a message to display in our view
     $scope.message = 'Şifreniniz girin!';
     $scope.employee = "bekleniyor";
@@ -19,14 +20,7 @@ fikrimuhalStaj.controller('LoginCtrl', [ '$scope' , 'loginService' , function ($
         console.log("employee id is", employeeId, "pass is ",pass);
     }
 
-    $scope.employees = [
-                    {'id':1,'photoUrl':"/img/placeholder_large.png"},
-                    {'id':2,'photoUrl':"/img/placeholder_large.png"},
-                    {'id':3,'photoUrl':"/img/placeholder_large.png"},
-                    {'id':4,'photoUrl':"/img/placeholder_large.png"},
-                    {'id':5,'photoUrl':"/img/placeholder_large.png"},
-                    {'id':6,'photoUrl':"/img/placeholder_large.png"}
-                    ];
+    $scope.employees =;
     $scope.currentEmployeeId = 2;
 }]);
 
@@ -36,7 +30,7 @@ fikrimuhalStaj.controller('passcodeCtrl',['$scope',function($scope){
 
     var selectedEmployee = {'id': $scope.currentEmployeeId};
     var pinCounter = 1;
-    var currentPasscodecurrentPasscodeValue = undefined;
+    var currentPasscodeValue = undefined;
     var pins ={
             '1': "2",
             '2': "4",
