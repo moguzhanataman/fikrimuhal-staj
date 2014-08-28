@@ -83,6 +83,9 @@ Bir sonraki çalışma günü yapılması planlananlar
 ----------
 - GUI de düzeltmeler ve geliştirmeler
 - Sepet ve müşteri listesi serverdan alınan json ile oluşturuldu
+* POST methoduyla yollanan verilerin back-end tarafında doğru parse edilmesi sağlandı.
+* Eksik methodlar implement edildi.
+* Cart checkout işlemini tersine çevirmesi için. Data seeder methodu yazıldı.
 
 Bir sonraki çalışma günü yapılması planlananlar
 -----------------------------------------------
