@@ -110,7 +110,6 @@ fikrimuhalStaj.controller('MainCtrl', function ($scope, $ionicSideMenuDelegate,n
 
 
     $scope.audioClick = function() {
-        console.log("audioClick");
         ngAudio.play('tockAudio');
     }
 });

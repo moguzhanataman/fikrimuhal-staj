@@ -1,7 +1,5 @@
 fikrimuhalStaj.controller('LoginCtrl', [ '$scope' , 'loginService' , function ($scope, loginService) {
     
-    console.log("main controller called");
-
     var employeePromise = loginService.auth();
     console.log("employee", employeePromise);
 
@@ -17,61 +15,78 @@ fikrimuhalStaj.controller('LoginCtrl', [ '$scope' , 'loginService' , function ($
     $scope.message = 'Şifreniniz girin!';
     $scope.employee = "bekleniyor";
 
+    $scope.checkPasscode = function checkPasscode(employeeId, pass){
+        console.log("employee id is", employeeId, "pass is ",pass);
+    }
+
+    $scope.employees = [
+                    {'id':1,'photoUrl':"/img/placeholder_large.png"},
+                    {'id':2,'photoUrl':"/img/placeholder_large.png"},
+                    {'id':3,'photoUrl':"/img/placeholder_large.png"},
+                    {'id':4,'photoUrl':"/img/placeholder_large.png"},
+                    {'id':5,'photoUrl':"/img/placeholder_large.png"},
+                    {'id':6,'photoUrl':"/img/placeholder_large.png"}
+                    ];
+    $scope.currentEmployeeId = 2;
 }]);
 
 fikrimuhalStaj.controller('passcodeCtrl',['$scope',function($scope){
 
-    $scope.employees = [
-                            {'id':1,'photoUrl':"/img/placeholder_large.png"},
-                            {'id':2,'photoUrl':"/img/placeholder_large.png"},
-                            {'id':3,'photoUrl':"/img/placeholder_large.png"},
-                            {'id':4,'photoUrl':"/img/placeholder_large.png"},
-                            {'id':5,'photoUrl':"/img/placeholder_large.png"},
-                            {'id':6,'photoUrl':"/img/placeholder_large.png"}
-    ];
+    var employees = $scope.employees;
 
-    $scope.selectedEmployeeId = 3; 
+    var selectedEmployee = {'id': $scope.currentEmployeeId};
+    var pinCounter = 1;
+    var currentPasscodecurrentPasscodeValue = undefined;
+    var pins ={
+            '1': "2",
+            '2': "4",
+            '3': "8",
+            '4': "5"
+        }
 
-    $scope.passcode = {
-        'pins':{
-            '1': "",
-            '2': "",
-            '3': "",
-            '4': ""
-        },
-        'value': "1234"
-    }
     resetPins();
-    $scope.selectEmployee = function(id) {
-        $scope.selectedEmployeeId = id;
-        resetPins();
-    }
-    $scope.addPin = function(number) {
-        $scope.passcode.pins[$scope.pinCounter++] = number;
-        if($scope.pinCounter == 5)
-        {
-            checkPasscode(combinePins($scope.passcode.pins));
-        }
-    }
 
-    function checkPasscode(pass) {
-        if(pass == $scope.passcode.value) {
-            alert("Şifre Doğru!!!");
-        } else {
-            alert("Şifre Yanlış Pinler sıfırlanıyor" + pass);
-            resetPins();
-        }
-    }
     function combinePins(pinObject) {
         var pass = "" + pinObject[1] + pinObject[2] + pinObject[3] + pinObject[4];
         return pass;
     }
+
+    /* currentPasscodeValue resetleme daha sonrası loginCtrlye lazım */
     function resetPins() {
-        $scope.pinCounter = 1;
-        $scope.passcode.pins[1] = "";
-        $scope.passcode.pins[2] = "";
-        $scope.passcode.pins[3] = "";
-        $scope.passcode.pins[4] = "";
+        pinCounter = 1;
+        pins[1] = "";
+        pins[2] = "";
+        pins[3] = "";
+        pins[4] = "";
     }
+
+    function passcodeReady(){
+        $scope.checkPasscode(selectedEmployee.id,currentPasscodeValue);
+        resetPins();
+    }
+
+    function selectEmployee(id) {
+        selectedEmployee.id = id;
+        console.log("selectedEmployee.id", selectedEmployee.id)
+        console.log("scope selectedEmployee.id", $scope.selectedEmployee);
+        resetPins();
+    }
+
+    function addPin(number){
+        pins[pinCounter++] = number;
+        if(pinCounter == 5)
+        {
+            currentPasscodeValue=combinePins(pins);
+            passcodeReady();
+        }
+    }
+
+    resetPins();
+
+    $scope.employees=employees;
+    $scope.selectedEmployee = selectedEmployee; 
+    $scope.pins = pins;
+    $scope.selectEmployee = selectEmployee;
+    $scope.addPin = addPin;
 
 }])
