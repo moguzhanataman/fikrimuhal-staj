@@ -22,7 +22,8 @@ form#ios input[type=password] {
 }
 
 .pin-form {
-    margin: 0 auto;
+    /*margin: 0 auto;*/
+    margin-left: 290px;
     width: 190px;
 }
 
@@ -42,7 +43,6 @@ form#ios input[type=password] {
 
     margin: 10px auto 0px auto;
 }
-
 
 .round-button:active {
     box-shadow: 0 0 20px rgba(31, 92, 245, 0.65);

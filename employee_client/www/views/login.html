@@ -6,15 +6,44 @@
                 <style type="text/css">
 
                     .user-selected {
-                        background-color: red;
-                    } 
+                        background-color: rgba(0, 226, 255, 0.94) !important;
+                        opacity:0.5;
 
+                    }
+                
+                
+                div.photo_wrapper{
+                   /* float:left; /* important */
+                    position:relative; /* important(so we can absolutely position the description div */
+                    margin-right: 5px;
+
+                }
+                div.photo_description{
+                    text-align: center;
+                    position:absolute; /* absolute position (so we can position it where we want)*/
+                    bottom:10px; /* position will be on bottom */
+                    left:0px;
+                    width:100%;
+                    /* styling bellow */
+                    background-color: rgba(0, 101, 119, 0.97);
+                    font-family: 'tahoma',serif;
+                    font-size:18px;
+                    color:white;  
+                    opacity:0.5;
+                }
+                p.photo_description_content{
+                    padding:10px;
+                    margin:0;
+                }
+                
                 </style>
 
-                <ion-scroll has-bouncing="true" scrollbar-x="false" scrollbar-y="false" direction="x" style="width: 100%; height: 200px;white-space: nowrap;">
-                    <div ng-class="{'user-selected' : selectedEmployeeId == it.id}" id="login-employee-list" ng-repeat="it in employees" ng-click="selectEmployee(it.id)">
-                        <img class="thumbnail" ng-src="{{it.photoUrl}}" width="200" height="200"/>
-                        <span>{{it.id}}</span>
+                <ion-scroll has-bouncing="true" scrollbar-x="false" scrollbar-y="false" direction="x" style="width: 103%; height: 200px;white-space: nowrap;  margin-left:-10px; margin-right: -10px;">
+                    <div  class="photo_wrapper" id="login-employee-list" ng-repeat="it in employees" ng-click="selectEmployee(it.id)">
+                        <img class="thumbnail" ng-src="{{it.photoUrl}}" width="200" height="200" />
+                        <div class='photo_description' ng-class="{'user-selected' : selectedEmployeeId == it.id}">
+                            <p class='photo_description_content'>{{it.name}}</p>
+                        </div>
                     </div>
                 </ion-scroll>
                 <div class="row">
