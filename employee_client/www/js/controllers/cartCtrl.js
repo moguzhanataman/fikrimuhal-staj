@@ -1,4 +1,4 @@
-fikrimuhalStaj.controller('cartCtrl', function ($scope) {
+fikrimuhalStaj.controller('cartCtrl', ['$scope', function ($scope) {
     $scope.message = 'Ürün listesi';
     $scope.sliderState = 1;
     $scope.campaign = { 'name': "anneler günü", 'discount': 159, 'totalAfterDiscount': 1800 };
@@ -17,7 +17,7 @@ fikrimuhalStaj.controller('cartCtrl', function ($scope) {
 
     $scope.cart = {'cartItems': mockCartItems, 'totalPrice': 1959};
     $scope.currentCustomer = {'name': "Hakkı Özveren Bayraktaşıyan", 'id': 15 };
-});
+}]);
 
 fikrimuhalStaj.controller('SlideController', function ($scope) {
 
