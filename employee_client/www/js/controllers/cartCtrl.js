@@ -13,7 +13,7 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope', function ($scope) {
         {'id': 459, 'name': "kazak", 'price': 100, 'amount': 1, 'subPrice': 2100, 'discountedPrice': 200},
         {'id': 451, 'name': "kazak", 'price': 100, 'amount': 1, 'subPrice': 1100, 'discountedPrice': 100},
         {'id': 453, 'name': "kazak", 'price': 100, 'amount': 1, 'subPrice': -100, 'discountedPrice': 1100}
-    ];""
+    ];
 
     $scope.cart = {'cartItems': mockCartItems, 'totalPrice': 1959};
     $scope.currentCustomer = {'name': "Hakkı Özveren Bayraktaşıyan", 'id': 15 };
