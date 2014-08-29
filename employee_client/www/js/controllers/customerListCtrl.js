@@ -1,11 +1,19 @@
-fikrimuhalStaj.controller('customerListCtrl', ['$scope', 'loginService', function ($scope, loginService) {
-    $scope.message = 'Müşteri seçin.';
-    console.log(loginService.loggedinEmployee());
-}]);
+fikrimuhalStaj.controller('customerListCtrl', ['$scope' ,'loginService','customerService' , function ($scope, loginService, customerService) {
+    
+    function setCustomerID(id){
+    	customerService.setCustomer(id);
+    }
 
-fikrimuhalStaj.controller('PostsCtrlAjax', function ($scope, $http) {
-    $http({method: 'GET', url: config.api.urls.customerList }).success(function (data) {
+    /* TODO alert için release öncesi custom bir fonksiyon yazılacak */
+    customerService.getCustomerList(true).then(function (customerList) {
 
-        $scope.customerList = splitArray(data.customers);
+    	$scope.customerList = splitArray(customerList);
+
+    }).catch(function (e) {
+        alert("hata oldu yeniden deneyin");
+    	$scope.customerList = splitArray(e);
     });
-});
+
+    $scope.setCustomerID = setCustomerID;
+    $scope.customerList = {left:[], right:[]};
+}]);
