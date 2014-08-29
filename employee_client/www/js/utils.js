@@ -1,5 +1,5 @@
 /**
- * Splits array of objects to two different arrays
+ * Splits array of objects into map of arrays
  *
  * @param {array} list the list to split
  * @returns {array} array of two array of objects
