@@ -1,6 +1,7 @@
-fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerService', function($scope,$state,customerService) {
+fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerService', 'loginService' , function($scope,$state,customerService,loginService) {
     $scope.message = 'Ürün seçin';
     
+    list = loginService.employees();
 
     $scope.sliderState = 1;
 
