@@ -1,13 +1,6 @@
 fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerService', function($scope,$state,customerService) {
     $scope.message = 'Ürün seçin';
-    var list = [
-        { "id": 5, "description": "Ürün", "fiyat": 601 },
-        { "id": 15, "description": "Ürün", "fiyat": 602 },
-        { "id": 25, "description": "Ürün", "fiyat": 603 },
-        { "id": 35, "description": "Ürün", "fiyat": 604 },
-        { "id": 45, "description": "Ürün", "fiyat": 605 },
-        { "id": 55, "description": "Ürün", "fiyat": 606 }
-    ];
+    
 
     $scope.sliderState = 1;
 
@@ -15,27 +8,30 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
 
     /* TODO  lodash kur lodashle sil */
     function slideHasChanged(product, index, listNo) {
+        var listSplit= $scope.productList;
         console.log(" id ", product.id, " index ", index);
 
-        /* This if  */
+        /* index silme slaytı */
         if (index == 2) {
 
-            var indexofProductL = listL.indexOf(product);
+            var indexofProductL = listSplit.left.indexOf(product);
             console.log("indexofProductL", indexofProductL);
 
             if (indexofProductL > -1) {
-                listL.splice(indexofProductL, 1);
+                listSplit.left.splice(indexofProductL, 1);
             }
 
-            var indexofProductR = listR.indexOf(product);
+            var indexofProductR = listSplit.right.indexOf(product);
             console.log("indexofProductR", indexofProductR);
 
             if (indexofProductR > -1) {
-                listR.splice(indexofProductR, 1);
+                listSplit.right.splice(indexofProductR, 1);
             }
         }
 
         if (index == 0) {
+
+            
 
         }
     }
