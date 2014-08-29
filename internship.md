@@ -91,3 +91,12 @@ Bir sonraki çalışma günü yapılması planlananlar
 -----------------------------------------------
 - Controllerların ayrı dosyalara gönderilmesi ve controllerların tamamlanması
 - Her bir ekranlar için ayrı servicelerin yazılması
+
+28/08/2014
+----------
+- Her controllerun kendine ait dosyaları oluşturuldu
+- Login ekranın service'i yazıldı, bazı buglar ve mantık hataları düzeltildi
+
+Bir sonraki çalışma günü yapılması planlananlar
+-----------------------------------------------
+- Müşteri listesi service'i yazılıcak
