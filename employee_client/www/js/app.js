@@ -57,7 +57,7 @@ fikrimuhalStaj.run(['$ionicPlatform', '$rootScope', '$state', 'loginService', fu
                 views: {
                     'main': {
                         templateUrl: 'views/customer_list.html',
-                        controller: 'customerListController'
+                        controller: 'customerListCtrl'
                     }
                 }
             })
@@ -67,7 +67,7 @@ fikrimuhalStaj.run(['$ionicPlatform', '$rootScope', '$state', 'loginService', fu
                 views: {
                     'main': {
                         templateUrl: 'views/customer_detail.html',
-                        controller: 'customerDetailController'
+                        controller: 'customerDetailCtrl'
                     }
                 }
             })
@@ -76,7 +76,7 @@ fikrimuhalStaj.run(['$ionicPlatform', '$rootScope', '$state', 'loginService', fu
                 views: {
                     'main': {
                         templateUrl: 'views/cart.html',
-                        controller: 'cartController'
+                        controller: 'cartCtrl'
                     }
                 }
             })

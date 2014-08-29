@@ -1,4 +1,4 @@
-fikrimuhalStaj.controller('cartController', function ($scope) {
+fikrimuhalStaj.controller('cartCtrl', function ($scope) {
     $scope.message = 'Ürün listesi';
     $scope.sliderState = 1;
     $scope.campaign = { 'name': "anneler günü", 'discount': 159, 'totalAfterDiscount': 1800 };

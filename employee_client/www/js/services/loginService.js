@@ -1,6 +1,6 @@
-var app = angular.module('fikrimuhalStaj');
+var fikrimuhalStaj = angular.module('fikrimuhalStaj');
 
-app.factory('loginService', ['$http', '$q' , function loginService($http, $q) {
+fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($http, $q) {
     console.log("loginService  initialized");
 
     var mockEmployees = [

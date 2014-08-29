@@ -1,4 +1,4 @@
-fikrimuhalStaj.controller('customerDetailController', function ($scope) {
+fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerService', function($scope,$state,customerService) {
     $scope.message = 'Ürün seçin';
     var list = [
         { "id": 5, "description": "Ürün", "fiyat": 601 },
@@ -10,7 +10,7 @@ fikrimuhalStaj.controller('customerDetailController', function ($scope) {
     ];
 
     $scope.sliderState = 1;
-    
+
     $scope.productList = splitArray(list);
 
     /* TODO  lodash kur lodashle sil */
@@ -41,4 +41,10 @@ fikrimuhalStaj.controller('customerDetailController', function ($scope) {
     }
 
     $scope.slideHasChanged = slideHasChanged;
-});
+
+    $scope.goToCart = function goToCart(){ 
+        $state.go('cart');
+    }
+
+
+}]);

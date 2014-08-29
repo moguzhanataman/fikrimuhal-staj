@@ -1,4 +1,4 @@
-fikrimuhalStaj.controller('customerListController', ['$scope', 'loginService', function ($scope, loginService) {
+fikrimuhalStaj.controller('customerListCtrl', ['$scope', 'loginService', function ($scope, loginService) {
     $scope.message = 'Müşteri seçin.';
     console.log(loginService.loggedinEmployee());
 }]);
