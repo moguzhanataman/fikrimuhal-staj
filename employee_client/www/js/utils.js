@@ -22,3 +22,7 @@ function splitArray(list) {
         'right': listR
     }
 }
+
+function TODO() {
+    console.log("Not Implemented Yet.");
+}
