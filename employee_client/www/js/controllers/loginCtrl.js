@@ -1,4 +1,4 @@
-fikrimuhalStaj.controller('LoginCtrl', [ '$scope', '$state' , 'loginService' , function ($scope, $state, loginService) {
+fikrimuhalStaj.controller('LoginCtrl', [ '$scope', '$state' , 'loginService', function ($scope, $state, loginService) {
 
     $scope.checkPasscode = function checkPasscode(employeeId, pass) {
 
