@@ -4,12 +4,12 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
     console.log("loginService  initialized");
 
     var mockEmployees = [
-        {'id': 2, 'photoUrl': "/img/placeholder_large.png", 'passwordHash': 2468},
-        {'id': 3, 'photoUrl': "/img/placeholder_large.png", 'passwordHash': 2468},
-        {'id': 4, 'photoUrl': "/img/placeholder_large.png", 'passwordHash': 2468},
-        {'id': 1, 'photoUrl': "/img/placeholder_large.png", 'passwordHash': 2468},
-        {'id': 5, 'photoUrl': "/img/placeholder_large.png", 'passwordHash': 2468},
-        {'id': 6, 'photoUrl': "/img/placeholder_large.png", 'passwordHash': 2468}
+        {'id': 2, 'photoUrl': "img/placeholder_large.png", 'passwordHash': 2468},
+        {'id': 3, 'photoUrl': "img/placeholder_large.png", 'passwordHash': 2468},
+        {'id': 4, 'photoUrl': "img/placeholder_large.png", 'passwordHash': 2468},
+        {'id': 1, 'photoUrl': "img/placeholder_large.png", 'passwordHash': 2468},
+        {'id': 5, 'photoUrl': "img/placeholder_large.png", 'passwordHash': 2468},
+        {'id': 6, 'photoUrl': "img/placeholder_large.png", 'passwordHash': 2468}
     ];
 
     var _loggedinEmployee = null;
