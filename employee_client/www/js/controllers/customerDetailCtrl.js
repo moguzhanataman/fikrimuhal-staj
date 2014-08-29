@@ -1,7 +1,7 @@
 fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerService', 'loginService' , function($scope,$state,customerService,loginService) {
     $scope.message = 'Ürün seçin';
     
-    list = loginService.employees();
+    var list = loginService.employees();
 
     $scope.sliderState = 1;
 

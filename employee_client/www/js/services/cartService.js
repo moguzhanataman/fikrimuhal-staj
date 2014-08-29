@@ -1,7 +1,6 @@
 var fikrimuhalStaj = angular.module('fikrimuhalStaj');
 
-fikrimuhalStaj.factory('cartService', [function loginService() {
-
+fikrimuhalStaj.factory('cartService', function loginService() {
     var mockCartItems = [
         {'id': 5, 'name': "kazak", 'price': 100, 'amount': 1, 'subPrice': 9100, 'discountedPrice': 90},
         {'id': 415, 'name': "kazak", 'price': 100, 'amount': 2, 'subPrice': 8100, 'discountedPrice': 80},
@@ -25,7 +24,9 @@ fikrimuhalStaj.factory('cartService', [function loginService() {
     }
 
     function getTotalPrice() {
-        return _.map(getCart(), "price").reduce(function (sum, price) {
+        return _.map(cartItems, function (item) {
+            return item.price * item.amount;
+        }).reduce(function (sum, price) {
             return sum + price;
         });
     }
@@ -34,5 +35,5 @@ fikrimuhalStaj.factory('cartService', [function loginService() {
         'getCart': getCart,
         'getTotalPrice': getTotalPrice,
         'getDiscountedPrice': TODO
-    }
-}]);
+    };
+});
