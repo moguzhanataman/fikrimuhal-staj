@@ -1,31 +1,19 @@
-<!---
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-#org.apache.cordova.statusbar
-
 StatusBar
 ======
 
-> The `StatusBar` object provides some functions to customize the iOS and Android StatusBar.
+> The `StatusBar` object provides some functions to customize the iOS StatusBar.
+
+PhoneGap Build
+--------------
+To include the StatusBar plugin in your PhoneGap Build application, add this to your config.xml:
+
+    <gap:plugin name="com.phonegap.plugin.statusbar" />
 
 
 Preferences
 -----------
+
+__These launch preferences not yet supported by PhoneGap Build__
 
 #### config.xml
 
@@ -33,13 +21,12 @@ Preferences
 
         <preference name="StatusBarOverlaysWebView" value="true" />
 
+            
 - __StatusBarBackgroundColor__ (color hex string, defaults to #000000). On iOS 7, set the background color of the statusbar by a hex string (#RRGGBB) at startup.
 
         <preference name="StatusBarBackgroundColor" value="#000000" />
 
-- __StatusBarStyle__ (status bar style, defaults to lightcontent). On iOS 7, set the status bar style. Available options default, lightcontent, blacktranslucent, blackopaque.
 
-        <preference name="StatusBarStyle" value="lightcontent" />
 
 Hiding at startup
 -----------
@@ -54,7 +41,17 @@ Add/edit these two attributes if not present. Set **"Status bar is initially hid
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 
+On PhoneGap Build this can be done by adding the following to your config.xml:
 
+    <gap:config-file platform="ios" parent="UIStatusBarHidden">
+        <true/>
+    </gap:config-file>
+
+    <gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance">
+        <false/>
+    </gap:config-file>
+
+ 
 Methods
 -------
 
@@ -118,8 +115,6 @@ Supported Platforms
 -------------------
 
 - iOS
-- Windows Phone 7
-- Windows Phone 8
 
 StatusBar.styleLightContent
 =================
@@ -133,8 +128,6 @@ Supported Platforms
 -------------------
 
 - iOS
-- Windows Phone 7
-- Windows Phone 8
 
 StatusBar.styleBlackTranslucent
 =================
@@ -148,8 +141,6 @@ Supported Platforms
 -------------------
 
 - iOS
-- Windows Phone 7
-- Windows Phone 8
 
 StatusBar.styleBlackOpaque
 =================
@@ -163,8 +154,6 @@ Supported Platforms
 -------------------
 
 - iOS
-- Windows Phone 7
-- Windows Phone 8
 
 
 StatusBar.backgroundColorByName
@@ -176,38 +165,26 @@ On iOS 7, when you set StatusBar.statusBarOverlaysWebView to false, you can set 
 
 Supported color names are:
 
-    black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta, orange, purple, brown
+    black, darkGray, lightGray, white, gray, red, green, blue, cyan, yellow, magenta, orange, purple, brown, clear
 
 
 Supported Platforms
 -------------------
 
 - iOS
-- Windows Phone 7
-- Windows Phone 8
 
 StatusBar.backgroundColorByHexString
 =================
 
-Sets the background color of the statusbar by a hex string.
+On iOS 7, when you set StatusBar.statusBarOverlaysWebView to false, you can set the background color of the statusbar by a hex string (#RRGGBB).
 
     StatusBar.backgroundColorByHexString("#C0C0C0");
 
-CSS shorthand properties are also supported.
-
-    StatusBar.backgroundColorByHexString("#333"); // => #333333
-    StatusBar.backgroundColorByHexString("#FAB"); // => #FFAABB
-
-On iOS 7, when you set StatusBar.statusBarOverlaysWebView to false, you can set the background color of the statusbar by a hex string (#RRGGBB).
-
-On WP7 and WP8 you can also specify values as #AARRGGBB, where AA is an alpha value
 
 Supported Platforms
 -------------------
 
 - iOS
-- Windows Phone 7
-- Windows Phone 8
 
 StatusBar.hide
 =================
@@ -221,9 +198,6 @@ Supported Platforms
 -------------------
 
 - iOS
-- Android
-- Windows Phone 7
-- Windows Phone 8
 
 StatusBar.show
 =================
@@ -237,9 +211,6 @@ Supported Platforms
 -------------------
 
 - iOS
-- Android
-- Windows Phone 7
-- Windows Phone 8
 
 
 StatusBar.isVisible
@@ -256,8 +227,7 @@ Supported Platforms
 -------------------
 
 - iOS
-- Android
-- Windows Phone 7
-- Windows Phone 8
 
 
+
+    
