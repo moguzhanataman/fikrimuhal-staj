@@ -5,7 +5,7 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , function customerServ
 
     var currentCustomerID = null;
 
-    var mockProductList = [
+    var mockProductList= [
         { "id": 5, "description": "Ürün", "fiyat": 601 },
         { "id": 15, "description": "Ürün", "fiyat": 602 },
         { "id": 25, "description": "Ürün", "fiyat": 603 },
@@ -45,33 +45,24 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , function customerServ
         }
     ]
 
-    var productList = mockProductList;
+    var productListCache = mockProductList;
     var customerListCache = mockCustomerList;
 
 
     /* TODO ürünler listesini productService'den alınacak */
     function getProductsForSelectedCustomers(){
-        /*
-        var productListUrl= config.api.base + "api/customers/" + currentCustomerID + "/products";
 
-        console.log("product list", productListUrl);
+        var def = $q.defer();
 
-        $http({method: 'GET', url: productListUrl}).success(function(data){
+        fecthProductsFromServer().then(function (value){
+                def.resolve(_.cloneDeep(productListCache));
+            }).catch(function (){
+                def.reject(_.cloneDeep(productListCache));
+            })
 
-        console.log("customerList", customerList);
-        }).error(function (d) {
-            console.log("error d", d);
-        });
-        */
-        return productList;
+        return def.promise
     }
     
-    function TODO () { 
-    }
-
-    function getProducts(){
-        return _.cloneDeep(productList);
-    }
 
     function currentCustomerSetter(id){
         currentCustomerID = id;
@@ -88,14 +79,14 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , function customerServ
 
         if(updateFromServer){
 
-            fetchFromServer().then(function (value){
+            fetchCustomersFromServer().then(function (value){
                 defered.resolve(_.cloneDeep(customerListCache));
             }).catch(function (){
                 defered.reject(_.cloneDeep(customerListCache));
             })
 
         }else{
-            fetchFromServer();
+            fetchCustomersFromServer();
             defered.resolve(_.cloneDeep(customerListCache));
 
         }
@@ -103,19 +94,29 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , function customerServ
         return defered.promise
     }
 
-    function fetchFromServer(){
+    function fetchCustomersFromServer(){
         return $http({method: 'GET', url: config.api.urls.customerList}).success(function (data) {
             customerListCache = data.customers;
         })
     }
 
+    function fecthProductsFromServer(){
+        var productListUrl= config.api.base + "api/customers/" + currentCustomerID + "/products";
+        console.log("customers url", productListUrl)
+         return $http({method: 'GET', url: productListUrl}).success(function(data){
+                productListCache = data;
+                console.log("1111111111",productListCache)
+            }).error(function (d) {
+                console.log("error d", d);
+            });
+    }
+
     return{ 
     	'TODO':TODO,
-        'getProducts':getProducts,
+        'getProducts':getProductsForSelectedCustomers,
         'setCustomer':currentCustomerSetter,
-        'getProducts':getProducts,
         'getCustomerList': getCustomerList,
-        'updateCustomerList': fetchFromServer
+        'updateCustomerList': fetchCustomersFromServer
 
     }
  }]);

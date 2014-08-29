@@ -2,7 +2,7 @@
     <ion-content>
         <div ng-controller="customerDetailCtrl">
             <div class="row">
-                <div class="col col-20">
+                <div class="col col-33">
                     <img class="thumbnail" src="img/avatar-big.png" width="200" height="200"/>
                 </div>
                 <div class="col">
@@ -15,22 +15,27 @@
                 <div class="col col-50">
                     <ion-list>
                         <ion-item>
-                            <div class="row list" ng-repeat="product in productList.left | limitTo: 10">
-                                <div class="col item item-thumbnail-left">
+                            <div class="row" ng-repeat="product in productList.left | limitTo: 10">
+                                <div class="col">
                                     <ion-slide-box on-slide-changed="slideHasChanged(product,$index)" active-slide="sliderState" show-pager="false">
                                         <ion-slide>
-                                            <div class="col" style="background-color:green;" ><h1><br><br><br><br>EKLE<br><br><br><br><br></h1></div>
+                                            <div class="col" style="background-color:green; text-align:center; height:200px; line-height:200px; font-size:40px;" >
+                                            EKLE</div>
                                         </ion-slide>
                                         <ion-slide>
-                                            <div class="col">
-                                                <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
-                                                <h2>{{product.id}}</h2>
-                                                <p>{{product.description}}</p>
-                                                <p>{{product.fiyat}}</p>
+                                            <div class="row">
+                                                <div class="col col-20">
+                                                    <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                                                </div>
+                                                <div class="col">
+                                                    <h2>{{product.id}}</h2>
+                                                    <p>{{product.name}}</p>
+                                                    <p>{{product.fiyat}}</p>
+                                                </div>
                                             </div>
                                         </ion-slide>
                                         <ion-slide>
-                                            <div class="col" style="background-color:red;"><h1><br><br><br><br>İPTAL<br><br><br><br><br></h1></div>
+                                            <div class="col" style="background-color:red; text-align:center; height:200px; line-height:200px; font-size:40px;">İPTAL</div>
                                         </ion-slide>
                                     </ion-slide-box>
                                 </div>
@@ -42,22 +47,22 @@
                 <div class="col col-50">
                 <ion-list>
                         <ion-item>
-                            <div class="row list" ng-repeat="product in productList.right | limitTo: 10"  >    
-                                <div class="col item item-thumbnail-left">
+                            <div class="row" ng-repeat="product in productList.right | limitTo: 10"  >    
+                                <div class="col">
                                     <ion-slide-box on-slide-changed="slideHasChanged(product,$index)" active-slide="sliderState" show-pager="false">
                                         <ion-slide>
-                                            <div class="col" style="background-color:green;" height="200"><h1><br><br><br><br>EKLE<br><br><br><br><br></h1></div>
+                                            <div class="col" style="background-color:green; text-align:center; height:200px; line-height:200px; font-size:40px;">EKLE</div>
                                         </ion-slide>
                                         <ion-slide>
                                             <div class="col">
                                                 <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
                                                 <h2>{{product.id}}</h2>
-                                                <p>{{product.description}}</p>
+                                                <p>{{product.name}}</p>
                                                 <p>{{product.fiyat}}</p>
                                             </div>
                                         </ion-slide>
                                         <ion-slide>
-                                            <div class="col" style="background-color:red;"><h1><br><br><br><br>İPTAL<br><br><br><br><br></h1></div>
+                                            <div class="col" style="background-color:red; text-align:center; height:200px; line-height:200px; font-size:40px;">İPTAL</div>
                                         </ion-slide>
                                     </ion-slide-box>
                                 </div>

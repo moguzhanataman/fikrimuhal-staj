@@ -1,11 +1,16 @@
 fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerService', 'loginService' , function($scope,$state,customerService,loginService) {
     $scope.message = 'Ürün seçin';
     
-    var list = customerService.getProducts();
+    customerService.getProducts().then(function (products) {
 
-    $scope.sliderState = 1;
+        $scope.productList = splitArray(products);
 
-    $scope.productList = splitArray(list);
+    }).catch(function (e) {
+        alert("hata oldu yeniden deneyin");
+        $scope.products = splitArray(e);
+    });
+
+
 
     /* TODO  lodash kur lodashle sil */
     function slideHasChanged(product, index, listNo) {
@@ -30,18 +35,18 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
             }
         }
 
+        /* TODO ekleme yazılacak */
         if (index == 0) {
 
-            
 
         }
     }
 
-    $scope.slideHasChanged = slideHasChanged;
 
+    $scope.sliderState = 1;
+    $scope.slideHasChanged = slideHasChanged;
     $scope.goToCart = function goToCart(){ 
         $state.go('cart');
     }
-
 
 }]);
