@@ -15,6 +15,8 @@ fikrimuhalStaj.run(['$ionicPlatform', '$rootScope', '$state', 'loginService', fu
             StatusBar.hide();
             ionic.Platform.fullScreen();
         }
+
+
     });
 
 
@@ -103,25 +105,25 @@ fikrimuhalStaj.run(['$ionicPlatform', '$rootScope', '$state', 'loginService', fu
 
 fikrimuhalStaj.controller('MainCtrl', function ($scope, $ionicSideMenuDelegate, ngAudio) {
     $scope.attendees = [
-        { firstname: 'Nicolas', lastname: 'Cage' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Jean-Claude', lastname: 'Van Damme' },
-        { firstname: 'Keanu', lastname: 'Reeves' },
-        { firstname: 'Steven', lastname: 'Seagal' }
+        {firstname: 'Nicolas', lastname: 'Cage'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Jean-Claude', lastname: 'Van Damme'},
+        {firstname: 'Keanu', lastname: 'Reeves'},
+        {firstname: 'Steven', lastname: 'Seagal'}
     ];
 
     $scope.toggleLeft = function () {

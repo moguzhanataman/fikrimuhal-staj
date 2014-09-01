@@ -37,6 +37,8 @@ object CustomerController extends Controller {
   }
 
   def getCustomerProducts(id: Int) = Action {
-    Ok(Json.toJson(Product.all))
+    Ok(Json.toJson(Product.all.map { product =>
+      product.id
+    }))
   }
 }

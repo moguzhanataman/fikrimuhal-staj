@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/customer_client/www/customer.iml" filepath="$PROJECT_DIR$/customer_client/www/customer.iml" />
       <module fileurl="file://$PROJECT_DIR$/employee_client/www/employee.iml" filepath="$PROJECT_DIR$/employee_client/www/employee.iml" />
-      <module fileurl="file://$PROJECT_DIR$/phonegap.iml" filepath="$PROJECT_DIR$/phonegap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server/fikrimuhal-json-api/fikrimuhal-json-api1.iml" filepath="$PROJECT_DIR$/server/fikrimuhal-json-api/fikrimuhal-json-api1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server/fikrimuhal-json-api/target/scala-2.11/src_managed/src_managed.iml" filepath="$PROJECT_DIR$/server/fikrimuhal-json-api/target/scala-2.11/src_managed/src_managed.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server/fikrimuhal-json-api/target/scala-2.11/twirl/twirl.iml" filepath="$PROJECT_DIR$/server/fikrimuhal-json-api/target/scala-2.11/twirl/twirl.iml" />
     </modules>
   </component>
 </project>
