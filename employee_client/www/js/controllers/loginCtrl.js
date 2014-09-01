@@ -1,5 +1,13 @@
 fikrimuhalStaj.controller('LoginCtrl', [ '$scope', '$state' , 'loginService', function ($scope, $state, loginService) {
 
+    // Get employees from api
+    loginService.employees(true).then(function (employeeList) {
+        console.log(employeeList);
+        $scope.employees = employeeList;
+    }).catch(function (e) {
+        $scope.employees = e;
+    });
+
     $scope.checkPasscode = function checkPasscode(employeeId, pass) {
 
 
@@ -19,7 +27,8 @@ fikrimuhalStaj.controller('LoginCtrl', [ '$scope', '$state' , 'loginService', fu
         }
     };
 
-    $scope.employees = loginService.employees();
+    //$scope.employees = loginService.getMocks();
+    // $scope.employees = loginService.employees();
 
     if (loginService.isLoggedin()) {
         $scope.selectedEmployeeId = loginService.loggedinEmployee().id;
@@ -77,7 +86,7 @@ fikrimuhalStaj.controller('passcodeCtrl', ['$scope', function ($scope) {
 
     resetPins();
 
-    $scope.employees = employees;
+    // $scope.employees = employees;
 //    $scope.selectedEmployee = selectedEmployee;
     $scope.pins = pins;
     $scope.selectEmployee = selectEmployee;
