@@ -2,10 +2,8 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
     $scope.message = 'Ürün seçin';
 
 
-    customerService.getProducts(customerService.getCustomerID).then(function (products) {
-    
+    customerService.getProducts().then(function (products) {
         $scope.productList = splitArray(products);
-        console.log(" id and products for customer", customerService.getCustomerID(), products);
     }).catch(function (e) {
         alert("hata oldu yeniden deneyin");
         $scope.productList =  splitArray(e);
@@ -16,20 +14,16 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
     /* TODO  lodash kur lodashle sil */
     function slideHasChanged(product, index, listNo) {
         var listSplit= $scope.productList;
-        console.log(" id ", product.id, " index ", index);
 
         var indexofProductL = listSplit.left.indexOf(product);
         var indexofProductR = listSplit.right.indexOf(product);
 
         /* index silme slaytı */
         if (index == 2) {
-            console.log("indexofProductL", indexofProductL);
 
             if (indexofProductL > -1) {
                 listSplit.left.splice(indexofProductL, 1);
             }
-
-            console.log("indexofProductR", indexofProductR);
 
             if (indexofProductR > -1) {
                 listSplit.right.splice(indexofProductR, 1);
@@ -37,17 +31,14 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
         }
 
         if(index == 0){
-            console.log("index 0 girdi");
 
         if (indexofProductL > -1) {
-            console.log("left ten ", listSplit.left[indexofProductL]);
             customerService.addItem(listSplit.left[indexofProductL]);
             listSplit.left.splice(indexofProductL, 1);
         }
         
         if (indexofProductR > -1) {
-            console.log("right ten ", listSplit.right[indexofProductR]);
-            
+
             customerService.addItem(listSplit.right[indexofProductR]);
             listSplit.right.splice(indexofProductR, 1);
         }
@@ -57,19 +48,15 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
 
     function deletedItemSlideHasChanged(product, index, listNo) {
         var deletedList= $scope.deletedProducts;
-        console.log(" id ", product.id, " index ", index);
 
         var indexofProduct = deletedList.indexOf(product);
 
         /* index silme slaytı */
         if (index == 2) {
-            console.log("indexofProduct", indexofProduct);
             deletedList.splice(indexofProduct, 1);
         }
 
         if(index == 0){
-
-            console.log("left ten ", deletedList[indexofProduct]);
             customerService.addItem(deletedList[indexofProduct]);
             deletedList.splice(indexofProduct, 1);
         }

@@ -1,7 +1,6 @@
 var fikrimuhalStaj = angular.module('fikrimuhalStaj');
 
 fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'cartService' ,function customerService($http, $q,productService,cartService) {
-    console.log("customerService  initialized");
 
     var currentCustomerID = null;
 
@@ -56,8 +55,11 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
 
 
 
-    /* TODO ürünler listesini productService'den alınacak */
-    function getProductsForSelectedCustomers(currentCustomerID){
+    /**
+    * description: çağrıldığı müşteri için önerilen ürünlerin idsini serverdan json olarak almak için
+    * fetchProductsFromFromServer fonksiyonunu çağırır bu fonksiyondan dönecek json datası promise ile return eder
+    */
+    function getProductsForSelectedCustomers(){
         var def = $q.defer();
 
         fetchProductsFromServer().then(function (value){
@@ -71,23 +73,33 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
 
     }
 
+    /**
+    * description: serverdan scopedaki müşteri idsini kullaranak serverdan önerilen ürünlerin listesini request eder
+    * ve gelen datayı productListCache e yazar
+    */
     function fetchProductsFromServer(){
         var productListUrl= config.api.base + "api/customers/" +currentCustomerID + "/products" ;
-        console.log("customers url", productListUrl)
-        
+    
         return $http({method: 'GET', url: productListUrl}).success(function(data){
             productListCache = productService.getProductsByIds(data);
-            console.log("customerService productListCache",productListCache)
+
         }).error(function (d) {
             console.log("error d", d);
         });
     }
     
-
+    /*
+    * description: güncel müşteri idsini local scope set eder.
+    * @param: {int} id müşteri idsidir
+    */
     function currentCustomerSetter(id){
         currentCustomerID = id;
     }
 
+    /**
+    * description: local scopedaki müşteri idsini getirir.
+    * @return: {int} müşteri idsini döndürür
+    */
     function getCurrentCustomerID(){
         return currentCustomerID;
     }
@@ -118,16 +130,28 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
         return defered.promise
     }
 
+    /**
+    * description: serverdan ortamda bulunan müşterilerin listesini http request ile alır 
+    * @return: {object} müşteri object array döndürür
+    */
     function fetchCustomersFromServer(){
         return $http({method: 'GET', url: config.api.urls.customerList}).success(function (data) {
             customerListCache = data.customers;
         })
     }
 
+    /** TODO bu fonksiyon ikinci bir parametre alacak bu parametre kaç adet artırılacağını tutacak
+    * description: sepete ürün ekler ve aynı ürün varsa miktarını artırır
+    * @param: sepete eklenecek olan objecti alır
+    */
     function updateCart(item){
         cartService.addItemToCart(item,1);
     }
 
+    /**
+    * Description: önerilen ürünler listesinden silinen ürünlerin olduğu listeyi döndürür
+    * @return: {array of object} silinen ürünlerin object arrayini döndürür
+    */
     function getDeletedProducts(){
         return deletedProducts;
     }

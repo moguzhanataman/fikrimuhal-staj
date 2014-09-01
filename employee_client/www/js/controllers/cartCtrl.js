@@ -6,7 +6,6 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope', 'cartService', function ($scope
 
     function cartSlideHasChanged(it, index) {
         indexOfItem = cartItems.indexOf(it);
-        console.log(" id ", it.id, " index ", index);
 
     /* index silme slaytı */
         if (index == 1) {
@@ -15,7 +14,6 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope', 'cartService', function ($scope
                 $scope.sliderState = 0;
             }else{
                 cartItems.splice(indexOfItem, 1);
-                console.log("cart is", cartItems);
             }
         }
     }
@@ -24,7 +22,6 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope', 'cartService', function ($scope
         cartService.cartReset();
         cartItems = [];
         $scope.cart = [];
-        console.log(" carrt items reset", cartItems);
     }
 
 

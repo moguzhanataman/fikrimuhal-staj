@@ -1,7 +1,6 @@
 var fikrimuhalStaj = angular.module('fikrimuhalStaj');
 
 fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($http, $q) {
-    console.log("loginService  initialized");
 
     var mockEmployees = [
         {'id': 1, 'photoUrl': "./img/avatar-big.png", name:"Kasım Süzen", 'passwordHash': 2468},

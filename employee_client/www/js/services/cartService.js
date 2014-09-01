@@ -17,10 +17,18 @@ fikrimuhalStaj.factory('cartService', function loginService() {
     var cartItems = [];
     var cartItems = mockCartItems;
 
+    /**
+    * description: o anki sepeti döndürür
+    * @return: {array of object} sepetin deep copy edilmiş halini döndürür
+    */
     function getCart() {
         return _.cloneDeep(cartItems);
     }
 
+    /**
+    * description: sepetin toplam tutarını hesaplar
+    * @return {int} sepetin toplam tutarını döndürür
+    */
     function getTotalPrice() {
         return _.map(cartItems, function (item) {
             return item.price * item.amount;
@@ -29,12 +37,21 @@ fikrimuhalStaj.factory('cartService', function loginService() {
         });
     }
 
+    /**
+    * description: toplam indirimi hesaplar
+    * @return: toplam indirimi hesaplar
+    */
     function getTotalDiscountedPrice () {
         return _.map(cartItems, 'discountedAmount').reduce(function (sum, price) {
             return sum + price;
         })
     }
 
+    /**
+    * Description: Sepete bir ürün eklemek, azaltmak, çoğaltmayı veya çıkarmayı sağlar
+    * @param: item {object} İşlem görecek olan ürün
+    * @param: amountTOAdd {int} Değişim miktarı + veya - olabilir  ancak 0 olmamalı
+    */
     function changeQuantity(item , amountToAdd){
         var foundItem = _.find(cartItems,{id:item.id});
         
@@ -47,9 +64,11 @@ fikrimuhalStaj.factory('cartService', function loginService() {
         }
     }
 
+    /**
+    * Description: sepeti sıfırlamayı sağlar
+    */
     function cartReset(){
     	cartItems = [];
-        console.log(" cartService after items reset", cartItems);
 
     }
 

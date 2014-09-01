@@ -4,6 +4,5 @@ fikrimuhalStaj.controller('SlideController', function ($scope) {
 
     $scope.slideChanged = function (currSlide) {
         $scope.currentSlide = currSlide;
-        console.log('Active Slide=' + $scope.currentSlide);
     }
 });
