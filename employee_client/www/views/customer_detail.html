@@ -75,11 +75,12 @@
             </div>
 
             <div class="row">
+            <h2> silinenler </h2>
                 <ion-list>
                     <ion-item>
                         <div class="row" ng-repeat="it in deletedProducts">
                             <div class="col">
-                                <ion-slide-box on-slide-changed="slideHasChanged(it,$index)" active-slide="sliderState" show-pager="false">
+                                <ion-slide-box on-slide-changed="deletedItemSlideHasChanged(it,$index)" active-slide="sliderState" show-pager="false">
                                     <ion-slide>
                                         <div class="col" style="background-color:green; text-align:center; height:200px; line-height:200px; font-size:40px;">EKLE</div>
                                     </ion-slide>

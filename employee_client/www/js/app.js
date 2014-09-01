@@ -1,7 +1,7 @@
 var fikrimuhalStaj = angular.module('fikrimuhalStaj', ['ionic', 'ngAudio']);
 // create the controller and inject Angular's $scope
 
-fikrimuhalStaj.run(['$ionicPlatform', '$rootScope', '$state', 'loginService', function ($ionicPlatform, $rootScope, $state, loginService) {
+fikrimuhalStaj.run(['$ionicPlatform', '$rootScope', '$state', 'loginService','productService' , function ($ionicPlatform, $rootScope, $state, loginService,productService) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -15,6 +15,7 @@ fikrimuhalStaj.run(['$ionicPlatform', '$rootScope', '$state', 'loginService', fu
             StatusBar.hide();
             ionic.Platform.fullScreen();
         }
+        productService.fetchFromServer();
     });
 
 

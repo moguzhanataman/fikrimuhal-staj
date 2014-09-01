@@ -1,6 +1,6 @@
 var fikrimuhalStaj = angular.module('fikrimuhalStaj');
 
-fikrimuhalStaj.factory('customerService', ['$http', '$q' , 'cartService' ,function customerService($http, $q,cartService) {
+fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'cartService' ,function customerService($http, $q,productService,cartService) {
     console.log("customerService  initialized");
 
     var currentCustomerID = null;
@@ -55,9 +55,9 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , 'cartService' ,functi
     var deletedProducts = mockDeletedProducts;
 
 
-    /* TODO ürünler listesini productService'den alınacak */
-    function getProductsForSelectedCustomers(){
 
+    /* TODO ürünler listesini productService'den alınacak */
+    function getProductsForSelectedCustomers(currentCustomerID){
         var def = $q.defer();
 
         fetchProductsFromServer().then(function (value){
@@ -67,11 +67,29 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , 'cartService' ,functi
             })
 
         return def.promise
+
+
+    }
+
+    function fetchProductsFromServer(){
+        var productListUrl= config.api.base + "api/customers/" +currentCustomerID + "/products" ;
+        console.log("customers url", productListUrl)
+        
+        return $http({method: 'GET', url: productListUrl}).success(function(data){
+            productListCache = productService.getProductsByIds(data);
+            console.log("customerService productListCache",productListCache)
+        }).error(function (d) {
+            console.log("error d", d);
+        });
     }
     
 
     function currentCustomerSetter(id){
         currentCustomerID = id;
+    }
+
+    function getCurrentCustomerID(){
+        return currentCustomerID;
     }
 
     /**
@@ -106,18 +124,6 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , 'cartService' ,functi
         })
     }
 
-    function fetchProductsFromServer(){
-        var productListUrl= config.api.base + "api/customers/" + currentCustomerID + "/products";
-        console.log("customers url", productListUrl)
-        
-        return $http({method: 'GET', url: productListUrl}).success(function(data){
-            productListCache = data;
-            console.log("1111111111",productListCache)
-        }).error(function (d) {
-            console.log("error d", d);
-        });
-    }
-
     function updateCart(item){
         cartService.addItemToCart(item,1);
     }
@@ -127,10 +133,10 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , 'cartService' ,functi
     }
 
     return{ 
-    	'TODO':TODO,
         'getProducts':getProductsForSelectedCustomers,
         'setCustomer':currentCustomerSetter,
         'getCustomerList': getCustomerList,
+        'getCustomerID':getCurrentCustomerID,
         'updateCustomerList': fetchCustomersFromServer,
         'addItem':updateCart,
         'getDeletedProducts': getDeletedProducts

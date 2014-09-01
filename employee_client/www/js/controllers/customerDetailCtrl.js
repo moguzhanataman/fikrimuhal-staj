@@ -1,17 +1,17 @@
 fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerService', 'loginService' , function($scope,$state,customerService,loginService) {
     $scope.message = 'Ürün seçin';
+
+
+    customerService.getProducts(customerService.getCustomerID).then(function (products) {
     
-    customerService.getProducts().then(function (products) {
-
         $scope.productList = splitArray(products);
-
+        console.log(" id and products for customer", customerService.getCustomerID(), products);
     }).catch(function (e) {
         alert("hata oldu yeniden deneyin");
-        $scope.products = splitArray(e);
+        $scope.productList =  splitArray(e);
     });
 
     $scope.deletedProducts = customerService.getDeletedProducts();
-
 
     /* TODO  lodash kur lodashle sil */
     function slideHasChanged(product, index, listNo) {
@@ -39,7 +39,6 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
         if(index == 0){
             console.log("index 0 girdi");
 
-        /* TODO ekleme yazılacak */
         if (indexofProductL > -1) {
             console.log("left ten ", listSplit.left[indexofProductL]);
             customerService.addItem(listSplit.left[indexofProductL]);
@@ -55,8 +54,29 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
         }
     }
 
+    function deletedItemSlideHasChanged(product, index, listNo) {
+        var deletedList= $scope.deletedProducts;
+        console.log(" id ", product.id, " index ", index);
+
+        var indexofProduct = deletedList.indexOf(product);
+
+        /* index silme slaytı */
+        if (index == 2) {
+            console.log("indexofProduct", indexofProduct);
+            deletedList.splice(indexofProduct, 1);
+        }
+
+        if(index == 0){
+
+            console.log("left ten ", deletedList[indexofProduct]);
+            customerService.addItem(deletedList[indexofProduct]);
+            deletedList.splice(indexofProduct, 1);
+        }
+    }
+
 
     $scope.sliderState = 1;
+    $scope.deletedItemSlideHasChanged = deletedItemSlideHasChanged;
     $scope.slideHasChanged = slideHasChanged;
     $scope.goToCart = function goToCart(){ 
         $state.go('cart');
