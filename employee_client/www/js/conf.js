@@ -1,8 +1,14 @@
 var config = {};
+var runLocal = false;
 
 config.api= {};
 
-config.api.ip = "192.168.1.11";
+if (runLocal) {
+	config.api.ip = "localhost";
+} else {
+	config.api.ip = "192.168.1.11";
+}
+
 config.api.port = "9000";
 config.api.base ="http://" + config.api.ip + ":" +config.api.port + "/";
 config.api.urls = { 
