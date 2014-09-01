@@ -15,3 +15,5 @@ employee_client/gradlew.bat
 employee_client/plugins/
 
 .idea
+
+*.iml

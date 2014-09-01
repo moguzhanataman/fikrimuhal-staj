@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/customer_client/www/customer.iml" filepath="$PROJECT_DIR$/customer_client/www/customer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/employee_client/www/employee.iml" filepath="$PROJECT_DIR$/employee_client/www/employee.iml" />
       <module fileurl="file://$PROJECT_DIR$/phonegap.iml" filepath="$PROJECT_DIR$/phonegap.iml" />
     </modules>
   </component>

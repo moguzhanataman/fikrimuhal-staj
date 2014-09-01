@@ -13,6 +13,18 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
     ];
 
     var _loggedinEmployee = null;
+    var _employeeListCache;
+
+    function getMocks() {
+        return _.cloneDeep(mockEmployees);
+    }
+
+    function _fetchEmployeesFromServer(){
+        runLocal = true;
+        return $http({method: 'GET', url: config.api.urls.employeeList}).success(function (data) {
+            _employeeListCache = data.employees;
+        })
+    }
 
     /**
      * @param: {string} employeeId for current employees id,
@@ -39,8 +51,25 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
      * TODO: mock will be replaced by json api call
      * @returns {Array} employee array
      */
-    function getEmployees() {
-        return _.cloneDeep(mockEmployees);
+    function getEmployees(updateFromServer) {
+        var deferred = $q.defer();
+
+        if(updateFromServer){
+
+            _fetchEmployeesFromServer().then(function (value){
+                deferred.resolve(_.cloneDeep(_employeeListCache));
+            }).catch(function (){
+                deferred.reject(_.cloneDeep(_employeeListCache));
+            });
+
+        }else{
+            _fetchEmployeesFromServer();
+            deferred.resolve(_.cloneDeep(_employeeListCache));
+
+        }
+
+        return deferred.promise;
+        //return _.cloneDeep(mockEmployees);
     }
 
     /**
@@ -81,6 +110,7 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
         'loggedinEmployee': loggedinEmployee,
         'isAuth': isLoggedin,
         'isLoggedin':isLoggedin,
-        'logout': logout
+        'logout': logout,
+        'getMocks': getMocks
     }
 }]);
