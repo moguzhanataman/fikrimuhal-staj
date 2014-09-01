@@ -1,5 +1,5 @@
 var config = {};
-var runLocal = true;
+var runLocal = false;
 
 config.api= {};
 

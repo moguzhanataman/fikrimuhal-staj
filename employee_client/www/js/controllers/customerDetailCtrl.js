@@ -47,6 +47,7 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
         
         if (indexofProductR > -1) {
             console.log("right ten ", listSplit.right[indexofProductR]);
+            
             customerService.addItem(listSplit.right[indexofProductR]);
             listSplit.right.splice(indexofProductR, 1);
         }

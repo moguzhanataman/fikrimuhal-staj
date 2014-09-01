@@ -20,7 +20,6 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
     }
 
     function _fetchEmployeesFromServer(){
-        runLocal = true;
         return $http({method: 'GET', url: config.api.urls.employeeList}).success(function (data) {
             _employeeListCache = data.employees;
         })

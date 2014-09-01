@@ -35,10 +35,16 @@ fikrimuhalStaj.factory('cartService', function loginService() {
         })
     }
 
-    function updateCart(item , amountToAdd){
-    	cartItems.push(item);
-    	cartItems[cartItems.length - 1].amount = 0;
-    	cartItems[cartItems.length - 1].amount += amountToAdd;
+    function changeQuantity(item , amountToAdd){
+        var foundItem = _.find(cartItems,{id:item.id});
+        
+        if(foundItem){
+            foundItem.amount += amountToAdd;
+        }
+        else{
+        	cartItems.push(item);
+        	item.amount = amountToAdd || 0;
+        }
     }
 
     function cartReset(){
@@ -51,7 +57,7 @@ fikrimuhalStaj.factory('cartService', function loginService() {
         'getCart': getCart,
         'getTotalPrice': getTotalPrice,
         'getTotalDiscountedPrice': getTotalDiscountedPrice,
-        'addItemToCart': updateCart,
+        'addItemToCart': changeQuantity,
         'cartReset': cartReset
     };
 });

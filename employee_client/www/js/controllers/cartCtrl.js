@@ -10,8 +10,13 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope', 'cartService', function ($scope
 
     /* index silme slaytı */
         if (index == 1) {
-            cartItems.splice(indexOfItem, 1);
-            console.log("cart is", cartItems);
+            if(cartItems[indexOfItem].amount != 1){
+                cartItems[indexOfItem].amount -= 1;
+                $scope.sliderState = 0;
+            }else{
+                cartItems.splice(indexOfItem, 1);
+                console.log("cart is", cartItems);
+            }
         }
     }
 
