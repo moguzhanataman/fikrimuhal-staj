@@ -1,17 +1,22 @@
 var fikrimuhalStaj = angular.module('fikrimuhalStaj');
 
-fikrimuhalStaj.factory('customerService', ['$http', '$q' , function customerService($http, $q) {
+fikrimuhalStaj.factory('customerService', ['$http', '$q' , 'cartService' ,function customerService($http, $q,cartService) {
     console.log("customerService  initialized");
 
     var currentCustomerID = null;
 
     var mockProductList= [
-        { "id": 5, "description": "Ürün", "fiyat": 601 },
-        { "id": 15, "description": "Ürün", "fiyat": 602 },
-        { "id": 25, "description": "Ürün", "fiyat": 603 },
-        { "id": 35, "description": "Ürün", "fiyat": 604 },
-        { "id": 45, "description": "Ürün", "fiyat": 605 },
-        { "id": 55, "description": "Ürün", "fiyat": 606 }
+        { "id": 5, "name": "Ürün", "price": 601 },
+        { "id": 15, "name": "Ürün", "price": 602 },
+        { "id": 25, "name": "Ürün", "price": 603 },
+        { "id": 35, "name": "Ürün", "price": 604 },
+        { "id": 45, "name": "Ürün", "price": 605 },
+        { "id": 55, "name": "Ürün", "price": 606 }
+    ];
+
+    var mockDeletedProducts = [
+        { "id": 65, "name": "Ürün", "price": 607 },
+        { "id": 75, "name": "Ürün", "price": 608 }
     ];
 
     var mockCustomerList = [
@@ -47,6 +52,7 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , function customerServ
 
     var productListCache = mockProductList;
     var customerListCache = mockCustomerList;
+    var deletedProducts = mockDeletedProducts;
 
 
     /* TODO ürünler listesini productService'den alınacak */
@@ -54,7 +60,7 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , function customerServ
 
         var def = $q.defer();
 
-        fecthProductsFromServer().then(function (value){
+        fetchProductsFromServer().then(function (value){
                 def.resolve(_.cloneDeep(productListCache));
             }).catch(function (){
                 def.reject(_.cloneDeep(productListCache));
@@ -100,15 +106,24 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , function customerServ
         })
     }
 
-    function fecthProductsFromServer(){
+    function fetchProductsFromServer(){
         var productListUrl= config.api.base + "api/customers/" + currentCustomerID + "/products";
         console.log("customers url", productListUrl)
-         return $http({method: 'GET', url: productListUrl}).success(function(data){
-                productListCache = data;
-                console.log("1111111111",productListCache)
-            }).error(function (d) {
-                console.log("error d", d);
-            });
+        
+        return $http({method: 'GET', url: productListUrl}).success(function(data){
+            productListCache = data;
+            console.log("1111111111",productListCache)
+        }).error(function (d) {
+            console.log("error d", d);
+        });
+    }
+
+    function updateCart(item){
+        cartService.addItemToCart(item,1);
+    }
+
+    function getDeletedProducts(){
+        return deletedProducts;
     }
 
     return{ 
@@ -116,7 +131,9 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , function customerServ
         'getProducts':getProductsForSelectedCustomers,
         'setCustomer':currentCustomerSetter,
         'getCustomerList': getCustomerList,
-        'updateCustomerList': fetchCustomersFromServer
+        'updateCustomerList': fetchCustomersFromServer,
+        'addItem':updateCart,
+        'getDeletedProducts': getDeletedProducts
 
     }
  }]);
