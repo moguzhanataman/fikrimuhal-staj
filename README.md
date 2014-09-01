@@ -13,6 +13,10 @@ Kullanılacak Teknolojiler
 - Play Framework
 - iBeacon
 - Lo-Dash
+- 
+Diğer kütüphaneler
+-------------------------
+- https://github.com/adamwdraper/Numeral-js
 
 Masaüstü browserda çalıştırmak için
 
