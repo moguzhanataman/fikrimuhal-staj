@@ -15,6 +15,15 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope', 'cartService', function ($scope
         }
     }
 
+    function cartResetter(){
+        cartService.cartReset();
+        cartItems = [];
+        $scope.cart = [];
+        console.log(" carrt items reset", cartItems);
+    }
+
+
+    $scope.cartReset = cartResetter;
     $scope.cartSlideHasChanged = cartSlideHasChanged;
     $scope.message = 'Ürün listesi';
     $scope.sliderState = 0;

@@ -41,10 +41,17 @@ fikrimuhalStaj.factory('cartService', function loginService() {
     	cartItems[cartItems.length - 1].amount += amountToAdd;
     }
 
+    function cartReset(){
+    	cartItems = [];
+        console.log(" cartService after items reset", cartItems);
+
+    }
+
     return {
         'getCart': getCart,
         'getTotalPrice': getTotalPrice,
         'getTotalDiscountedPrice': getTotalDiscountedPrice,
-        'addItemToCart': updateCart
+        'addItemToCart': updateCart,
+        'cartReset': cartReset
     };
 });
