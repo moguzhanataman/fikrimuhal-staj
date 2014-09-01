@@ -13,6 +13,11 @@ Kullanılacak Teknolojiler
 - Play Framework
 - iBeacon
 - Lo-Dash
+- 
+Diğer kütüphaneler
+-------------------------
+- https://github.com/adamwdraper/Numeral-js
+- https://github.com/moment/moment/
 
 Masaüstü browserda çalıştırmak için
 
