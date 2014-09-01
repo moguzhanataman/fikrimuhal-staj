@@ -40,10 +40,7 @@
                     <ion-list>
                         <ion-item>
                             <div class="row list" ng-repeat="it in cart.cartItems">
-                                <ion-slide-box on-slide-changed="slideHasChanged(product,$index)" active-slide="sliderState" show-pager="false">
-                                    <ion-slide>
-                                        <div class="col" style="background-color:green; text-align:center; height:150px; line-height:150px; font-size:40px;">EKLE</div>
-                                    </ion-slide>
+                                <ion-slide-box on-slide-changed="cartSlideHasChanged(it,$index)" active-slide="sliderState" show-pager="false">
                                     <ion-slide>
                                         <div class="row">
                                             <div class="col col-25">

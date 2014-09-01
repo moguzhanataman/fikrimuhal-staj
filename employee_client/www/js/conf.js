@@ -9,7 +9,7 @@ config.api.urls = {
 	customerList: config.api.base + "api/customers/current" };
 
 var constant = {};
-constant.cartSlider = {"ADD_ITEM": 0, "REMOVE_ITEM": 2, "CURRENT_ITEM": 1};
+constant.cartSlider = {"REMOVE_ITEM": 1, "CURRENT_ITEM": 0};
 
 /*
 config.api.url + 'api/customer'*/
