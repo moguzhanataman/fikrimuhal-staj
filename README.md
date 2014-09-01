@@ -18,6 +18,7 @@ Diğer kütüphaneler
 -------------------------
 - https://github.com/adamwdraper/Numeral-js
 - https://github.com/moment/moment/
+- https://code.google.com/p/crypto-js/#MD5
 
 Masaüstü browserda çalıştırmak için
 

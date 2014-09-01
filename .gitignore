@@ -13,3 +13,5 @@ employee_client/gradle/wrapper/gradle-wrapper.properties
 employee_client/gradlew
 employee_client/gradlew.bat
 employee_client/plugins/
+
+.idea
