@@ -17,6 +17,7 @@ Kullanılacak Teknolojiler
 Diğer kütüphaneler
 -------------------------
 - https://github.com/adamwdraper/Numeral-js
+- https://github.com/moment/moment/
 
 Masaüstü browserda çalıştırmak için
 
