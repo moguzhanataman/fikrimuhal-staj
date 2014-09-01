@@ -6,12 +6,17 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , 'cartService' ,functi
     var currentCustomerID = null;
 
     var mockProductList= [
-        { "id": 5, "description": "Ürün", "fiyat": 601 },
-        { "id": 15, "description": "Ürün", "fiyat": 602 },
-        { "id": 25, "description": "Ürün", "fiyat": 603 },
-        { "id": 35, "description": "Ürün", "fiyat": 604 },
-        { "id": 45, "description": "Ürün", "fiyat": 605 },
-        { "id": 55, "description": "Ürün", "fiyat": 606 }
+        { "id": 5, "name": "Ürün", "price": 601 },
+        { "id": 15, "name": "Ürün", "price": 602 },
+        { "id": 25, "name": "Ürün", "price": 603 },
+        { "id": 35, "name": "Ürün", "price": 604 },
+        { "id": 45, "name": "Ürün", "price": 605 },
+        { "id": 55, "name": "Ürün", "price": 606 }
+    ];
+
+    var mockDeletedProducts = [
+        { "id": 65, "name": "Ürün", "price": 607 },
+        { "id": 75, "name": "Ürün", "price": 608 }
     ];
 
     var mockCustomerList = [
@@ -47,6 +52,7 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , 'cartService' ,functi
 
     var productListCache = mockProductList;
     var customerListCache = mockCustomerList;
+    var deletedProducts = mockDeletedProducts;
 
 
     /* TODO ürünler listesini productService'den alınacak */
@@ -116,13 +122,18 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , 'cartService' ,functi
         cartService.addItemToCart(item,1);
     }
 
+    function getDeletedProducts(){
+        return deletedProducts;
+    }
+
     return{ 
     	'TODO':TODO,
         'getProducts':getProductsForSelectedCustomers,
         'setCustomer':currentCustomerSetter,
         'getCustomerList': getCustomerList,
         'updateCustomerList': fetchCustomersFromServer,
-        'addItem':updateCart
+        'addItem':updateCart,
+        'getDeletedProducts': getDeletedProducts
 
     }
  }]);

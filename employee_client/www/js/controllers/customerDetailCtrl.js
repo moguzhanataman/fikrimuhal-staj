@@ -10,6 +10,7 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
         $scope.products = splitArray(e);
     });
 
+    $scope.deletedProducts = customerService.getDeletedProducts();
 
 
     /* TODO  lodash kur lodashle sil */
