@@ -1,6 +1,6 @@
 var fikrimuhalStaj = angular.module('fikrimuhalStaj');
 
-fikrimuhalStaj.factory('customerService', ['$http', '$q' , function customerService($http, $q) {
+fikrimuhalStaj.factory('customerService', ['$http', '$q' , 'cartService' ,function customerService($http, $q,cartService) {
     console.log("customerService  initialized");
 
     var currentCustomerID = null;
@@ -54,7 +54,7 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , function customerServ
 
         var def = $q.defer();
 
-        fecthProductsFromServer().then(function (value){
+        fetchProductsFromServer().then(function (value){
                 def.resolve(_.cloneDeep(productListCache));
             }).catch(function (){
                 def.reject(_.cloneDeep(productListCache));
@@ -100,15 +100,20 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , function customerServ
         })
     }
 
-    function fecthProductsFromServer(){
+    function fetchProductsFromServer(){
         var productListUrl= config.api.base + "api/customers/" + currentCustomerID + "/products";
         console.log("customers url", productListUrl)
-         return $http({method: 'GET', url: productListUrl}).success(function(data){
-                productListCache = data;
-                console.log("1111111111",productListCache)
-            }).error(function (d) {
-                console.log("error d", d);
-            });
+        
+        return $http({method: 'GET', url: productListUrl}).success(function(data){
+            productListCache = data;
+            console.log("1111111111",productListCache)
+        }).error(function (d) {
+            console.log("error d", d);
+        });
+    }
+
+    function updateCart(item){
+        cartService.addItemToCart(item,1);
     }
 
     return{ 
@@ -116,7 +121,8 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' , function customerServ
         'getProducts':getProductsForSelectedCustomers,
         'setCustomer':currentCustomerSetter,
         'getCustomerList': getCustomerList,
-        'updateCustomerList': fetchCustomersFromServer
+        'updateCustomerList': fetchCustomersFromServer,
+        'addItem':updateCart
 
     }
  }]);

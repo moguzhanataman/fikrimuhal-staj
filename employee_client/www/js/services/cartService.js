@@ -13,6 +13,8 @@ fikrimuhalStaj.factory('cartService', function loginService() {
         {'id': 451, 'name': "kazak", 'price': 100, 'amount': 1, 'discountedAmount': 100},
         {'id': 453, 'name': "kazak", 'price': 100, 'amount': 1, 'discountedAmount': 1100}
     ];
+
+    var cartItems = [];
     var cartItems = mockCartItems;
 
     function getCart() {
@@ -33,9 +35,16 @@ fikrimuhalStaj.factory('cartService', function loginService() {
         })
     }
 
+    function updateCart(item , amountToAdd){
+    	cartItems.push(item);
+    	cartItems[cartItems.length - 1].amount = 0;
+    	cartItems[cartItems.length - 1].amount += amountToAdd;
+    }
+
     return {
         'getCart': getCart,
         'getTotalPrice': getTotalPrice,
         'getTotalDiscountedPrice': getTotalDiscountedPrice,
+        'addItemToCart': updateCart
     };
 });
