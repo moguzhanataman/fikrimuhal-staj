@@ -2,21 +2,8 @@ var fikrimuhalStaj = angular.module('fikrimuhalStaj');
 
 fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($http, $q) {
 
-    var mockEmployees = [
-        {'id': 1, 'photoUrl': "./img/avatar-big.png", name:"Kasım Süzen", 'passwordHash': 2468},
-        {'id': 2, 'photoUrl': "./img/avatar-big.png", name:"Oğuz Ataman", 'passwordHash': 2468},
-        {'id': 3, 'photoUrl': "./img/avatar-big.png", name:"Ilgaz Şumnulu", 'passwordHash': 2468},
-        {'id': 4, 'photoUrl': "./img/avatar-big.png", name:"Şükrü Hasdemir", 'passwordHash': 2468},
-        {'id': 5, 'photoUrl': "./img/avatar-big.png", name:"Orhan Gencebay", 'passwordHash': 2468},
-        {'id': 6, 'photoUrl': "./img/avatar-big.png", name:"Zeki Müren", 'passwordHash': 2468}
-    ];
-
     var _loggedinEmployee = null;
     var _employeeListCache;
-
-    function getMocks() {
-        return _.cloneDeep(mockEmployees);
-    }
 
     function _fetchEmployeesFromServer(){
         return $http({method: 'GET', url: config.api.urls.employeeList}).success(function (data) {
@@ -30,8 +17,10 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
      * @returns boolean, true for granteed access, false for denied access
      */
     function auth(employeeId, password) {
+        console.log("1111222", employeeId, password);
         var hashedPasscode = hashPasscode(password);
-        var employee = _.find(mockEmployees, {'id': employeeId, 'passwordHash': hashedPasscode});
+        console.log("hashed pass: ", hashedPasscode, "employeeListCache: ", _employeeListCache);
+        var employee = _.find(_employeeListCache, {'id': employeeId, 'passwordHash': hashedPasscode});
         if (employee) {
             _loggedinEmployee = employee;
         }
@@ -96,10 +85,10 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
 
     /**
      * @param: {int} passcode Employee's passcode
-     * @returns {int} hashed passcode
+     * @returns {string} hashed passcode
      */
     function hashPasscode(passcode) {
-        return passcode * 2;
+        return "" + passcode * 2;
     }
 
     return {
@@ -108,7 +97,6 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
         'loggedinEmployee': loggedinEmployee,
         'isAuth': isLoggedin,
         'isLoggedin':isLoggedin,
-        'logout': logout,
-        'getMocks': getMocks
+        'logout': logout
     }
 }]);

@@ -31,7 +31,7 @@ fikrimuhalStaj.factory('productService',['$http', '$q' , function ($http,q) {
     function getProductsByIds(idArray){
         var containsId = function (product){
             return _.contains(idArray,product.id);
-        }
+        };
 
         var result =_.filter(productListCache,containsId);
         return result;

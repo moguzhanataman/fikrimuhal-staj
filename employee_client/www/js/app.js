@@ -102,7 +102,7 @@ fikrimuhalStaj.run(['$ionicPlatform', '$rootScope', '$state', 'loginService','pr
 
     }]);
 
-fikrimuhalStaj.controller('MainCtrl', function ($scope, $ionicSideMenuDelegate, ngAudio) {
+fikrimuhalStaj.controller('MainCtrl', function (storageService, $scope, $ionicSideMenuDelegate, ngAudio) {
     $scope.attendees = [
         {firstname: 'Nicolas', lastname: 'Cage'},
         {firstname: 'Jean-Claude', lastname: 'Van Damme'},
@@ -127,12 +127,16 @@ fikrimuhalStaj.controller('MainCtrl', function ($scope, $ionicSideMenuDelegate, 
 
     $scope.toggleLeft = function () {
         $ionicSideMenuDelegate.toggleLeft();
+        console.log(storageService.get("a"));
     };
 
 
     $scope.audioClick = function () {
         ngAudio.play('tockAudio');
     }
+
+    //var x = storageService.put("a", {"b": 123});
+    //console.log("123123" , x);
 });
 
 fikrimuhalStaj.controller('AttendeesCtrl', function ($scope) {
