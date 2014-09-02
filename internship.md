@@ -100,3 +100,11 @@ Bir sonraki çalışma günü yapılması planlananlar
 Bir sonraki çalışma günü yapılması planlananlar
 -----------------------------------------------
 - Müşteri listesi service'i yazılıcak
+
+01/09/2014
+----------
+- StorageService eklendi
+- Servicelerin dökümantasyonu düzeltildi
+- sepeti resetlemek eklendi
+- conf.js dosyası local ip alabilecek şekilde değiştirildi
+- Sepete ürün ekleme ve çıkarma eklendi
