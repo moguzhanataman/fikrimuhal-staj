@@ -18,7 +18,7 @@ function splitArray(list) {
     }
 
     return {
-        'left':  listL,
+        'left': listL,
         'right': listR
     }
 }
@@ -35,39 +35,50 @@ function TODO() {
  * @param updateFromServer
  * @returns {jQuery.promise|promise.promise|d.promise|promise|.ready.promise|jQuery.ready.promise}
  */
-function cached($q, fetchFromServer) {
-    var cacheList = [];
+function cached($q, fetchFromServer, storageService, key) {
 
-    function updateCacheList (data) {
-        cacheList = data;
+    var saveOnLocalStorage = !!storageService;
+
+    var cacheList;
+    if (saveOnLocalStorage) {
+        cacheList = storageService.get(key);
+    } else {
+        cacheList = [];
     }
 
-    function getCacheList () {
+    function updateCacheList(value) {
+
+        cacheList = value;
+        if (saveOnLocalStorage) {
+            storageService.put(key, value);
+        }
+    }
+
+    function getCacheList() {
         return cacheList;
     }
 
-    var cachePromise = function(returnFirstCache) {
-        var defered = $q.defer();
-
+    var cachePromise = function (returnFirstCache) {
+        var deferred = $q.defer();
         if (!returnFirstCache) {
-            fetchFromServer().then( function (data) {
+            fetchFromServer().then(function (data) {
                 updateCacheList(data);
-                defered.resolve(_.cloneDeep(cacheList));
-            }).catch(function (){
-                defered.reject(_.cloneDeep(cacheList));
+                deferred.resolve(_.cloneDeep(cacheList));
+            }).catch(function () {
+                deferred.reject(_.cloneDeep(cacheList));
             })
         } else {
-            fetchFromServer().then( function (data) {
+            fetchFromServer().then(function (data) {
                 updateCacheList(data);
             });
-            defered.resolve(_.cloneDeep(cacheList));
+            deferred.resolve(_.cloneDeep(cacheList));
         }
 
-        return defered.promise;
+        return deferred.promise;
 
     };
 
-    var result = {
+    return {
         "promise": cachePromise,
         get list() {
             return _.cloneDeep(cacheList);
@@ -76,6 +87,5 @@ function cached($q, fetchFromServer) {
             console.error("Cache i dışarıdan değiştiremezsin!!! Birşeyleri yanlış yapıyorsun.");
         }
 
-    };
-    return result;
+    }
 }

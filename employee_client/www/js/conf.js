@@ -15,7 +15,8 @@ config.api.port = "9000";
 config.api.base ="http://" + config.api.ip + ":" +config.api.port + "/";
 config.api.urls = { 
 	customerList: config.api.base + "api/customers/current",
-	employeeList: config.api.base + "api/employees"
+	employeeList: config.api.base + "api/employees",
+    productList: config.api.base + "api/products"
 };
 
 var constant = {};

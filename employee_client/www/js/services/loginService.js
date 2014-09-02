@@ -1,5 +1,6 @@
-fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($http, $q) {
-    var cache = cached($q, _fetchEmployeesFromServer);
+fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', function loginService($http, $q, storageService) {
+    var cache = cached($q, _fetchEmployeesFromServer, storageService, "employees");
+    // TODO JSDoc
     var getEmployees = cache.promise;
 
     var _loggedinEmployee = null;
