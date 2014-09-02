@@ -86,7 +86,7 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
      * @returns {string} hashed passcode
      */
     function hashPasscode(passcode) {
-        return "" + passcode * 2;
+        return CryptoJS.MD5(passcode).toString();
     }
 
     return {
