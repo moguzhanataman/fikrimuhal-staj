@@ -18,7 +18,7 @@ function splitArray(list) {
     }
 
     return {
-        'left':  listL,
+        'left': listL,
         'right': listR
     }
 }
@@ -35,61 +35,50 @@ function TODO() {
  * @param updateFromServer
  * @returns {jQuery.promise|promise.promise|d.promise|promise|.ready.promise|jQuery.ready.promise}
  */
-function cached($q, fetchFromServer, storageService, key, x) {
-    if(x) {
-        console.log("product service cache");
-    }
+function cached($q, fetchFromServer, storageService, key) {
+
     var saveOnLocalStorage = !!storageService;
-    console.log("333");
+
     var cacheList;
-    if(saveOnLocalStorage) {
-        console.log("444");
+    if (saveOnLocalStorage) {
         cacheList = storageService.get(key);
     } else {
         cacheList = [];
-        console.log("5555", key);
-
     }
 
-    function updateCacheList (value) {
+    function updateCacheList(value) {
 
-        if(x) {
-            console.log("fetch product list çağrıldı", "key", key, "value", value);
-        }
         cacheList = value;
-        if(saveOnLocalStorage) {
-            console.log("fetch product list çağrıldı", "key", key, "value", value);
+        if (saveOnLocalStorage) {
             storageService.put(key, value);
         }
     }
 
-    function getCacheList () {
+    function getCacheList() {
         return cacheList;
     }
 
-    var cachePromise = function(returnFirstCache) {
-        var defered = $q.defer();
-        console.log("22222");
+    var cachePromise = function (returnFirstCache) {
+        var deferred = $q.defer();
         if (!returnFirstCache) {
-            fetchFromServer().then( function (data) {
+            fetchFromServer().then(function (data) {
                 updateCacheList(data);
-                defered.resolve(_.cloneDeep(cacheList));
-            }).catch(function (){
-                defered.reject(_.cloneDeep(cacheList));
-                console.log("1111", cacheList);
+                deferred.resolve(_.cloneDeep(cacheList));
+            }).catch(function () {
+                deferred.reject(_.cloneDeep(cacheList));
             })
         } else {
-            fetchFromServer().then( function (data) {
+            fetchFromServer().then(function (data) {
                 updateCacheList(data);
             });
-            defered.resolve(_.cloneDeep(cacheList));
+            deferred.resolve(_.cloneDeep(cacheList));
         }
 
-        return defered.promise;
+        return deferred.promise;
 
     };
 
-    var result = {
+    return {
         "promise": cachePromise,
         get list() {
             return _.cloneDeep(cacheList);
@@ -98,6 +87,5 @@ function cached($q, fetchFromServer, storageService, key, x) {
             console.error("Cache i dışarıdan değiştiremezsin!!! Birşeyleri yanlış yapıyorsun.");
         }
 
-    };
-    return result;
+    }
 }

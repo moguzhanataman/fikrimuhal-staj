@@ -1,5 +1,5 @@
 fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', function loginService($http, $q, storageService) {
-    var cache = cached($q, _fetchEmployeesFromServer, storageService, "employees", false);
+    var cache = cached($q, _fetchEmployeesFromServer, storageService, "employees");
     // TODO JSDoc
     var getEmployees = cache.promise;
 

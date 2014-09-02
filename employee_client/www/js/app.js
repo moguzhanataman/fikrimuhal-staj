@@ -15,7 +15,6 @@ fikrimuhalStaj.run(['$ionicPlatform', '$rootScope', '$state', 'loginService','pr
             StatusBar.hide();
             ionic.Platform.fullScreen();
         }
-        productService.fetchFromServer();
     });
 
 
