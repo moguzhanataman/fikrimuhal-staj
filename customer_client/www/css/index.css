@@ -25,7 +25,7 @@ body {
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    /*background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
     background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
     background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
     background-image:-webkit-gradient(
@@ -35,7 +35,7 @@ body {
         color-stop(0, #A7A7A7),
         color-stop(0.51, #E4E4E4)
     );
-    background-attachment:fixed;
+    background-attachment:fixed;*/
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
     height:100%;
@@ -113,3 +113,30 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+.password button {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    font-size: 50px;
+}
+
+.password {
+    margin-left: 150px;
+}
+
+.user-info img{
+    float: left;
+    margin: 10px 10px 0 0;
+}
+.product-recommendations {
+    padding: 20px 0;
+    text-align: center;
+    background-color: #eee;
+}
+/*
+.price-tag {
+    font-size: 36px;
+    font-style: italic;
+    font-family: Georgia;
+}*/

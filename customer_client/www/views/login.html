@@ -1,0 +1,16 @@
+<ion-view title="Login Screen">
+    <ion-content has-bouncing="false">
+        <div class="row" ng-controller="loginCtrl">
+            <div class="col">
+                <ion-scroll has-bouncing="true" scrollbar-x="false" scrollbar-y="false" direction="x" style="width: 103%; height: 200px;white-space: nowrap;  margin-left:-10px; margin-right: -10px;">
+                    <div  class="photo_wrapper" id="login-employee-list" ng-repeat="it in users" ng-click="selectUser(it.id)">
+                        <img class="thumbnail" ng-src="{{it.photoUrl}}" width="200" height="200" />
+                        <div class='photo_description' ng-class="{'user-selected' : selectedEmployeeId == it.id}">
+                            <p class='photo_description_content'>{{it.name}}</p>
+                        </div>
+                    </div>
+                </ion-scroll>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

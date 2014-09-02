@@ -2,8 +2,6 @@ employee_client/platforms
 employee_client/.idea
 employee_client/bower_components
 employee_client/node_modules
-customer_client/platforms
-customer_client/.idea
 node_modules/
 npm-debug.log
 employee_client/.gradle/*
@@ -13,7 +11,17 @@ employee_client/gradle/wrapper/gradle-wrapper.properties
 employee_client/gradlew
 employee_client/gradlew.bat
 employee_client/plugins/
-
+customer_client/platforms
+customer_client/.idea
+customer_client/bower_components
+customer_client/node_modules
+customer_client/.gradle/*
+customer_client/customer_client.iml
+customer_client/gradle/wrapper/gradle-wrapper.jar
+customer_client/gradle/wrapper/gradle-wrapper.properties
+customer_client/gradlew
+customer_client/gradlew.bat
+customer_client/plugins/
 .idea
 
 *.iml
