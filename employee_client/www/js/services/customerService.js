@@ -2,7 +2,7 @@ var fikrimuhalStaj = angular.module('fikrimuhalStaj');
 
 fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'cartService' ,function customerService($http, $q,productService,cartService) {
 
-    var cache = cached($q, fetchCustomersFromServer);
+    var cachedCustomerList = cached($q, fetchCustomersFromServer);
 
     var currentCustomerID = null;
 
@@ -108,7 +108,7 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
      * promise'in rejecti cache yolluyor kullanıcıya alert ile bağlantı hatası yeniden deneyin yazacak
      * @returns promise
      */
-    var getCustomerList = cache.promise;
+    var getCustomerList = cachedCustomerList.promise;
 
     /**
     * description: serverdan ortamda bulunan müşterilerin listesini http request ile alır 
