@@ -18,7 +18,6 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
      */
     function auth(employeeId, password) {
         var hashedPasscode = hashPasscode(password);
-        console.log("hashed pass", hashedPasscode);
         var employee = _.find(_employeeListCache, {'id': employeeId, 'passwordHash': hashedPasscode});
         if (employee) {
             _loggedinEmployee = employee;
@@ -87,7 +86,7 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
      * @returns {string} hashed passcode
      */
     function hashPasscode(passcode) {
-        return Crypto.MD5(passcode);
+        return CryptoJS.MD5(passcode).toString();
     }
 
     return {
