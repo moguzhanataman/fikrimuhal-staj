@@ -108,3 +108,22 @@ Bir sonraki çalışma günü yapılması planlananlar
 - sepeti resetlemek eklendi
 - conf.js dosyası local ip alabilecek şekilde değiştirildi
 - Sepete ürün ekleme ve çıkarma eklendi
+
+Bir sonraki çalışma günü yapılması planlananlar
+-----------------------------------------------
+- Http requestlerle elde edilen veriler local cachede saklanacak
+- Çalışanların şifreleri MD5 ile hashlenecek
+
+02/09/2014
+----------
+- Müşteri listesi service'i yazıldı
+- Çalışanların şifreleri MD5 ile hashlendi
+- Http requestlerinden gelen veriler local cachede saklanıyor
+- Müşteri clientına başlandı
+- Cordovaya iBeacon plugini kuruldu ve ayarlandı
+- Çalışanlar ve ürünler için geçici resimler konuldu
+- Müşteri clientında uuid, identifier, major ve minor değerlerini ui'dan değiştirilebilir hale getirildi.
+
+Bir sonraki çalışma günü yapılması planlananlar
+-----------------------------------------------
+- iBeaconın testleri yapılacak, izleme ve yayın yapabilir olacak
