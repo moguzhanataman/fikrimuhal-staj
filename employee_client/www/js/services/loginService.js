@@ -2,13 +2,15 @@ var fikrimuhalStaj = angular.module('fikrimuhalStaj');
 
 fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($http, $q) {
 
+    var cache = cached($q, _fetchEmployeesFromServer);
     var _loggedinEmployee = null;
-    var _employeeListCache;
+    var getEmployees = cache.promise;
 
     function _fetchEmployeesFromServer(){
-        return $http({method: 'GET', url: config.api.urls.employeeList}).success(function (data) {
-            _employeeListCache = data.employees;
-        })
+        return $http({method: 'GET', url: config.api.urls.employeeList}).then(function (response) {
+            var employees = response.data.employees;
+            return employees;
+        });
     }
 
     /**
@@ -18,7 +20,10 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
      */
     function auth(employeeId, password) {
         var hashedPasscode = hashPasscode(password);
-        var employee = _.find(_employeeListCache, {'id': employeeId, 'passwordHash': hashedPasscode});
+        cache.list = [];
+        console.log(cache.list, cache);
+
+        var employee = _.find(cache.list, {'id': employeeId, 'passwordHash': hashedPasscode});
         if (employee) {
             _loggedinEmployee = employee;
         }
@@ -32,30 +37,8 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
         return  isLoggedin();
     }
 
-    /**
-     * TODO: mock will be replaced by json api call
-     * @returns {Array} employee array
-     */
-    function getEmployees(updateFromServer) {
-        var deferred = $q.defer();
 
-        if(updateFromServer){
 
-            _fetchEmployeesFromServer().then(function (value){
-                deferred.resolve(_.cloneDeep(_employeeListCache));
-            }).catch(function (){
-                deferred.reject(_.cloneDeep(_employeeListCache));
-            });
-
-        }else{
-            _fetchEmployeesFromServer();
-            deferred.resolve(_.cloneDeep(_employeeListCache));
-
-        }
-
-        return deferred.promise;
-        //return _.cloneDeep(mockEmployees);
-    }
 
     /**
      * @return {object} returns employee {'id':8, 'name':"mehmet", 'photoData': "base64" }

@@ -1,11 +1,13 @@
 var config = {};
-var runLocal = false;
+
+config.runLocal = true;
 
 config.api= {};
 
-if (runLocal) {
+if (config.runLocal) {
 	config.api.ip = "localhost";
 } else {
+    // Mac
 	config.api.ip = "192.168.1.11";
 }
 
