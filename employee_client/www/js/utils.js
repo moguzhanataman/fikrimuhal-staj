@@ -36,7 +36,6 @@ function TODO() {
  * @returns {jQuery.promise|promise.promise|d.promise|promise|.ready.promise|jQuery.ready.promise}
  */
 function cached($q, fetchFromServer) {
-    console.log("1111");
     var cacheList = [];
 
     function updateCacheList (data) {
@@ -47,10 +46,10 @@ function cached($q, fetchFromServer) {
         return cacheList;
     }
 
-    var cachePromise = function(updateFromServer) {
+    var cachePromise = function(returnFirstCache) {
         var defered = $q.defer();
 
-        if (updateFromServer) {
+        if (!returnFirstCache) {
             fetchFromServer().then( function (data) {
                 updateCacheList(data);
                 defered.resolve(_.cloneDeep(cacheList));
@@ -58,7 +57,6 @@ function cached($q, fetchFromServer) {
                 defered.reject(_.cloneDeep(cacheList));
             })
         } else {
-            console.log("4444");
             fetchFromServer().then( function (data) {
                 updateCacheList(data);
             });
@@ -79,8 +77,5 @@ function cached($q, fetchFromServer) {
         }
 
     };
-
-    console.log("6666", result);
-
     return result;
 }

@@ -127,7 +127,7 @@ fikrimuhalStaj.controller('MainCtrl', function (storageService, $scope, $ionicSi
 
     $scope.toggleLeft = function () {
         $ionicSideMenuDelegate.toggleLeft();
-        console.log(storageService.get("a"));
+        // console.log(storageService.get("a"));
     };
 
 
