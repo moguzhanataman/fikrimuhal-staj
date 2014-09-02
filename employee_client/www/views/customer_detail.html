@@ -25,7 +25,7 @@
                                         <ion-slide>
                                             <div class="row">
                                                 <div class="col col-33">
-                                                    <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                                                    <img class="thumbnail" ng-src="{{product.photo}}" width="200" height="200"/>
                                                 </div>
                                                 <div class="col">
                                                     <h2>{{product.name}}</h2>
@@ -55,7 +55,7 @@
                                         <ion-slide>
                                             <div class="row">
                                                 <div class="col col-33">
-                                                    <img class="thumbnail" src="img/placeholder_large.png" width="200" height="200"/>
+                                                    <img class="thumbnail" ng-src="{{product.photo}}" width="200" height="200"/>
                                                 </div>
                                                 <div class="col">
                                                     <h2>{{product.name}}</h2>
@@ -75,7 +75,9 @@
             </div>
 
             <div class="row">
-            <h2> silinenler </h2>
+                <h2> silinenler </h2>
+            </div>
+            <div class="row">
                 <ion-list>
                     <ion-item>
                         <div class="row" ng-repeat="it in deletedProducts">
