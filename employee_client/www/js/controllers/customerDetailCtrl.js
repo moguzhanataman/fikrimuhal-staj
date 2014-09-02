@@ -1,12 +1,10 @@
 fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerService', 'loginService' , function($scope,$state,customerService,loginService) {
     $scope.message = 'Ürün seçin';
 
-
     customerService.getProducts().then(function (products) {
         $scope.productList = splitArray(products);
     }).catch(function (e) {
-        alert("hata oldu yeniden deneyin");
-        $scope.productList =  splitArray(e);
+        $scope.productList = splitArray(e);
     });
 
     $scope.deletedProducts = customerService.getDeletedProducts();

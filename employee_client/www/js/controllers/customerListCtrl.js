@@ -5,12 +5,9 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' ,'loginService','custome
     }
 
     /* TODO alert için release öncesi custom bir fonksiyon yazılacak */
-    customerService.getCustomerList(true).then(function (customerList) {
-
+    customerService.getCustomerList().then(function (customerList) {
     	$scope.customerList = splitArray(customerList);
-
     }).catch(function (e) {
-        alert("hata oldu yeniden deneyin");
     	$scope.customerList = splitArray(e);
     });
 

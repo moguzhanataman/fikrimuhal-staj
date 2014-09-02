@@ -1,10 +1,8 @@
-var fikrimuhalStaj = angular.module('fikrimuhalStaj');
-
 fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($http, $q) {
-
     var cache = cached($q, _fetchEmployeesFromServer);
-    var _loggedinEmployee = null;
     var getEmployees = cache.promise;
+
+    var _loggedinEmployee = null;
 
     function _fetchEmployeesFromServer(){
         return $http({method: 'GET', url: config.api.urls.employeeList}).then(function (response) {
@@ -20,9 +18,6 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
      */
     function auth(employeeId, password) {
         var hashedPasscode = hashPasscode(password);
-        cache.list = [];
-        console.log(cache.list, cache);
-
         var employee = _.find(cache.list, {'id': employeeId, 'passwordHash': hashedPasscode});
         if (employee) {
             _loggedinEmployee = employee;
@@ -81,3 +76,5 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
         'logout': logout
     }
 }]);
+
+var fikrimuhalStaj = angular.module('fikrimuhalStaj');
