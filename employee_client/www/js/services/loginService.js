@@ -17,9 +17,7 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
      * @returns boolean, true for granteed access, false for denied access
      */
     function auth(employeeId, password) {
-        console.log("1111222", employeeId, password);
         var hashedPasscode = hashPasscode(password);
-        console.log("hashed pass: ", hashedPasscode, "employeeListCache: ", _employeeListCache);
         var employee = _.find(_employeeListCache, {'id': employeeId, 'passwordHash': hashedPasscode});
         if (employee) {
             _loggedinEmployee = employee;

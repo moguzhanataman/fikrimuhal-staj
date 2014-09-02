@@ -12,10 +12,10 @@ object Employee {
   implicit val jsonConverter = Json.format[Employee]
 
   val all = Seq(
-    Employee(1, "M. Oğuzhan Ataman", "./img/avatar-big.png", "hash"),
-    Employee(2, "Kasım Süzen", "./img/avatar-big.png", "hash"),
-    Employee(3, "Ilgaz Şumnulu", "./img/avatar-big.png", "2468"),
-    Employee(4, "Şükrü Hasdemir", "./img/avatar-big.png", "2468"),
+    Employee(1, "M. Oğuzhan Ataman", "./img/oguz.jpg", "hash"),
+    Employee(2, "Kasım Süzen", "./img/kasim.jpg", "hash"),
+    Employee(3, "Ilgaz Şumnulu", "./img/ilgaz.jpg", "2468"),
+    Employee(4, "Şükrü Hasdemir", "./img/sukru.jpg", "2468"),
     Employee(5, "Orhan Gencebay", "./img/orhan.jpg", "2468"),
     Employee(6, "Zeki Müren", "./img/zeki.jpg", "2468"),
     Employee(7, "Hakkı Bulut", "./img/hakki.jpg", "2468")
