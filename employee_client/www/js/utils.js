@@ -41,7 +41,7 @@ function cached($q, fetchFromServer, storageService, key) {
 
     var cacheList;
     if (saveOnLocalStorage) {
-        cacheList = storageService.get(key);
+        cacheList = storageService.get(key) || [];
     } else {
         cacheList = [];
     }
@@ -65,6 +65,7 @@ function cached($q, fetchFromServer, storageService, key) {
                 updateCacheList(data);
                 deferred.resolve(_.cloneDeep(cacheList));
             }).catch(function () {
+                console.log("CACHED: Sunucuya eriselimiyor, [",key,"] cache den eski sonuc donecek: ",cacheList  );
                 deferred.reject(_.cloneDeep(cacheList));
             })
         } else {

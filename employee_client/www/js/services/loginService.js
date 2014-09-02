@@ -7,8 +7,7 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
 
     function _fetchEmployeesFromServer(){
         return $http({method: 'GET', url: config.api.urls.employeeList}).then(function (response) {
-            var employees = response.data.employees;
-            return employees;
+            return response.data.employees;
         });
     }
 
