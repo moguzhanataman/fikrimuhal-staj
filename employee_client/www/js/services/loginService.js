@@ -91,7 +91,7 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q' , function loginService($h
 
     return {
         'auth': auth,
-        'employees': getEmployees,
+        'getEmployeeList': getEmployees,
         'loggedinEmployee': loggedinEmployee,
         'isAuth': isLoggedin,
         'isLoggedin':isLoggedin,

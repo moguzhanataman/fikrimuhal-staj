@@ -1,7 +1,7 @@
 fikrimuhalStaj.controller('LoginCtrl', [ '$scope', '$state' , 'loginService', function ($scope, $state, loginService) {
 
     // Get employees from api
-    loginService.employees(true).then(function (employeeList) {
+    loginService.getEmployeeList(true).then(function (employeeList) {
         $scope.employees = employeeList;
     }).catch(function (e) {
         $scope.employees = e;

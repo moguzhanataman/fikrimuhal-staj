@@ -4,12 +4,14 @@
 
 var fikrimuhalStaj = angular.module('fikrimuhalStaj');
 
+/**
+ * Storage service of application. Uses localStorage.
+ */
 fikrimuhalStaj.factory('storageService',function () {
-
     /**
-     *
-     * @param key
-     * @returns {*}
+     * Get item from localStorage.
+     * @param key {string}
+     * @returns {JSON}
      */
     function get(key) {
         var data = window.localStorage.getItem(key);
@@ -34,13 +36,27 @@ fikrimuhalStaj.factory('storageService',function () {
         return contains;
     }
 
+    /**
+     * Removes all entries from localStorage.
+     */
     function purge () {
         window.localStorage.clear();
     }
 
-    // TODO Remove ettiyse true döndürsün.
+    /**
+     * Removes an item from localStorage.
+     * @param key {string} item key in localStorage.
+     * @returns {boolean} true if item removed, otherwise false.
+     */
     function remove (key) {
+        var deleted;
         window.localStorage.removeItem(key);
+        if (get(key)) {
+            deleted = false;
+        } else {
+            deleted = true;
+        }
+        return deleted;
     }
 
     return {
