@@ -12,9 +12,9 @@ object Product {
   implicit val jsonConverter = Json.format[Product]
 
   val all = Seq(
-    Product(1, "Kırmızı tişört", 35.99, 1, "photourl"),
-    Product(2, "Kot pantolon", 95.00, 2, "photourl"),
-    Product(3, "Falan filan", 10.50, 3, "photourl")
+    Product(1, "Kırmızı tişört", 35.99, 1, "./img/t-shirt.jpg"),
+    Product(2, "Kot pantolon", 95.00, 2, "./img/kot.jpg"),
+    Product(3, "Gömlek", 10.50, 3, "./img/shirt.jpg")
   )
 
   def get(id: Int) = Product.all.find(_.id == id)
