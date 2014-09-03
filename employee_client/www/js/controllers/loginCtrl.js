@@ -6,19 +6,6 @@ fikrimuhalStaj.controller('LoginCtrl', ['$scope', '$state', 'loginService', func
         $scope.employees = e;
     });
 
-    //function checkLastLoggedinEmployee() {
-    //    console.log("55555555555");
-    //    var lastLoggedinEmployee = loginService.getLastLoggedinEmployee();
-    //    console.log(lastLoggedinEmployee);
-    //    if (lastLoggedinEmployee && lastLoggedinEmployee.id) {
-    //        console.log("55555555555 seçtim");
-    //        $scope.selectEmployee(lastLoggedinEmployee.id);
-    //    } else {
-    //        console.log("111 lastloggedinemployee", lastLoggedinEmployee);
-    //    }
-    //}
-
-
     $scope.checkPasscode = function checkPasscode(employeeId, pass) {
         if (loginService.auth(employeeId, pass) == true) {
 
@@ -71,20 +58,6 @@ fikrimuhalStaj.controller('passcodeCtrl', ['$scope', 'loginService', function ($
         pins[4] = "";
     }
 
-
-    /**
-     * En son girilen employee varsa view'ı o employee'nin resmini seçecek
-     * şekilde güncelle. Dolayısıyla localStorage silinmediyse yada ilk açılış
-     * değilse her zaman bir employee seçili olacak.
-     */
-    function _initEmployeeList() {
-        var lastLoggedinEmployee = loginService.getLastLoggedinEmployee();
-        console.log("init employeeList", lastLoggedinEmployee);
-        if (lastLoggedinEmployee) {
-            selectEmployee(lastLoggedinEmployee.id);
-        }
-    }
-
     function passcodeReady() {
         _resetPins();
         $scope.checkPasscode(parentScope.selectedEmployeeId, currentPasscodeValue);
@@ -108,7 +81,6 @@ fikrimuhalStaj.controller('passcodeCtrl', ['$scope', 'loginService', function ($
     }
 
     _resetPins();
-    _initEmployeeList();
 
     // $scope.employees = employees;
 //    $scope.selectedEmployee = selectedEmployee;

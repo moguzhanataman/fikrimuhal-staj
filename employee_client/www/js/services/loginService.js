@@ -12,19 +12,15 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
     }
 
     /**
-     * Saves logged in user to localStorage via storageService.
-     * When app closed we don't lost who logged in last.
-     */
-    function _storeLogginginEmployee(employee) {
-        storageService.put("lastLogged", employee);
-    }
-
-    /**
      * Gets last logged in employee from localStorage via storageService
      * @returns {json} Employee JSON
      */
     function getLastLoggedinEmployee() {
-        return storageService.get("lastLogged");
+        return storageService.get(constant.storage.loggedEmployee);
+    }
+
+    function initEmployee() {
+        _loggedinEmployee = getLastLoggedinEmployee();
     }
 
     /**
@@ -38,7 +34,7 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
         if (employee) {
             _loggedinEmployee = employee;
             // Register employee in localStorage
-            _storeLogginginEmployee(employee);
+            storageService.put(constant.storage.loggedEmployee, employee);
             console.log("storing last logged employee");
         }
         else {
@@ -73,6 +69,7 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
     function logout() {
         console.log("LOGOUT me please");
         _loggedinEmployee = null;
+        storageService.remove(constant.storage.loggedEmployee);
     }
 
     /**
@@ -82,6 +79,8 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
     function hashPasscode(passcode) {
         return CryptoJS.MD5(passcode).toString();
     }
+
+    initEmployee();
 
     return {
         'auth': auth,

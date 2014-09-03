@@ -22,5 +22,9 @@ config.api.urls = {
 var constant = {};
 constant.cartSlider = {"REMOVE_ITEM": 1, "CURRENT_ITEM": 0};
 
+constant.storage = {};
+constant.storage.loggedEmployee = "lastLogged";
+
+
 /*
 config.api.url + 'api/customer'*/
