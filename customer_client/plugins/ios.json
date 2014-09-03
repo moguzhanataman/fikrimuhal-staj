@@ -35,7 +35,7 @@
     },
     "installed_plugins": {
         "org.apache.cordova.ibeacon": {
-            "PACKAGE_NAME": "com.fikrumuhal.customer_client"
+            "PACKAGE_NAME": "com.fikrumuhal.staj.customerClient"
         }
     },
     "dependent_plugins": {}
