@@ -4,7 +4,7 @@
             <div class="col col-50 list">
                 <div class="row" ng-repeat="customer in customerList.left"  >
                     <div class="col item item-avatar"><a href="#/customerDetail" ng-click="setCustomerID(customer.id)">
-                        <img class="thumbnail" ng-src="{{customer.photoData}}" width="200" height="200"/>
+                        <img class="thumbnail" ng-src="http://localhost:9000/api/customers/{{customer.id}}/photo" width="200" height="200"/>
                         <h2>{{customer.id}}</h2>
                         <p>{{customer.name}}</p>
                         <p>{{customer.photo}}</p>
@@ -16,7 +16,7 @@
             <div class="col col-50 list">
                 <div class="row" ng-repeat="customer in customerList.right"  >    
                     <div class="col item item-avatar"><a href="#/customerDetail" ng-click="setCustomerID(customer.id)">
-                        <img class="thumbnail" ng-src="{{customer.photoData}}" width="200" height="200"/>
+                        <img class="thumbnail" ng-src="http://localhost:9000/api/customers/{{customer.id}}/photo" width="200" height="200"/>
                         <h2>{{customer.id}}</h2>
                         <p>{{customer.name}}</p>
                         <p>{{customer.photo}}</p>

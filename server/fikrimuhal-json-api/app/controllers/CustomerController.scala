@@ -1,9 +1,11 @@
 package controllers
 
-import model.{Product, Customer}
+import model.{Customer, Product}
 import play.api.Logger
 import play.api.libs.json._
 import play.api.mvc.{Action, Controller}
+
+import scala.reflect.io.File
 
 /**
  * Created by oguzhan on 8/20/14.
@@ -30,10 +32,14 @@ object CustomerController extends Controller {
 
   def getCustomerPhoto(id: Int) = Action {
     Customer.get(id).map { customer =>
-      Ok(Json.toJson(
-        Map("id" -> Json.toJson(customer.id), "photoData" -> Json.toJson(customer.photoData))
-      ))
+
+      val imageBytes = File(customer.photoData).toByteArray()
+      Ok(imageBytes).withHeaders(
+        "content-type" -> "image/jpeg",
+        "Cache-Control" -> s"public, max-age=${7 * 24 * 60 * 60}"
+      )
     }.getOrElse(NotFound)
+
   }
 
   def getCustomerProducts(id: Int) = Action {
