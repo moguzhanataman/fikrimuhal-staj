@@ -1,6 +1,6 @@
 <ion-view title="Login Screen">
     <ion-content has-bouncing="false">
-        <div class="row" ng-controller="passcodeCtrl">
+        <div class="row" ng-controller="passcodeCtrl" ng-init="initEmployeeList">
             <div class="col">
                 <ion-scroll has-bouncing="true" scrollbar-x="false" scrollbar-y="false" direction="x" style="width: 103%; height: 200px;white-space: nowrap;  margin-left:-10px; margin-right: -10px;">
                     <div  class="photo_wrapper" id="login-employee-list" ng-repeat="it in employees" ng-click="selectEmployee(it.id)">

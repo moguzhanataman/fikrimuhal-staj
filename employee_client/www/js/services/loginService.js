@@ -12,8 +12,24 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
     }
 
     /**
+     * Saves logged in user to localStorage via storageService.
+     * When app closed we don't lost who logged in last.
+     */
+    function _storeLogginginEmployee(employee) {
+        storageService.put("lastLogged", employee);
+    }
+
+    /**
+     * Gets last logged in employee from localStorage via storageService
+     * @returns {json} Employee JSON
+     */
+    function getLastLoggedinEmployee() {
+        return storageService.get("lastLogged");
+    }
+
+    /**
      * @param: {string} employeeId for current employees id,
-     * @param: {string}password for the code entered by user
+     * @param: {string} password for the code entered by user
      * @returns boolean, true for granteed access, false for denied access
      */
     function auth(employeeId, password) {
@@ -21,6 +37,9 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
         var employee = _.find(cache.list, {'id': employeeId, 'passwordHash': hashedPasscode});
         if (employee) {
             _loggedinEmployee = employee;
+            // Register employee in localStorage
+            _storeLogginginEmployee(employee);
+            console.log("storing last logged employee");
         }
         else {
             //A kullanıcı login olmuşdurumda iken
@@ -31,9 +50,6 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
 
         return  isLoggedin();
     }
-
-
-
 
     /**
      * @return {object} returns employee {'id':8, 'name':"mehmet", 'photoData': "base64" }
@@ -73,8 +89,7 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
         'loggedinEmployee': loggedinEmployee,
         'isAuth': isLoggedin,
         'isLoggedin':isLoggedin,
+        'getLastLoggedinEmployee': getLastLoggedinEmployee,
         'logout': logout
     }
 }]);
-
-var fikrimuhalStaj = angular.module('fikrimuhalStaj');

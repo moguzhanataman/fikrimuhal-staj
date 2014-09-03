@@ -1,5 +1,4 @@
-fikrimuhalStaj.controller('LoginCtrl', [ '$scope', '$state' , 'loginService', function ($scope, $state, loginService) {
-
+fikrimuhalStaj.controller('LoginCtrl', ['$scope', '$state', 'loginService', function ($scope, $state, loginService) {
     // Get employees from api
     loginService.getEmployeeList().then(function (employeeList) {
         $scope.employees = employeeList;
@@ -7,9 +6,20 @@ fikrimuhalStaj.controller('LoginCtrl', [ '$scope', '$state' , 'loginService', fu
         $scope.employees = e;
     });
 
+    //function checkLastLoggedinEmployee() {
+    //    console.log("55555555555");
+    //    var lastLoggedinEmployee = loginService.getLastLoggedinEmployee();
+    //    console.log(lastLoggedinEmployee);
+    //    if (lastLoggedinEmployee && lastLoggedinEmployee.id) {
+    //        console.log("55555555555 seçtim");
+    //        $scope.selectEmployee(lastLoggedinEmployee.id);
+    //    } else {
+    //        console.log("111 lastloggedinemployee", lastLoggedinEmployee);
+    //    }
+    //}
+
+
     $scope.checkPasscode = function checkPasscode(employeeId, pass) {
-
-
         if (loginService.auth(employeeId, pass) == true) {
 
             //BUG #STAJA-7 ,
@@ -32,14 +42,14 @@ fikrimuhalStaj.controller('LoginCtrl', [ '$scope', '$state' , 'loginService', fu
     if (loginService.isLoggedin()) {
         $scope.selectedEmployeeId = loginService.loggedinEmployee().id;
     }
-
 }]);
 
-fikrimuhalStaj.controller('passcodeCtrl', ['$scope', function ($scope) {
+fikrimuhalStaj.controller('passcodeCtrl', ['$scope', 'loginService', function ($scope, loginService) {
+
     var parentScope = $scope.$parent;
 
     /* bir ust scope dan parent.selectedEmployeeId geliyor,
-    Directive e cevrilince buna gerek kalmayacak. */
+     Directive e cevrilince buna gerek kalmayacak. */
     /*parent.selectedEmployeeId*/
 
     var employees = $scope.employees;
@@ -48,12 +58,12 @@ fikrimuhalStaj.controller('passcodeCtrl', ['$scope', function ($scope) {
     var pins = {};
 
 
-    function combinePins(pinObject) {
+    function _combinePins(pinObject) {
         return "" + pinObject[1] + pinObject[2] + pinObject[3] + pinObject[4];
     }
 
     /* currentPasscodeValue resetleme daha sonrası loginCtrlye lazım */
-    function resetPins() {
+    function _resetPins() {
         pinCounter = 1;
         pins[1] = "";
         pins[2] = "";
@@ -61,29 +71,44 @@ fikrimuhalStaj.controller('passcodeCtrl', ['$scope', function ($scope) {
         pins[4] = "";
     }
 
+
+    /**
+     * En son girilen employee varsa view'ı o employee'nin resmini seçecek
+     * şekilde güncelle. Dolayısıyla localStorage silinmediyse yada ilk açılış
+     * değilse her zaman bir employee seçili olacak.
+     */
+    function _initEmployeeList() {
+        var lastLoggedinEmployee = loginService.getLastLoggedinEmployee();
+        console.log("init employeeList", lastLoggedinEmployee);
+        if (lastLoggedinEmployee) {
+            selectEmployee(lastLoggedinEmployee.id);
+        }
+    }
+
     function passcodeReady() {
-        resetPins();
+        _resetPins();
         $scope.checkPasscode(parentScope.selectedEmployeeId, currentPasscodeValue);
     }
 
     function selectEmployee(id) {
         parentScope.selectedEmployeeId = id;
-        resetPins();
+        _resetPins();
     }
 
     function addPin(number) {
         if (parentScope.selectedEmployeeId) {
             pins[pinCounter++] = number;
             if (pinCounter == 5) {
-                currentPasscodeValue = combinePins(pins);
+                currentPasscodeValue = _combinePins(pins);
                 passcodeReady();
             }
-        } else{
+        } else {
             alert("Kullanıcı seçin");
         }
     }
 
-    resetPins();
+    _resetPins();
+    _initEmployeeList();
 
     // $scope.employees = employees;
 //    $scope.selectedEmployee = selectedEmployee;
