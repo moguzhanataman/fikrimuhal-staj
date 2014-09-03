@@ -12,8 +12,13 @@ import scala.reflect.io.File
  */
 object CustomerController extends Controller {
 
-  def getAllCustomerList() = Action {
-    val customerAsMap = Map("customers" -> Customer.all)
+  def getAllCustomerList() = Action {  request =>
+    val host = request.headers.get("host").get
+
+    val customerAsMap = Map("customers" -> Customer.all.map { customer =>
+      val fullUrl = s"http://${host}/api/customers/${customer.id}/photo"
+      customer.copy(photoData = fullUrl)
+    })
     val customerAsJson = Json.toJson(customerAsMap)
 
     Logger.debug(Json.prettyPrint(customerAsJson))
@@ -36,7 +41,7 @@ object CustomerController extends Controller {
       val imageBytes = File(customer.photoData).toByteArray()
       Ok(imageBytes).withHeaders(
         "content-type" -> "image/jpeg",
-        "Cache-Control" -> s"public, max-age=${7 * 24 * 60 * 60}"
+        "cache-control" -> s"public, max-age=${7 * 24 * 60 * 60}"
       )
     }.getOrElse(NotFound)
 

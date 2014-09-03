@@ -20,7 +20,7 @@ object Customer {
 
   val products = model.Product.all
 
-  def profilePicPath(customerId: Int) = "./public/data/profilePictures/" + customerId + ".jpg"
+  def profilePicPath(customerId: Int) = "public/data/profilePictures/" + customerId + ".jpg"
 
   val all = Seq(
     Customer(1, "Eyüphan Akgün",    profilePicPath(1), 1409061949, 1),
