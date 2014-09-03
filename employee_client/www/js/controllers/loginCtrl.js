@@ -3,7 +3,9 @@ fikrimuhalStaj.controller('LoginCtrl', [ '$scope', '$state' , 'loginService', fu
     // Get employees from api
     loginService.getEmployeeList().then(function (employeeList) {
         $scope.employees = employeeList;
+        console.log("1111xccxcxcxcxccxcxcxccxcxcxcxcxccxcxcxccxcxcx")
     }).catch(function (e) {
+        console.log("2222xccxcxcxcxccxcxcxccxcxcxcxcxccxcxcxccxcxcx",e)
         $scope.employees = e;
     });
 
