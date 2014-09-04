@@ -1,5 +1,9 @@
-fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerService', 'loginService' , function($scope,$state,customerService,loginService) {
+fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerService', 'loginService', 'currentCustomerService', function($scope,$state,customerService,loginService,currentCustomerService) {
     $scope.message = 'Ürün seçin';
+
+    currentCustomerService.getCustomer().then(function(customer) {
+        $scope.currentCustomer = customer;
+    });
 
     customerService.getProducts().then(function (products) {
         $scope.productList = splitArray(products);

@@ -3,10 +3,10 @@
         <div ng-controller="customerDetailCtrl">
             <div class="row">
                 <div class="col col-33">
-                    <img class="thumbnail" src="img/avatar-big.png" width="200" height="200"/>
+                    <img class="thumbnail" ng-src="{{currentCustomer.photoData}}" width="200" height="200"/>
                 </div>
                 <div class="col">
-                    <h1>M. Oğuzhan Ataman</h1>
+                    <h1>{{currentCustomer.name}}</h1>
                     <button class="button button-positive" ng-click="goToCart()">Sepete Git</button>
                     <div class="tog">
                         Müşteri lock

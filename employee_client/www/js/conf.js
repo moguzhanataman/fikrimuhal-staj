@@ -16,7 +16,10 @@ config.api.base ="http://" + config.api.ip + ":" +config.api.port + "/";
 config.api.urls = { 
 	customerList: config.api.base + "api/customers/current",
 	employeeList: config.api.base + "api/employees",
-    productList: config.api.base + "api/products"
+    productList: config.api.base + "api/products",
+    customerById: function(id) {
+        return config.api.base + "api/customers/" + id;
+    }
 };
 
 var constant = {};

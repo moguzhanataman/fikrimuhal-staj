@@ -1,10 +1,10 @@
-fikrimuhalStaj.controller('customerListCtrl', ['$scope' ,'loginService','customerService' , function ($scope, loginService, customerService) {
+fikrimuhalStaj.controller('customerListCtrl', ['$scope' ,'loginService','customerService', 'currentCustomerService' , function ($scope, loginService, customerService, currentCustomerService) {
     
     function setCustomerID(id){
-    	customerService.setCustomer(id);
+    	// customerService.setCustomer(id);
+        currentCustomerService.setCustomerById(id);
     }
 
-    /* TODO alert için release öncesi custom bir fonksiyon yazılacak */
     customerService.getCustomerList().then(function (customerList) {
     	$scope.customerList = splitArray(customerList);
     }).catch(function (e) {
@@ -13,4 +13,5 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' ,'loginService','custome
 
     $scope.setCustomerID = setCustomerID;
     $scope.customerList = {left:[], right:[]};
+
 }]);
