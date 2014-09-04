@@ -1,27 +1,17 @@
 var fikrimuhalStaj = angular.module('fikrimuhalStaj');
 
-fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'cartService' ,function customerService($http, $q,productService,cartService) {
+fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'cartService', 'currentCustomerService' ,function customerService($http, $q,productService,cartService, currentCustomerService) {
 
     var cachedCustomerList = cached($q, fetchCustomersFromServer);
     var cachedProductList = cached($q, fetchProductsFromServer);
     var getProductsForSelectedCustomers = cachedProductList.promise;
-    var currentCustomerID = null;
-
-    var mockProductList= [
-        { "id": 5, "name": "Ürün", "price": 601 },
-        { "id": 15, "name": "Ürün", "price": 602 },
-        { "id": 25, "name": "Ürün", "price": 603 },
-        { "id": 35, "name": "Ürün", "price": 604 },
-        { "id": 45, "name": "Ürün", "price": 605 },
-        { "id": 55, "name": "Ürün", "price": 606 }
-    ];
+    var currentCustomerID = currentCustomerService.getCustomerId();
 
     var mockDeletedProducts = [
         { "id": 65, "name": "Ürün", "price": 607 },
         { "id": 75, "name": "Ürün", "price": 608 }
     ];
 
-    var productListCache = mockProductList;
     var deletedProducts = mockDeletedProducts;
 
     /**

@@ -1,17 +1,18 @@
 fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerService', 'loginService', 'currentCustomerService', function($scope,$state,customerService,loginService,currentCustomerService) {
-    $scope.message = 'Ürün seçin';
 
-    currentCustomerService.getCustomer().then(function(customer) {
-        $scope.currentCustomer = customer;
-    });
+    function init() {
 
-    customerService.getProducts().then(function (products) {
-        $scope.productList = splitArray(products);
-    }).catch(function (e) {
-        $scope.productList = splitArray(e);
-    });
+        currentCustomerService.getCustomer().then(function (customer) {
+            $scope.currentCustomer = customer;
+        });
 
-    $scope.deletedProducts = customerService.getDeletedProducts();
+        customerService.getProducts().then(function (products) {
+            $scope.productList = splitArray(products);
+        }).catch(function (e) {
+            $scope.productList = splitArray(e);
+        });
+
+    }
 
     /* TODO  lodash kur lodashle sil */
     function slideHasChanged(product, index, listNo) {
@@ -71,5 +72,9 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
     $scope.goToCart = function goToCart(){ 
         $state.go('cart');
     }
+    $scope.deletedProducts = customerService.getDeletedProducts();
+    $scope.message = 'Ürün seçin';
+
+    init();
 
 }]);
