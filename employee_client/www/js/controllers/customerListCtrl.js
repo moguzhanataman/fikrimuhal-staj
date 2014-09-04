@@ -4,7 +4,6 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' ,'loginService','custome
     	customerService.setCustomer(id);
     }
 
-    /* TODO alert için release öncesi custom bir fonksiyon yazılacak */
     customerService.getCustomerList().then(function (customerList) {
     	$scope.customerList = splitArray(customerList);
     }).catch(function (e) {
