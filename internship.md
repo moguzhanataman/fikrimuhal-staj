@@ -127,3 +127,8 @@ Bir sonraki çalışma günü yapılması planlananlar
 Bir sonraki çalışma günü yapılması planlananlar
 -----------------------------------------------
 - iBeaconın testleri yapılacak, izleme ve yayın yapabilir olacak
+
+03/09/2014
+----------
+- Giriş yapan çalışanlar uygulamayı kapatıp açsa bile girişleri hatırlanıyor.
+- Müşteri listesindeki fotoğraflar görüntüleniyor.
