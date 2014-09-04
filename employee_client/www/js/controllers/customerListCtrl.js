@@ -1,7 +1,8 @@
-fikrimuhalStaj.controller('customerListCtrl', ['$scope' ,'loginService','customerService' , function ($scope, loginService, customerService) {
+fikrimuhalStaj.controller('customerListCtrl', ['$scope' ,'loginService','customerService', 'currentCustomerService' , function ($scope, loginService, customerService, currentCustomerService) {
     
     function setCustomerID(id){
-    	customerService.setCustomer(id);
+    	// customerService.setCustomer(id);
+        currentCustomerService.setCustomerById(id);
     }
 
     customerService.getCustomerList().then(function (customerList) {
@@ -12,4 +13,5 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' ,'loginService','custome
 
     $scope.setCustomerID = setCustomerID;
     $scope.customerList = {left:[], right:[]};
+
 }]);

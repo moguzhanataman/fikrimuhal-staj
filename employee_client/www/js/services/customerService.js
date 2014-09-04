@@ -53,6 +53,10 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
         return currentCustomerID;
     }
 
+    function getCustomer(id) {
+
+    }
+
     /**
      * @param {boolean} updateFromServer first update then return
      * promise'in rejecti cache yolluyor kullanıcıya alert ile bağlantı hatası yeniden deneyin yazacak
@@ -87,13 +91,14 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
     }
 
     return{ 
-        'getProducts':getProductsForSelectedCustomers,
+        'getProducts':getProductsForSelectedCustomers, //
         'setCustomer':currentCustomerSetter,
         'getCustomerList': getCustomerList,
         'getCustomerID':getCurrentCustomerID,
-        'updateCustomerList': fetchCustomersFromServer,
-        'addItem':updateCart,
-        'getDeletedProducts': getDeletedProducts
+        'getCustomer': getCustomer, //
+        'updateCustomerList': fetchCustomersFromServer, // make private
+        'addItem':updateCart,       // move to cartService
+        'getDeletedProducts': getDeletedProducts // move to cartService
 
     }
  }]);

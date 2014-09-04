@@ -20,19 +20,21 @@ object CustomerController extends Controller {
       customer.copy(photoData = fullUrl)
     })
     val customerAsJson = Json.toJson(customerAsMap)
-
-    Logger.debug(Json.prettyPrint(customerAsJson))
     Ok(customerAsJson)
   }
 
   def getCurrentCustomerList() = getAllCustomerList()
 
   // TODO
-  def getCustomer(id: Int) = Action {
-    Customer.get(id).map { e =>
-      val customerJson = Json.toJson(e)
-      Ok(customerJson)
-    }.getOrElse(NotFound)
+  def getCustomer(id: Int) = Action { request =>
+    val host = request.headers.get("host").get
+
+    val customer = Customer.get(id).map { customer =>
+      val fullUrl = s"http://${host}/api/customers/${customer.id}/photo"
+      customer.copy(photoData = fullUrl)
+    }
+    val customerJson = Json.toJson(customer)
+    Ok(customerJson)
   }
 
   def getCustomerPhoto(id: Int) = Action {
