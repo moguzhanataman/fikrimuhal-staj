@@ -1,6 +1,6 @@
 var config = {};
 
-config.runLocal = true;
+config.runLocal = false;
 
 config.api= {};
 
