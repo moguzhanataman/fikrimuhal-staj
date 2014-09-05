@@ -22,7 +22,7 @@ fikrimuhalStaj.factory('cartService', function loginService() {
     * @return: {array of object} sepetin deep copy edilmiş halini döndürür
     */
     function getCart() {
-        return _.cloneDeep(cartItems);
+        return cartItems;
     }
 
     /**

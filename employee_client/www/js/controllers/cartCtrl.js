@@ -21,6 +21,10 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$ionicSlideBoxDelegate', 'cartS
                 cartItems.splice(indexOfItem, 1);
             }
         }
+
+        totalPrice = cartService.getTotalPrice();
+        totalDiscountedPrice = cartService.getTotalDiscountedPrice();
+        $scope.cart = {'cartItems': cartItems, 'totalPrice': totalPrice, 'totalDiscountedPrice': totalDiscountedPrice};
     }
 
     function cartResetter(){
