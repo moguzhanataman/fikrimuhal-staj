@@ -1,9 +1,12 @@
 fikrimuhalStaj.factory('currentCustomerService', ['$http', '$q', function ($http, $q, get) {
     return {
         setCustomerById: setCustomerById,
-        getCustomer: getCustomer
+        getCustomer: getCustomer,
+        getCustomerId: getCustomerId
+
     };
 
+    var currentCustomer;
     var currentCustomerId;
 
     // ---
@@ -24,7 +27,20 @@ fikrimuhalStaj.factory('currentCustomerService', ['$http', '$q', function ($http
         return request.then(handleSuccess, handleError);
     }
 
-    // currentCustomer'ı set eder
+    /**
+     * Returns customer id from service variable.
+     * @returns {number} customer id
+     */
+    function getCustomerId() {
+
+        return currentCustomerId;
+
+    }
+
+    /**
+     * Sets current customer.
+     * @param {number} customerId
+     */
     function setCustomerById(customerId) {
 
         currentCustomerId = customerId;

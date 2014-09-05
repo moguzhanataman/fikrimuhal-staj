@@ -50,8 +50,12 @@ object CustomerController extends Controller {
   }
 
   def getCustomerProducts(id: Int) = Action {
-    Ok(Json.toJson(Product.all.map { product =>
-      product.id
-    }))
+    if(id == 5) {
+      Ok(Json.toJson(Seq(1)))
+    } else {
+      Ok(Json.toJson(Product.all.map { product =>
+        product.id
+      }))
+    }
   }
 }
