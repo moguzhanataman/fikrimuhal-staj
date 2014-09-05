@@ -30,7 +30,15 @@ object Customer {
     Customer(5, "Kasım Özev",       profilePicPath(5), 1409061949, 1),
     Customer(6, "Emirhan Sarıyar",  profilePicPath(6), 1409061949, 1),
     Customer(7, "Suat Ağgez",       profilePicPath(7), 1409061949, 1),
-    Customer(8, "Furkan Tektaş",    profilePicPath(8), 1409061949, 1)
+    Customer(8, "Furkan Tektaş",    profilePicPath(8), 1409061949, 1),
+    Customer(9, "Eyüphan Akgün",    profilePicPath(1), 1409061949, 1),
+    Customer(12, "Anıl Mavi Çalışkol",    profilePicPath(2), 1409061949, 1),
+    Customer(13, "Sezer Mavi Ural",       profilePicPath(3), 1409061949, 1),
+    Customer(14, "Mehmet Mavi Satılmış",  profilePicPath(4), 1409061949, 1),
+    Customer(15, "Kasım Mavi Özev",       profilePicPath(5), 1409061949, 1),
+    Customer(16, "Emirhan Mavi Sarıyar",  profilePicPath(6), 1409061949, 1),
+    Customer(17, "Suat Mavi Ağgez",       profilePicPath(7), 1409061949, 1),
+    Customer(18, "Furkan Mavi Tektaş",    profilePicPath(8), 1409061949, 1)
     //    Customer(9, "Mehmet", photoData, 1409061949, 1),
     //    Customer(10, "Mehmet", photoData, 1409061949, 1),
     //    Customer(11, "Mehmet", photoData, 1409061949, 1),

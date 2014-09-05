@@ -5,21 +5,19 @@
 
                 <div class="row item item-avatar" ng-repeat="customer in customers"
                      ng-click="selectCustomer(customer.id)">
-                    <div class="col">
-                        <img class="thumbnail" ng-src="{{customer.photoData}}" width="200" height="200"/>
+                    <div class="col-33">
+                        <img class="thumbnail" ng-src="{{customer.photoData}}" width="150" height="150"/>
                     </div>
 
-                    <div class="col">
+                    <div class="col" style="margin-left:35px;">
                         <h2>{{customer.name}} <small style="float: right"> 3m  <i class="icon ion-ios7-location-outline"></i> </small></h2>
                         <hr/>
 
 
                         <p>Geliş zamanı:    <b>1 dakika</b> önce</p>
-                        <p>Kim ilgileniyor:  <b>Burcu Esmersoy</b>, <span style="font-size: smaller">1 dk.</span></p>
-                        <p>Kim ilgileniyor: <b>SİZ</b>, <span style="font-size: smaller">1 dk.</span></p>
-                        <p>Uzaklık: </p>
-                        <br/>
-                        <br/>
+                        <p>Kİ:  <b>Burcu Esmersoy</b>, <span style="font-size: smaller">1 dk.</span></p>
+                        <p>Kİ: <b>SİZ</b>, <span style="font-size: smaller">1 dk.</span></p>
+
 
                         <small style="float: right">15`</small>
                         <p>
