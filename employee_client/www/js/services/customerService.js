@@ -5,7 +5,7 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
     var cachedCustomerList = cached($q, fetchCustomersFromServer);
     var cachedProductList = cached($q, fetchProductsFromServer);
     var getProductsForSelectedCustomers = cachedProductList.promise;
-    var currentCustomerID = currentCustomerService.getCustomerId();
+    var currentCustomerID = 0;
 
     var mockDeletedProducts = [
         { "id": 65, "name": "Ürün", "price": 607 },
@@ -19,7 +19,7 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
     * ve gelen datayı productListCache e yazar
     */
     function fetchProductsFromServer(){
-        var productListUrl = config.api.base + "api/customers/" + currentCustomerID + "/products";
+        var productListUrl = config.api.base + "api/customers/" + currentCustomerService.getCustomerId() + "/products";
         return $http({method: 'GET', url: productListUrl}).then(function (response) {
             var products = productService.getProductsByIds(response.data)
 
