@@ -15,6 +15,7 @@ fikrimuhalStaj.factory('currentCustomerService', ['$http', '$q', function ($http
      * @returns {promise}
      */
     function getCustomer() {
+            console.log("url mi",config.api.urls.customerById(currentCustomerId));
         var request = $http({
             method: "get",
             url: config.api.urls.customerById(currentCustomerId)
@@ -27,6 +28,7 @@ fikrimuhalStaj.factory('currentCustomerService', ['$http', '$q', function ($http
     function setCustomerById(customerId) {
 
         currentCustomerId = customerId;
+        console.log("burası current service", currentCustomerId);
 
     }
 
