@@ -142,3 +142,9 @@ Bir sonraki çalışma günü yapılması planlananlar
 -----------------------------------------------
 - Customer Detail'da çıkan bug'ın düzeltilmesi gerek. (origin/master da çalışan hali duruyor)
 - Cart kısmının hazırlanması.
+
+05/09/2014
+----------
+- Sepet ekranındaki ürün çıkarma ve azaltma hatası düzeltildi
+- Sepette eklenen ürünlerin toplam fiyatının güncel olmama hatası düzeltildi
+- Customer Detail ekranındaki ürünlerin gözükmemesi bugu düzeltildi, ürünlerin listeden çıkarılması halinde silinen ürünler kısmında gösterilmeye başlandı
