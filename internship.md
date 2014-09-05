@@ -132,3 +132,13 @@ Bir sonraki çalışma günü yapılması planlananlar
 ----------
 - Giriş yapan çalışanlar uygulamayı kapatıp açsa bile girişleri hatırlanıyor.
 - Müşteri listesindeki fotoğraflar görüntüleniyor.
+
+04/09/2014
+----------
+- Current Customer Detail isimli servisin tasarımı yapıldı. (Customer Servisinin yükünü azaltmak için oluşturuldu)
+- Customer Detail sayfasında müşteri fotoğraflarının gösterilmesi sağlandı.
+
+Bir sonraki çalışma günü yapılması planlananlar
+-----------------------------------------------
+- Customer Detail'da çıkan bug'ın düzeltilmesi gerek. (origin/master da çalışan hali duruyor)
+- Cart kısmının hazırlanması.

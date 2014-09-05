@@ -1,14 +1,15 @@
 package controllers
 
 import model.Cart
-import org.apache.commons.codec.binary.Base64
 import play.api.Logger
 import play.api.Play.current
+import play.api.libs.iteratee.{Concurrent, Iteratee}
 import play.api.libs.json.Json
 import play.api.libs.ws._
-import play.api.mvc.{Action, Controller}
+import play.api.mvc.{Action, Controller, WebSocket}
 
 import scala.concurrent.ExecutionContext.Implicits.global
+
 
 /**
  * Created by oguzhan on 8/27/14.
@@ -26,8 +27,18 @@ object TestController extends Controller {
 
   def testImages() = Action {
     val x = new java.io.File("./")
-//    val imageByteArray = File("/home/oguzhan/staj/fikrimuhal-staj/server/fikrimuhal-json-api/public/data/profilePictures/1.jpg").toByteArray()
-//    "data:image/png;base64," + Base64.encodeBase64String(imageByteArray)
+    //    val imageByteArray = File("/home/oguzhan/staj/fikrimuhal-staj/server/fikrimuhal-json-api/public/data/profilePictures/1.jpg").toByteArray()
+    //    "data:image/png;base64," + Base64.encodeBase64String(imageByteArray)
     Ok(x.getAbsolutePath())
   }
+
+  def websocket = WebSocket.using[String] { request =>
+    val (out, channel) = Concurrent.broadcast[String]
+    val in = Iteratee.foreach[String] { msg => println(msg)
+      channel push ("RESPONSE:" + msg)
+    }
+
+    (in, out)
+  }
+
 }

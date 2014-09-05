@@ -14,4 +14,9 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' ,'loginService','custome
     $scope.setCustomerID = setCustomerID;
     $scope.customerList = {left:[], right:[]};
 
+
+    // WebSocket
+    var ws = new WebSocket("ws://localhost:9000/api/test/websocket");
+    ws.onmessage = function( message ) { console.log( message ); };
+
 }]);
