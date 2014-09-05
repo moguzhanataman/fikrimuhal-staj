@@ -7,12 +7,7 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
     var getProductsForSelectedCustomers = cachedProductList.promise;
     var currentCustomerID = 0;
 
-    var mockDeletedProducts = [
-        { "id": 65, "name": "Ürün", "price": 607 },
-        { "id": 75, "name": "Ürün", "price": 608 }
-    ];
-
-    var deletedProducts = mockDeletedProducts;
+    var deletedProducts = [];
 
     /**
     * description: serverdan scopedaki müşteri idsini kullaranak serverdan önerilen ürünlerin listesini request eder

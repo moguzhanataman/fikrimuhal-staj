@@ -1,18 +1,19 @@
-fikrimuhalStaj.controller('customerListCtrl', ['$scope' ,'loginService','customerService', 'currentCustomerService' , function ($scope, loginService, customerService, currentCustomerService) {
-    
-    function setCustomerID(id){
-    	// customerService.setCustomer(id);
+fikrimuhalStaj.controller('customerListCtrl', ['$scope' , 'loginService', 'customerService', 'currentCustomerService', '$state' , function ($scope, loginService, customerService, currentCustomerService, $state) {
+
+    function selectCustomer(id) {
+        // customerService.setCustomer(id);
         currentCustomerService.setCustomerById(id);
+        $state.go('customerDetail');
     }
 
     customerService.getCustomerList().then(function (customerList) {
-    	$scope.customerList = splitArray(customerList);
+        $scope.customerList = splitArray(customerList);
     }).catch(function (e) {
-    	$scope.customerList = splitArray(e);
+        $scope.customerList = splitArray(e);
     });
 
-    $scope.setCustomerID = setCustomerID;
-    $scope.customerList = {left:[], right:[]};
+    $scope.selectCustomer = selectCustomer;
+    $scope.customerList = {left: [], right: []};
 
 
     // WebSocket

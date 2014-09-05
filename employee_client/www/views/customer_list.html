@@ -1,16 +1,48 @@
 <ion-view title="Customer List" left-buttons="leftButtons">
     <ion-content>
         <div class="row" ng-controller="customerListCtrl">
-            <div class="col col-50 list" ng-repeat="customers in customerList">
-                <div class="row" ng-repeat="customer in customers">
-                    <div class="col item item-avatar"><a href="#/customerDetail" ng-click="setCustomerID(customer.id)">
+            <div class="col col-50" ng-repeat="customers in customerList">
+
+                <div class="row item item-avatar" ng-repeat="customer in customers"
+                     ng-click="selectCustomer(customer.id)">
+                    <div class="col">
                         <img class="thumbnail" ng-src="{{customer.photoData}}" width="200" height="200"/>
-                        <h2>{{customer.id}}</h2>
-                        <p>{{customer.name}}</p>
-                        </a>
+                    </div>
+
+                    <div class="col">
+                        <h2>{{customer.name}} <small style="float: right"> 3m  <i class="icon ion-ios7-location-outline"></i> </small></h2>
+                        <hr/>
+
+
+                        <p>Geliş zamanı:    <b>1 dakika</b> önce</p>
+                        <p>Kim ilgileniyor:  <b>Burcu Esmersoy</b>, <span style="font-size: smaller">1 dk.</span></p>
+                        <p>Kim ilgileniyor: <b>SİZ</b>, <span style="font-size: smaller">1 dk.</span></p>
+                        <p>Uzaklık: </p>
+                        <br/>
+                        <br/>
+
+                        <small style="float: right">15`</small>
+                        <p>
+                            <i class="icon ion-ios7-pricetagr"></i>
+                            <i class="icon ion-ios7-star-half"></i>
+                            <i class="icon ion-ios7-star"></i>
+                            <i class="icon ion-ios7-star-outline"></i>
+                            <i class="icon ion-ios7-cart"></i>
+                            <i class="icon ion-ios7-clock-outline"></i>
+                            <i class="icon ion-ios7-pulse"></i>
+                            <i class="icon ion-ios7-locked"></i>
+                            <i class="icon ion-ios7-bell-outline"></i>
+                            <i class="icon ion-android-timer"></i>
+                            <i class="icon ion-ios7-unlocked"></i>
+                            <i class="icon ion-ios7-infinite"></i>
+                            <i class="icon ion-ios7-calculator"></i>
+                        </p>
+
                     </div>
                 </div>
+
             </div>
+
         </div>
     </ion-content>
 </ion-view>
