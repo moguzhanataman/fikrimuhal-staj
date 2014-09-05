@@ -8,6 +8,7 @@ import play.api.libs.json.Json
 import play.api.libs.ws._
 import play.api.mvc.{Action, Controller, WebSocket}
 
+import scala.collection.mutable.ListBuffer
 import scala.concurrent.ExecutionContext.Implicits.global
 
 
@@ -32,10 +33,27 @@ object TestController extends Controller {
     Ok(x.getAbsolutePath())
   }
 
+  import scala.collection.mutable.ListBuffer
+  var channelSeq: ListBuffer[Concurrent.Channel[String]] = ListBuffer[Concurrent.Channel[String]]()
+
   def websocket = WebSocket.using[String] { request =>
+
     val (out, channel) = Concurrent.broadcast[String]
-    val in = Iteratee.foreach[String] { msg => println(msg)
+    val in = Iteratee.foreach[String] { msg =>
+      println(msg)
       channel push ("RESPONSE:" + msg)
+      channelSeq.foreach { c =>
+        c.push("selam: " + msg)
+        println("channelSeq log")
+      }
+    }
+
+    channelSeq += channel
+
+    Logger.debug("WEBSOCKET BAGLANDI" + channelSeq)
+
+    channelSeq.foreach { c =>
+      println(c)
     }
 
     (in, out)
