@@ -28,10 +28,9 @@ object CustomerController extends Controller {
 
   // TODO
   def getCustomer(id: Int) = Action { request =>
-    val host = request.headers.get("host").get
-
+    val host = Play.current.configuration.getString("server.host").getOrElse("localhost")
     val customer = Customer.get(id).map { customer =>
-      val fullUrl = s"http://${host}/api/customers/${customer.id}/photo"
+      val fullUrl = s"http://${host}:9000/api/customers/${customer.id}/photo"
       customer.copy(photoData = fullUrl)
     }
     val customerJson = Json.toJson(customer)
