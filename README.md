@@ -25,3 +25,7 @@ Masaüstü browserda çalıştırmak için
 http-server -a 0.0.0.0 -p 8000 --cors
 
 google-chrome --disable-web-security
+
+
+Git reposunda olan bir dosyayı değişse bile değişmemiş olarak işaretlemek için.
+git update-index --assume-unchanged /Users/sumnulu/Projects/staj/server/fikrimuhal-json-api/conf
