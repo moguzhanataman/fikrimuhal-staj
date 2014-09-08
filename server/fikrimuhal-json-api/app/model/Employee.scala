@@ -11,14 +11,16 @@ object Employee {
 
   implicit val jsonConverter = Json.format[Employee]
 
+  def employeePicPath(employeeId: Int) = "public/data/employeePictures/" + employeeId + ".jpg"
+
   val all = Seq(
-    Employee(1, "M. Oğuzhan Ataman", "./img/employees/oguz.jpg", "81dc9bdb52d04dc20036dbd8313ed055"),
-    Employee(2, "Kasım Süzen", "./img/employees/kasim.jpg", "81dc9bdb52d04dc20036dbd8313ed055"),
-    Employee(3, "Ilgaz Şumnulu", "./img/employees/ilgaz.jpg", "81dc9bdb52d04dc20036dbd8313ed055"),
-    Employee(4, "Şükrü Hasdemir", "./img/employees/sukru.jpg", "81dc9bdb52d04dc20036dbd8313ed055"),
-    Employee(5, "Orhan Gencebay", "./img/employees/orhan.jpg", "81dc9bdb52d04dc20036dbd8313ed055"),
-    Employee(6, "Zeki Müren", "./img/employees/zeki.jpg", "81dc9bdb52d04dc20036dbd8313ed055"),
-    Employee(7, "Hakkı Bulut", "./img/employees/hakki.jpg", "81dc9bdb52d04dc20036dbd8313ed055")
+    Employee(1, "M. Oğuzhan Ataman", employeePicPath(1), "81dc9bdb52d04dc20036dbd8313ed055"),
+    Employee(2, "Kasım Süzen", employeePicPath(2), "81dc9bdb52d04dc20036dbd8313ed055"),
+    Employee(3, "Ilgaz Şumnulu", employeePicPath(3), "81dc9bdb52d04dc20036dbd8313ed055"),
+    Employee(4, "Şükrü Hasdemir",  employeePicPath(4), "81dc9bdb52d04dc20036dbd8313ed055"),
+    Employee(5, "Orhan Gencebay",  employeePicPath(5), "81dc9bdb52d04dc20036dbd8313ed055"),
+    Employee(6, "Zeki Müren",  employeePicPath(6), "81dc9bdb52d04dc20036dbd8313ed055"),
+    Employee(7, "Hakkı Bulut", employeePicPath(7), "81dc9bdb52d04dc20036dbd8313ed055")
   )
 
   def filterById(id: Int) = all.filter(id == _.id)

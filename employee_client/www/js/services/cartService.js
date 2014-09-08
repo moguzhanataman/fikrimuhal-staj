@@ -11,8 +11,6 @@ fikrimuhalStaj.factory('cartService',['currentCustomerService', function cartSer
 
     var allCarts = {};
 
-    var cartItems = mockCartItems;
-
     /**
      * description: o anki sepeti döndürür
      * @return: {array of object} sepetin deep copy edilmiş halini döndürür

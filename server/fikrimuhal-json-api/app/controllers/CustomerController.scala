@@ -1,7 +1,7 @@
 package controllers
 
 import model.{Customer, Product}
-import play.api.{Play, Logger}
+import play.api.Play
 import play.api.libs.json._
 import play.api.mvc.{Action, Controller}
 
@@ -12,7 +12,7 @@ import scala.reflect.io.File
  */
 object CustomerController extends Controller {
 
-  def getAllCustomerList() = Action {  request =>
+  def getAllCustomerList() = Action { request =>
     val host = request.headers.get("host").get
 
     val customerAsMap = Map("customers" -> Customer.all.map { customer =>
@@ -50,7 +50,7 @@ object CustomerController extends Controller {
   }
 
   def getCustomerProducts(id: Int) = Action {
-    if(id == 5) {
+    if (id == 5) {
       Ok(Json.toJson(Seq(1)))
     } else {
       Ok(Json.toJson(Product.all.map { product =>

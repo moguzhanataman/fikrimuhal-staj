@@ -13,6 +13,7 @@ GET           /assets/*file                            controllers.Assets.at(pat
 # Implemented
 GET           /api/employees                           controllers.EmployeeController.list()
 GET           /api/employees/:id                       controllers.EmployeeController.get(id: Int)
+GET           /api/employees/:id/photo                 controllers.EmployeeController.getEmployeePhoto(id: Int)
 
 # Implemented
 GET           /api/customers                           controllers.CustomerController.getAllCustomerList()
