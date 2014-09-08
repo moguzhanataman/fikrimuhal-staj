@@ -90,3 +90,9 @@ function cached($q, fetchFromServer, storageService, key) {
 
     }
 }
+
+function IllegalState(m) {
+    this.message = m || "Illegal State Exception.";
+}
+
+IllegalState.prototype=new Error();
