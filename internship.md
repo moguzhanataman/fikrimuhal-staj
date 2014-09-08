@@ -148,3 +148,20 @@ Bir sonraki çalışma günü yapılması planlananlar
 - Sepet ekranındaki ürün çıkarma ve azaltma hatası düzeltildi
 - Sepette eklenen ürünlerin toplam fiyatının güncel olmama hatası düzeltildi
 - Customer Detail ekranındaki ürünlerin gözükmemesi bugu düzeltildi, ürünlerin listeden çıkarılması halinde silinen ürünler kısmında gösterilmeye başlandı
+
+08/09/2014
+----------
+- Silinen ürünler belli bir miktarda gösteriliyor(şu anda 10 adet)
+- Aleşveriş bitince müşteri listesine geri dönme eklendi
+- CartServicedeki mock itemlar kaldırıldı
+- Müşteriye ürün öneri sayfasında müşteri ismi ve bilgilerinin hatası düzeltildi
+- Cart service her müşteri için ayrı ayrı çalışıyor
+- O anki müşteri bilgisi olmadan sepet oluşturulmasına karşı exception ve handleri yazıldı
+- Ranking fonksiyonuna başlandı, fonksiyon temel olarak oluşturuldu lineer weight constantları ayarlanacak, daha sonra lineer regresyon ile düzeltilecek.
+
+Bir sonraki çalışma günü yapılması planlananlar
+-----------------------------------------------
+- Sepeti serverdan alınacak
+- Ürünlerin ve çalışanların resimleri 
+- Sepetteyken ürün sayısı arttırmak eklenecek
+- Ranking fonksiyonuna devam edilecek
