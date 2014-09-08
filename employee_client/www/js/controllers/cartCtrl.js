@@ -1,4 +1,5 @@
 fikrimuhalStaj.controller('cartCtrl', ['$scope','$ionicSlideBoxDelegate', 'cartService', function ($scope, $ionicSlideBoxDelegate, cartService) {
+
     var cartItems = cartService.getCart();
     var totalPrice = cartService.getTotalPrice();
     var totalDiscountedPrice = cartService.getTotalDiscountedPrice();
@@ -30,7 +31,7 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$ionicSlideBoxDelegate', 'cartS
     function cartResetter(){
         cartService.cartReset();
         cartItems = [];
-        $scope.cart = [];
+        $scope.cart = {'cartItems': cartItems, 'totalPrice': 0, 'totalDiscountedPrice': 0};
     }
 
 
