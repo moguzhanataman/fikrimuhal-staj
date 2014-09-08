@@ -17,11 +17,10 @@ fikrimuhalStaj.factory('cartService',['currentCustomerService', function cartSer
      */
     function getCart() {
 
-        var ccid;
-        ccid = getCCID();
+        var ccid = getCCID();
 
         if (!ccid) {
-        throw new IllegalState("Current Customer ID gelmedi");
+            throw new IllegalState("Current Customer ID gelmedi");
         }
 
 

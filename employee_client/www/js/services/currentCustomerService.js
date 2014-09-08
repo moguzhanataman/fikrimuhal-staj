@@ -6,7 +6,6 @@ fikrimuhalStaj.factory('currentCustomerService', ['$http', '$q', function ($http
 
     };
 
-    var currentCustomer;
     var currentCustomerId;
 
     // ---
@@ -32,7 +31,7 @@ fikrimuhalStaj.factory('currentCustomerService', ['$http', '$q', function ($http
      * @returns {number} customer id
      */
     function getCustomerId() {
-
+        console.error("current customer yok");
         return currentCustomerId;
 
     }
