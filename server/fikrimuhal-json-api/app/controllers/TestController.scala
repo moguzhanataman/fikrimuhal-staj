@@ -34,7 +34,7 @@ object TestController extends Controller {
   }
 
   import scala.collection.mutable.ListBuffer
-  var channelSeq: ListBuffer[Concurrent.Channel[String]] = ListBuffer[Concurrent.Channel[String]]()
+  var channelSeq = ListBuffer[Concurrent.Channel[String]]()
 
   def websocket = WebSocket.using[String] { request =>
 
