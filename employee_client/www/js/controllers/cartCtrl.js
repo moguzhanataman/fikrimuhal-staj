@@ -36,7 +36,7 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
         cartService.cartReset();
         cartItems = [];
         $scope.cart = {'cartItems': cartItems, 'totalPrice': 0, 'totalDiscountedPrice': 0};
-        $state.go('customerDetail');
+        $state.go('customerList');
     }
 
 
