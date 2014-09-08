@@ -1,6 +1,6 @@
 var config = {};
 
-config.runLocal = true;
+config.runLocal = false;
 
 config.api= {};
 
@@ -8,9 +8,10 @@ if (config.runLocal) {
 	config.api.ip = "localhost";
 } else {
     // Mac
-	config.api.ip = "192.168.1.2";
+	config.api.ip = "192.168.1.11";
 }
 
+config.api.ip = "192.168.1.11";
 config.api.port = "9000";
 config.api.base ="http://" + config.api.ip + ":" +config.api.port + "/";
 config.api.urls = { 
@@ -21,6 +22,8 @@ config.api.urls = {
         return config.api.base + "api/customers/" + id;
     }
 };
+
+console.log("config", config.api.ip);
 
 var constant = {};
 constant.cartSlider = {"REMOVE_ITEM": 1, "CURRENT_ITEM": 0};
