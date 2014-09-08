@@ -23,3 +23,5 @@ customer_client/gradlew.bat
 .idea
 
 *.iml
+
+server/fikrimuhal-json-api/conf/local.conf
