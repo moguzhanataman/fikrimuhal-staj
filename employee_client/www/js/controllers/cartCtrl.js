@@ -1,9 +1,13 @@
-fikrimuhalStaj.controller('cartCtrl', ['$scope','$ionicSlideBoxDelegate', 'cartService', function ($scope, $ionicSlideBoxDelegate, cartService) {
+fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate', 'cartService', 'currentCustomerService', function ($scope, $state, $ionicSlideBoxDelegate, cartService, currentCustomerService) {
 
     var cartItems = cartService.getCart();
     var totalPrice = cartService.getTotalPrice();
     var totalDiscountedPrice = cartService.getTotalDiscountedPrice();
     var indexOfItem = 0;
+
+    currentCustomerService.getCustomer().then(function (customer) {
+        $scope.currentCustomer = customer;
+    });
 
     /* setTimeOut() index geç alındığı için setTimeOut ile beklendi ionic frameworkün kendi bugu */
     function cartSlideHasChanged(it, index) {
@@ -32,6 +36,7 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$ionicSlideBoxDelegate', 'cartS
         cartService.cartReset();
         cartItems = [];
         $scope.cart = {'cartItems': cartItems, 'totalPrice': 0, 'totalDiscountedPrice': 0};
+        $state.go('customerDetail');
     }
 
 
@@ -42,5 +47,5 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$ionicSlideBoxDelegate', 'cartS
     $scope.campaign = { 'name': "anneler günü", 'discount': 159, 'totalAfterDiscount': 1800 };
 
     $scope.cart = {'cartItems': cartItems, 'totalPrice': totalPrice, 'totalDiscountedPrice': totalDiscountedPrice};
-    $scope.currentCustomer = {'name': "Hakkı Özveren Bayraktaşıyan", 'id': 15 };
+    
 }]);

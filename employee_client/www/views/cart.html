@@ -4,7 +4,7 @@
             <div class="list">
                 <div class="row">
                     <div class="col col-20">
-                        <img src="img/avatar-big.png" width="150px" height="150px"/>
+                        <img ng-src="{{currentCustomer.photoData}}" width="150px" height="150px"/>
                     </div>
                     <div class="col">
                         <div class="row">
@@ -44,7 +44,7 @@
                                     <ion-slide>
                                         <div class="row">
                                             <div class="col col-25">
-                                                <img src="img/placeholder_large.png"  width="150px" height="150px"/>
+                                                <img ng-src="{{it.photo}}"  width="150px" height="150px"/>
                                             </div>
                                             <div class="col col-25">
                                                 <h3>{{it.name}}</h3>

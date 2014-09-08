@@ -80,11 +80,13 @@
             <div class="row">
                 <ion-list>
                     <ion-item>
-                        <div class="row" ng-repeat="it in deletedProducts">
+                        <div class="row" ng-repeat="it in deletedProducts | limitTo:10">
                             <div class="col">
                                 <ion-slide-box on-slide-changed="deletedItemSlideHasChanged(it,$index)" active-slide="sliderState" show-pager="false">
                                     <ion-slide>
-                                        <div class="col" style="background-color:green; text-align:center; height:200px; line-height:200px; font-size:40px;">EKLE</div>
+                                        <div class="row">
+                                            <div class="col" style="background-color:green; text-align:center; height:200px; line-height:200px; font-size:40px;">EKLE</div>
+                                        </div>
                                     </ion-slide>
                                     <ion-slide>
                                         <div class="row">
@@ -96,9 +98,6 @@
                                                 <p>{{it.price}}</p>
                                             </div>
                                         </div>
-                                    </ion-slide>
-                                    <ion-slide>
-                                        <div class="col" style="background-color:red; text-align:center; height:200px; line-height:200px; font-size:40px;">İPTAL</div>
                                     </ion-slide>
                                 </ion-slide-box>
                             </div>

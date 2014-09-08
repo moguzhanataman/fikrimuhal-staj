@@ -27,12 +27,16 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
         if (index == 2) {
 
             if (indexofProductL > -1) {
+                deletedList.reverse();
                 deletedList.push(listSplit.left[indexofProductL]);
+                deletedList.reverse();
                 listSplit.left.splice(indexofProductL, 1);
             }
 
             if (indexofProductR > -1) {
+                deletedList.reverse();
                 deletedList.push(listSplit.right[indexofProductR]);
+                deletedList.reverse();
                 listSplit.right.splice(indexofProductR, 1);
             }
             console.log("deleted", deletedList);
