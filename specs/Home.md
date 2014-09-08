@@ -22,3 +22,4 @@
 
 ## Misc
 - [Wireframes](./wireframe/wireframe.md)
+- [Ranking](./rank.md)
