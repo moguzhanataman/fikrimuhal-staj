@@ -1,6 +1,6 @@
 var fikrimuhalStaj = angular.module('fikrimuhalStaj');
 
-fikrimuhalStaj.factory('cartService',['$state' ,'currentCustomerService', function cartService($state, currentCustomerService) {
+fikrimuhalStaj.factory('cartService',['currentCustomerService', function cartService(currentCustomerService) {
 
     /**
      * @returns {*} current customer id
@@ -17,23 +17,12 @@ fikrimuhalStaj.factory('cartService',['$state' ,'currentCustomerService', functi
      */
     function getCart() {
 
-        var ccid;
+        var ccid = getCCID();
 
-        function IllegalState(m) {
-            this.message = m || "Illegal State Exception.";
-        }
-
-        try{
-            ccid = getCCID();
-
-            if (!ccid) {
+        if (!ccid) {
             throw new IllegalState("Current Customer ID gelmedi");
-            }
         }
 
-        catch (error){
-            $state.go('login');
-        }
 
         if (!allCarts[ccid]) {
             allCarts[ccid] = [];
