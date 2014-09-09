@@ -4,7 +4,7 @@
             <div class="col col-50" ng-repeat="customers in customerList">
 
                 <div class="row item item-avatar" ng-repeat="customer in customers"
-                     ng-click="selectCustomer(customer.id)">
+                     ng-click="selectCustomer(customer.customerId)">
                     <div class="col-33">
                         <img class="thumbnail" ng-src="{{customer.photoUrl}}" width="150" height="150"/>
                     </div>
