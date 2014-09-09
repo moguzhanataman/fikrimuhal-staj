@@ -9,6 +9,7 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
         });
 
         customerService.getProducts().then(function (products) {
+            console.log("PRODUCT:::", products);
             $scope.productList = splitArray(products);
         }).catch(function (e) {
             $scope.productList = splitArray(e);

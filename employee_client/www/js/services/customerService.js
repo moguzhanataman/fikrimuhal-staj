@@ -3,6 +3,7 @@ var fikrimuhalStaj = angular.module('fikrimuhalStaj');
 fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'cartService', 'currentCustomerService' ,function customerService($http, $q,productService,cartService, currentCustomerService) {
 
     var cachedCustomerList = cached($q, fetchCustomersFromServer);
+    // TODO isim değişmeli yanlış yönlendiriyor.
     var cachedProductList = cached($q, fetchProductsFromServer);
     var getProductsForSelectedCustomers = cachedProductList.promise;
     var currentCustomerID = 0;
@@ -17,7 +18,7 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
         var productListUrl = config.api.base + "api/customers/" + currentCustomerService.getCustomerId() + "/products";
         return $http({method: 'GET', url: productListUrl}).then(function (response) {
             var products = productService.getProductsByIds(response.data)
-
+            console.log("QQQQQQ:::", response.data);
             return products;
         });
     }

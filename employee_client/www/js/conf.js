@@ -1,6 +1,6 @@
 var config = {};
 
-config.runLocal = false;
+config.runLocal = true;
 
 config.api= {};
 
@@ -11,7 +11,6 @@ if (config.runLocal) {
 	config.api.ip = "192.168.1.11";
 }
 
-config.api.ip = "192.168.1.11";
 config.api.port = "9000";
 config.api.base ="http://" + config.api.ip + ":" +config.api.port + "/";
 config.api.urls = { 

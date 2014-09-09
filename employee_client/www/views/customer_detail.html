@@ -15,6 +15,12 @@
                 <div class="col col-50">
                     <ion-list>
                         <ion-item>
+
+                            <pre>
+                                PRODUCTLIST
+                                {{productList | json}}
+                                PRODUCTLIST
+                            </pre>
                             <div class="row" ng-repeat="product in productList.left | limitTo: 10">
                                 <div class="col">
                                     <ion-slide-box on-slide-changed="slideHasChanged(product,$index)" active-slide="sliderState" show-pager="false">

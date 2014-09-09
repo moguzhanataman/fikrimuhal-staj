@@ -24,6 +24,8 @@ GET           /api/customers/:id/products              controllers.CustomerContr
 
 # Implemented
 GET           /api/products                            controllers.ProductController.list()
+GET           /api/products/:id                        controllers.ProductController.getProduct(id: Int)
+GET           /api/products/:id/photo                  controllers.ProductController.getProductPhoto(id: Int)
 
 # Implemented Except DELETE Request
 GET           /api/customers/:id/cart                  controllers.CartController.getCart(id: Int)
