@@ -1,6 +1,7 @@
 var fikrimuhalStaj = angular.module('fikrimuhalStaj');
 
-fikrimuhalStaj.factory('cartService',['currentCustomerService', '$http', 'productService', function cartService(currentCustomerService, $http,productService){
+fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'productService', function cartService(currentCustomerService, $http, productService) {
+    var fetchFromServerInProgress = false;
 
     /**
      * @returns {*} current customer id
@@ -12,24 +13,27 @@ fikrimuhalStaj.factory('cartService',['currentCustomerService', '$http', 'produc
 
     var allCarts = {};
 
-    function initForCurrentUser(){
-        var ccid = getCCID();  
+    function initForCurrentUser() {
+        fetchFromServerInProgress = true;
 
-        if(!allCarts[ccid]){
-            fetchCartFromServer().then(function(cartFromServer){
-                allCarts[ccid]=cartFromServer;
-
-            }).catch(function (e){
+        var ccid = getCCID();
+        if (!fetchFromServerInProgress && !allCarts[ccid]) {
+            fetchCartFromServer().then(function (cartFromServer) {
+                allCarts[ccid] = cartFromServer;
+                fetchFromServerInProgress = false;
+            }).catch(function (e) {
                 console.log("sepet serverdan gelmedi");
+                fetchFromServerInProgress = false;
             })
         }
     }
 
-    function fetchCartFromServer(){
+    function fetchCartFromServer() {
         var cartURL = config.api.base + "api/customers/" + getCCID() + "/cart";
-        return $http({method: 'GET', url: cartURL}).then(function (response) {     
-            return _.map(response.data.itemList,function (i){
-                i.p=productService.getProductById(i.p);
+
+        return $http({method: 'GET', url: cartURL}).then(function (response) {
+            return _.map(response.data.itemList, function (i) {
+                i.p = productService.getProductById(i.p);
                 return i;
             });
         });
@@ -41,17 +45,22 @@ fikrimuhalStaj.factory('cartService',['currentCustomerService', '$http', 'produc
      */
     function getCart() {
 
-        var ccid = getCCID();   
+        var ccid = getCCID();
 
         if (!ccid) {
             throw new IllegalState("Current Customer ID gelmedi");
-        }
-        
-        if (!allCarts[ccid]) {
-            allCarts[ccid] = [];
-        }
+        } else {
 
-        return allCarts[ccid];
+            if (fetchFromServerInProgress){
+                console.error("FIXME! Sunucudan cart güncellemesi yapılırken 'getCart()' çağrıldı. Bu servisin döndürdügü cart hatalı olabilir! ")
+            }
+
+            if (!allCarts[ccid]) {
+                allCarts[ccid] = [];
+            }
+
+            return allCarts[ccid];
+        }
     }
 
     /**
@@ -81,14 +90,14 @@ fikrimuhalStaj.factory('cartService',['currentCustomerService', '$http', 'produc
      * @param: item {object} İşlem görecek olan ürün
      * @param: amountTOAdd {int} Değişim miktarı + veya - olabilir  ancak 0 olmamalı
      */
-    function changeQuantity(item, amountToAdd){
-        var foundItem = _.find(getCart(), {"p":{id: item.id}});
+    function changeQuantity(item, amountToAdd) {
+        var foundItem = _.find(getCart(), {"p": {id: item.id}});
 
         if (foundItem) {
             foundItem.q += amountToAdd;
         }
         else {
-            foundItem = {"p":item,"q": amountToAdd || 0};
+            foundItem = {"p": item, "q": amountToAdd || 0};
             getCart().push(foundItem);
         }
     }
