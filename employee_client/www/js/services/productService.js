@@ -36,7 +36,7 @@ fikrimuhalStaj.factory('productService', ['$http', '$q', 'storageService' , func
 
     function fetchProductsFromServer() {
         return $http({method: 'GET', url: config.api.urls.productList}).then(function (response) {
-            return response.data;
+            return response.data.products;
         });
     }
 

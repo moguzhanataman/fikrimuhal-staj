@@ -27,7 +27,7 @@ object Cart {
   implicit val jsonConverter = Json.format[Cart]
   val initialState = Seq(
     Cart(1, 1, Seq(CartItem(1, 2), CartItem(2, 1))),
-    Cart(2, 2, Seq(CartItem(3, 1), CartItem(3, 2))),
+    Cart(2, 2, Seq(CartItem(3, 1), CartItem(1, 2))),
     Cart(3, 3, Seq(CartItem(2, 4), CartItem(3, 2), CartItem(1, 2))),
     Cart(4, 4, Seq(CartItem(4, 5), CartItem(2, 2), CartItem(1, 2), CartItem(3, 2))),
     Cart(5, 5, Seq(CartItem(4, 6))),

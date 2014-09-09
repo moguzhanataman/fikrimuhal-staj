@@ -1,6 +1,6 @@
 package controllers
 
-import model.{Customer, Product}
+import model.{ShopCustomer, Customer, Product}
 import play.api.Play
 import play.api.libs.json._
 import play.api.mvc.{Action, Controller}
@@ -24,7 +24,18 @@ object CustomerController extends Controller {
     Ok(customerAsJson)
   }
 
-  def getCurrentCustomerList() = getAllCustomerList()
+  def getCurrentCustomerList() = Action { request =>
+    val host = request.headers.get("host").get
+
+    val customerAsMap = Map("customers" -> ShopCustomer.all.map { customer =>
+      val host = Play.current.configuration.getString("server.host").getOrElse("localhost")
+      val fullUrl = s"http://${host}:9000/api/customers/${customer.customerId}/photo"
+      customer.copy(photoUrl = fullUrl)
+    })
+    val customerAsJson = Json.toJson(customerAsMap)
+    Ok(customerAsJson)
+
+  }
 
   // TODO
   def getCustomer(id: Int) = Action { request =>

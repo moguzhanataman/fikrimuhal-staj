@@ -15,7 +15,8 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
     * ve gelen datayı productListCache e yazar
     */
     function fetchProductsFromServer(){
-        var productListUrl = config.api.base + "api/customers/" + currentCustomerService.getCustomerId() + "/products";
+        var customerId = currentCustomerService.getCustomerId();
+        var productListUrl = config.api.base + "api/customers/" + customerId + "/products";
         return $http({method: 'GET', url: productListUrl}).then(function (response) {
             var products = productService.getProductsByIds(response.data)
             console.log("QQQQQQ:::", response.data);
@@ -40,7 +41,7 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
     }
 
     function getCustomer(id) {
-
+        console.log("TODO");
     }
 
     /**
@@ -85,6 +86,36 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
         'updateCustomerList': fetchCustomersFromServer, // make private
         'addItem':updateCart,       // move to cartService
         'getDeletedProducts': getDeletedProducts // move to cartService
+
+    }
+
+    // ---
+    // PRIVATE METHODS
+    // ---
+
+    function handleSuccess(response) {
+
+        return( response.data );
+
+    }
+
+    function handleError(response) {
+
+        // The API response from the server should be returned in a
+        // nomralized format. However, if the request was not handled by the
+        // server (or what not handles properly - ex. server error), then we
+        // may have to normalize it on our end, as best we can.
+        if (
+            ! angular.isObject( response.data ) ||
+            ! response.data.message
+        ) {
+
+            return( $q.reject( "An unknown error occurred." ) );
+
+        }
+
+        // Otherwise, use expected error message.
+        return( $q.reject( response.data.message ) );
 
     }
  }]);

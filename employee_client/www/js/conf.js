@@ -22,8 +22,6 @@ config.api.urls = {
     }
 };
 
-console.log("config", config.api.ip);
-
 var constant = {};
 constant.cartSlider = {"REMOVE_ITEM": 1, "CURRENT_ITEM": 0};
 
