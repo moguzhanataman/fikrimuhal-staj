@@ -40,7 +40,7 @@ object Cart {
 
   def get(id: Int): Option[Cart] = all.find(id == _.id)
 
-  def getCartByUserId(id: Int) = all.filter(_.cid == id)
+  def getCartByUserId(id: Int) = all.filter(_.cid == id)(0)
 
   def delCartByUserId(id: Int) = all.filter(_.cid != id)
 
