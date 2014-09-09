@@ -18,7 +18,6 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
         var productListUrl = config.api.base + "api/customers/" + currentCustomerService.getCustomerId() + "/products";
         return $http({method: 'GET', url: productListUrl}).then(function (response) {
             var products = productService.getProductsByIds(response.data)
-            console.log("QQQQQQ:::", response.data);
             return products;
         });
     }
