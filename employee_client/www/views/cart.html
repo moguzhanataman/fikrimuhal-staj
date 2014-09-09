@@ -42,6 +42,9 @@
                             <div class="row list" ng-repeat="it in cart.cartItems">
                                 <ion-slide-box on-slide-changed="cartSlideHasChanged(it,$index)" active-slide="sliderState" show-pager="false">
                                     <ion-slide>
+                                        <div class="col" style="background-color:green; text-align:center; height:200px; line-height:200px; font-size:40px;">EKLE</div>
+                                    </ion-slide>
+                                    <ion-slide>
                                         <div class="row">
                                             <div class="col col-25">
                                                 <img ng-src="{{it.p.photo}}"  width="150px" height="150px"/>

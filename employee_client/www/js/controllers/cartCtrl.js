@@ -20,12 +20,19 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
                 if(cartItems[indexOfItem].q > 1){
                     cartItems[indexOfItem].q -= 1;
                     setTimeout(function (){
-                        $ionicSlideBoxDelegate.slide(0,1000);
-                    },0 )
-
+                        $ionicSlideBoxDelegate.slide(1,1000);
+                    }, 0);
                 }else{
                     cartItems.splice(indexOfItem, 1);
                 }
+            }
+
+            if (index == constant.cartSlider.ADD_ITEM) {
+                cartService.addItemToCart(cartItems[indexOfItem].p, 1);
+                console.log("cartitems: ", cartItems[indexOfItem]);
+                setTimeout(function () {
+                    $ionicSlideBoxDelegate.slide(1, 1000);
+                }, 0)
             }
 
             totalPrice = cartService.getTotalPrice();
@@ -44,7 +51,7 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
         $scope.cartReset = cartResetter;
         $scope.cartSlideHasChanged = cartSlideHasChanged;
         $scope.message = 'Ürün listesi';
-        $scope.sliderState = 0;
+        $scope.sliderState = 1;
         $scope.campaign = { 'name': "anneler günü", 'discount': 159, 'totalAfterDiscount': 1800 };
 
         $scope.cart = {'cartItems': cartItems, 'totalPrice': totalPrice, 'totalDiscountedPrice': totalDiscountedPrice};
