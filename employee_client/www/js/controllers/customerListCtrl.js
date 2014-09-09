@@ -17,7 +17,9 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' , 'loginService', 'custo
 
 
     // WebSocket
+    /*
     var ws = new WebSocket("ws://localhost:9000/api/test/websocket");
     ws.onmessage = function( message ) { console.log( message ); };
+    */
 
 }]);

@@ -3,7 +3,6 @@ fikrimuhalStaj.factory('currentCustomerService', ['$http', '$q', function ($http
         setCustomerById: setCustomerById,
         getCustomer: getCustomer,
         getCustomerId: getCustomerId
-
     };
 
     var currentCustomerId;
@@ -17,7 +16,7 @@ fikrimuhalStaj.factory('currentCustomerService', ['$http', '$q', function ($http
      * @returns {promise}
      */
     function getCustomer() {
-            console.log("url mi",config.api.urls.customerById(currentCustomerId));
+            console.log("id mi?: ", currentCustomerId, "url mi",config.api.urls.customerById(currentCustomerId));
         var request = $http({
             method: "get",
             url: config.api.urls.customerById(currentCustomerId)
