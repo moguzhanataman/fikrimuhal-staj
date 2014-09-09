@@ -44,20 +44,20 @@
                                     <ion-slide>
                                         <div class="row">
                                             <div class="col col-25">
-                                                <img ng-src="{{it.photo}}"  width="150px" height="150px"/>
+                                                <img ng-src="{{it.p.photo}}"  width="150px" height="150px"/>
                                             </div>
                                             <div class="col col-25">
-                                                <h3>{{it.name}}</h3>
-                                                <p>Fiyat: {{it.price * it.amount}} TL </p>
-                                                <p>Miktar: {{it.amount}}</p>
+                                                <h3>{{it.p.name}}</h3>
+                                                <p>Fiyat: {{it.p.price * it.q}} TL </p>
+                                                <p>Miktar: {{it.q}}</p>
                                             </div>
                                             <div class="col col-25">
                                                 <h3>Birim Fiyatı</h3>
-                                                <p class="price-tag">{{it.price}}TL</p>
+                                                <p class="price-tag">{{it.p.price}}TL</p>
                                             </div>
                                             <div class="col col-25">
                                                 <h3>Kampanyalı Fiyatı</h3>
-                                                <p class="price-tag"> {{it.discountedPrice}} TL</p>
+                                                <p class="price-tag"> {{it.p.discountedPrice}} TL</p>
                                             </div>
                                         </div>
                                     </ion-slide>

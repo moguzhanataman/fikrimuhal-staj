@@ -19,8 +19,8 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
         /* index silme slaytı */
             if (index == constant.cartSlider.REMOVE_ITEM) {
 
-                if(cartItems[indexOfItem].amount > 1){
-                    cartItems[indexOfItem].amount -= 1;
+                if(cartItems[indexOfItem].q > 1){
+                    cartItems[indexOfItem].q -= 1;
                     setTimeout(function (){
                         $ionicSlideBoxDelegate.slide(0,1000);
                     },0 )
