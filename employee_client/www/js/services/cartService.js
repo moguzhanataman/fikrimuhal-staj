@@ -14,14 +14,19 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
     var allCarts = {};
 
     function initForCurrentUser() {
-        fetchFromServerInProgress = true;
+
 
         var ccid = getCCID();
         if (!fetchFromServerInProgress && !allCarts[ccid]) {
+            console.log("Sunucudan cart güncellemesi yapılmaya başlandı kullanıcıID:", getCCID());
+            fetchFromServerInProgress = true;
+
             fetchCartFromServer().then(function (cartFromServer) {
                 allCarts[ccid] = cartFromServer;
                 fetchFromServerInProgress = false;
+                console.log("Sunucudan cart güncellemesi TAMAMLANDI");
             }).catch(function (e) {
+                console.log("Sunucudan cart güncellemesi TAMAMLANDI");
                 console.log("sepet serverdan gelmedi");
                 fetchFromServerInProgress = false;
             })
@@ -51,7 +56,7 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
             throw new IllegalState("Current Customer ID gelmedi");
         } else {
 
-            if (fetchFromServerInProgress){
+            if (fetchFromServerInProgress) {
                 console.error("FIXME! Sunucudan cart güncellemesi yapılırken 'getCart()' çağrıldı. Bu servisin döndürdügü cart hatalı olabilir! ")
             }
 
