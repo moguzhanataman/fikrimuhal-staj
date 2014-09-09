@@ -1,8 +1,11 @@
-fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerService', 'loginService', 'currentCustomerService', function($scope,$state,customerService,loginService,currentCustomerService) {
+fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerService', 'loginService', 'currentCustomerService','cartService', function($scope,$state,customerService,loginService,currentCustomerService,cartService) {
 
     var deletedList= customerService.getDeletedProducts();
+   
 
     function init() {
+        /* Şu an ki kullanıcı için sepeti initiliaze eder */
+        cartService.initCart();
 
         currentCustomerService.getCustomer().then(function (customer) {
             $scope.currentCustomer = customer;

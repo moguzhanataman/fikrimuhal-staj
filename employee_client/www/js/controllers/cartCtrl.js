@@ -1,8 +1,6 @@
 fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate', 'cartService', 'currentCustomerService', function ($scope, $state, $ionicSlideBoxDelegate, cartService, currentCustomerService) {
 
     try{
-        //throw new IllegalState("asdfa");
-
         var cartItems = cartService.getCart();
         var totalPrice = cartService.getTotalPrice();
         var totalDiscountedPrice = cartService.getTotalDiscountedPrice();
