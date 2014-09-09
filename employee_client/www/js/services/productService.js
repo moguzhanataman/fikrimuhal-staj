@@ -24,7 +24,6 @@ fikrimuhalStaj.factory('productService', ['$http', '$q', 'storageService' , func
      * @return: {promise} Bulunan ürünler promis içinde bir object arrayi halinde döndürülür eğer bulunamazsa undefined döner
      */
     function getProductsByIds(idArray) {
-
         function containsId(product) {
             return _.contains(idArray, product.id);
         }

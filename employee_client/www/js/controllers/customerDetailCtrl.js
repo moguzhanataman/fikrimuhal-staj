@@ -82,7 +82,7 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
     $scope.slideHasChanged = slideHasChanged;
     $scope.goToCart = function goToCart(){ 
         $state.go('cart');
-    }
+    };
     $scope.deletedProducts = deletedList;
     $scope.message = 'Ürün seçin';
 
