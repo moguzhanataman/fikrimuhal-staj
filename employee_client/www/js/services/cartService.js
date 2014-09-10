@@ -73,10 +73,12 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
      * @return {int} sepetin toplam tutarını döndürür
      */
     function getTotalPrice() {
-        return _.reduce(getCart(), function (sum, item) {
+        var result = _.reduce(getCart(), function (sum, item) {
             sum += item.p.price * item.q;
             return sum
         }, 0)
+        
+        return numeral(result).format('0,0[.]00 $')
     }
 
     /**
@@ -84,9 +86,12 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
      * @return: toplam indirimi hesaplar
      */
     function getTotalDiscountedPrice() {
-        return _.reduce(getCart(), function (sum, item) {
-            return sum + item.p.discountedPrice * item.q;
+        var result = _.reduce(getCart(), function (sum, item) {
+            sum += item.p.discountedPrice * item.q;
+            return sum;
         }, 0)
+        
+        return numeral(result).format('0,0[.]00 $');
     }
 
     /**
@@ -114,12 +119,29 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
         delete allCarts[getCCID()];
     }
 
+    /**
+     * Description: Bu fonksion serverdaki ve clienttaki cartları karşılaştırarak sepetleri senkronize eder
+     * TODO: timestampleri karşılaştır
+     */
+    function cartSync(){
+        sentCartToServer();
+    }
+
+    function sentCartToServer(){
+        var cartURL = config.api.base + "api/customers/" + getCCID() + "/cart";
+
+        return $http({method: 'POST', url: cartURL, data: allCarts[getCCID()]}).success(function (response) {
+                return response;
+            });
+    }
+
     return {
         'initCart': initForCurrentUser,
         'getCart': getCart,
         'getTotalPrice': getTotalPrice,
         'getTotalDiscountedPrice': getTotalDiscountedPrice,
         'addItemToCart': changeQuantity,
+        'cartSync': cartSync,
         'cartReset': cartReset
     };
 }]);

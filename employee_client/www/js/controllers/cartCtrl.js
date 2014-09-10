@@ -8,6 +8,7 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
 
         currentCustomerService.getCustomer().then(function (customer) {
             $scope.currentCustomer = customer;
+            cartService.cartSync();
         });
 
         /* setTimeOut() index geç alındığı için setTimeOut ile beklendi ionic frameworkün kendi bugu */
@@ -52,7 +53,6 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
         $scope.message = 'Ürün listesi';
         $scope.sliderState = 1;
         $scope.campaign = { 'name': "anneler günü", 'discount': 159, 'totalAfterDiscount': 1800 };
-
         $scope.cart = {'cartItems': cartItems, 'totalPrice': totalPrice, 'totalDiscountedPrice': totalDiscountedPrice};
 
     }
