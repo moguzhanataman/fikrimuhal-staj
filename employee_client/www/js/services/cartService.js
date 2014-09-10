@@ -96,7 +96,7 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
      * @param: amountTOAdd {int} Değişim miktarı + veya - olabilir  ancak 0 olmamalı
      */
     function changeQuantity(item, amountToAdd) {
-        var foundItem = _.find(getCart(), {"p": {id: item.p.id}});
+        var foundItem = _.find(getCart(), {"p": {id: item.id}});
 
         if (foundItem) {
             foundItem.q += amountToAdd;
