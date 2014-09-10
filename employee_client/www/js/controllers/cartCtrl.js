@@ -13,9 +13,10 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
         /* setTimeOut() index geç alındığı için setTimeOut ile beklendi ionic frameworkün kendi bugu */
         function cartSlideHasChanged(it, index) {
             indexOfItem = cartItems.indexOf(it);
+            console.log("index", index);
 
         /* index silme slaytı */
-            if (index == constant.cartSlider.REMOVE_ITEM) {
+            if (index == 2) {
 
                 if(cartItems[indexOfItem].q > 1){
                     cartItems[indexOfItem].q -= 1;
@@ -27,9 +28,8 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
                 }
             }
 
-            if (index == constant.cartSlider.ADD_ITEM) {
-                cartService.addItemToCart(cartItems[indexOfItem].p, 1);
-                console.log("cartitems: ", cartItems[indexOfItem]);
+            if (index == 0) {
+                cartService.addItemToCart(cartItems[indexOfItem], 1);
                 setTimeout(function () {
                     $ionicSlideBoxDelegate.slide(1, 1000);
                 }, 0)

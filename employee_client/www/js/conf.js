@@ -1,6 +1,6 @@
 var config = {};
 
-config.runLocal = true;
+config.runLocal = false;
 
 config.api= {};
 
@@ -23,7 +23,7 @@ config.api.urls = {
 };
 
 var constant = {};
-constant.cartSlider = {"REMOVE_ITEM": 1, "CURRENT_ITEM": 0};
+constant.cartSlider = {"REMOVE_ITEM": 2, "CURRENT_ITEM":1, "ADD_ITEM": 0};
 
 constant.storage = {};
 constant.storage.loggedEmployee = "lastLogged";
