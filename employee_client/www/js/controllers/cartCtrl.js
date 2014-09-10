@@ -8,7 +8,6 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
 
         currentCustomerService.getCustomer().then(function (customer) {
             $scope.currentCustomer = customer;
-            cartService.cartSync();
         });
 
         /* setTimeOut() index geç alındığı için setTimeOut ile beklendi ionic frameworkün kendi bugu */
