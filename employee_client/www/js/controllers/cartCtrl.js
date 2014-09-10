@@ -2,8 +2,8 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
 
     try{
         var cartItems = cartService.getCart();
-        var totalPrice = cartService.getTotalPrice();
-        var totalDiscountedPrice = cartService.getTotalDiscountedPrice();
+        var totalPrice = numeral(cartService.getTotalPrice()).format('0,0[.]00 $');
+        var totalDiscountedPrice = numeral(cartService.getTotalDiscountedPrice()).format('0,0[.]00 $');
         var indexOfItem = 0;
 
         currentCustomerService.getCustomer().then(function (customer) {
@@ -34,8 +34,8 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
                 }, 0)
             }
 
-            totalPrice = cartService.getTotalPrice();
-            totalDiscountedPrice = cartService.getTotalDiscountedPrice();
+            totalPrice = numeral(cartService.getTotalPrice()).format('0,0[.]00 $');
+            totalDiscountedPrice = numeral(cartService.getTotalDiscountedPrice()).format('0,0[.]00 $');
             $scope.cart = {'cartItems': cartItems, 'totalPrice': totalPrice, 'totalDiscountedPrice': totalDiscountedPrice};
         }
 
@@ -51,8 +51,9 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
         $scope.cartSlideHasChanged = cartSlideHasChanged;
         $scope.message = 'Ürün listesi';
         $scope.sliderState = 1;
-        $scope.campaign = { 'name': "anneler günü", 'discount': 159, 'totalAfterDiscount': 1800 };
+        $scope.campaign = { 'name': "anneler günü", 'discount': 159, 'totalAfterDiscount': totalDiscountedPrice };
         $scope.cart = {'cartItems': cartItems, 'totalPrice': totalPrice, 'totalDiscountedPrice': totalDiscountedPrice};
+
 
     }
 

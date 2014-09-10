@@ -77,8 +77,8 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
             sum += item.p.price * item.q;
             return sum
         }, 0)
-        
-        return numeral(result).format('0,0[.]00 $')
+
+        return result;
     }
 
     /**
@@ -87,11 +87,11 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
      */
     function getTotalDiscountedPrice() {
         var result = _.reduce(getCart(), function (sum, item) {
-            sum += item.p.discountedPrice * item.q;
+            sum += (item.p.discountedPrice || item.p.price) * item.q;
             return sum;
         }, 0)
-        
-        return numeral(result).format('0,0[.]00 $');
+        console.log("asdfxxx",result);
+        return result;
     }
 
     /**
