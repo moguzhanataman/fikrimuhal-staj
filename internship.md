@@ -165,3 +165,10 @@ Bir sonraki çalışma günü yapılması planlananlar
 - Ürünlerin ve çalışanların resimleri 
 - Sepetteyken ürün sayısı arttırmak eklenecek
 - Ranking fonksiyonuna devam edilecek
+
+09/09/2014
+----------
+
+10/09/2014
+----------
+- Cart server tarafından alınabiliyor. Server tarafına da eklenebiliyor.
