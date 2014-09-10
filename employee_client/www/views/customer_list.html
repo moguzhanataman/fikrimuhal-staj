@@ -10,18 +10,18 @@
                     </div>
 
                     <div class="col" style="margin-left:35px;">
-                        <h2>{{customer.name}} <small style="float: right"> 3m  <i class="icon ion-ios7-location-outline"></i> </small></h2>
+                        <h2>{{customer.name}} <small style="float: right"> {{customer.distance}} <i class="icon ion-ios7-location-outline"></i> </small></h2>
                         <hr/>
 
-
-                        <p>Geliş zamanı:    <b>1 dakika</b> önce</p>
-                        <p>Kİ:  <b>Burcu Esmersoy</b>, <span style="font-size: smaller">1 dk.</span></p>
-                        <p>Kİ: <b>SİZ</b>, <span style="font-size: smaller">1 dk.</span></p>
-
-
+                        <p>Geliş zamanı:    <b>{{customer.shopEnterTime}}</b> önce</p>
+                        <p>Kİ:  <b>Burcu Esmersoy</b>, <span style="font-size: smaller">{{customer.lastUpdateTime}}</span></p>
+                        <br/>
                         <small style="float: right">15`</small>
                         <p>
-                            <i class="icon ion-ios7-pricetagr"></i>
+
+                            <i class="icon ion-minus-circled" ng-show="customer.doNotDisturbMe"></i>
+
+                            <!--<i class="icon ion-ios7-pricetagr"></i>
                             <i class="icon ion-ios7-star-half"></i>
                             <i class="icon ion-ios7-star"></i>
                             <i class="icon ion-ios7-star-outline"></i>
@@ -33,7 +33,7 @@
                             <i class="icon ion-android-timer"></i>
                             <i class="icon ion-ios7-unlocked"></i>
                             <i class="icon ion-ios7-infinite"></i>
-                            <i class="icon ion-ios7-calculator"></i>
+                            <i class="icon ion-ios7-calculator"></i> -->
                         </p>
 
                     </div>

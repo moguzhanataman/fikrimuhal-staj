@@ -1,5 +1,7 @@
 fikrimuhalStaj.controller('customerListCtrl', ['$scope' , 'loginService', 'customerService', 'currentCustomerService', '$state' , function ($scope, loginService, customerService, currentCustomerService, $state) {
 
+    moment.locale("tr");
+
     function selectCustomer(id) {
         // customerService.setCustomer(id);
         currentCustomerService.setCustomerById(id);
@@ -7,6 +9,11 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' , 'loginService', 'custo
     }
 
     customerService.getCustomerList().then(function (customerList) {
+        customerList = _.map(customerList, function(it){
+            it.lastUpdateTime = moment(it.lastUpdateTime).fromNow();
+            it.shopEnterTime = moment(it.shopEnterTime).fromNow();
+            return it;
+        })
         $scope.customerList = splitArray(customerList);
     }).catch(function (e) {
         $scope.customerList = splitArray(e);
