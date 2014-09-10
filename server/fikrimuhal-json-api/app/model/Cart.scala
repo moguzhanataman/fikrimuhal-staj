@@ -1,5 +1,6 @@
 package model
 
+import play.api.Logger
 import play.api.libs.json._
 
 /**
@@ -25,6 +26,7 @@ object CartItem {
 object Cart {
 
   implicit val jsonConverter = Json.format[Cart]
+
   val initialState = Seq(
     Cart(1, 1, Seq(CartItem(1, 2), CartItem(2, 1))),
     Cart(2, 2, Seq(CartItem(3, 1), CartItem(1, 2))),
@@ -36,20 +38,51 @@ object Cart {
     Cart(8, 8, Seq(CartItem(1, 1), CartItem(3, 3)))
   )
 
-  var all = initialState
+  var cartStore = initialState
 
-  def get(id: Int): Option[Cart] = all.find(id == _.id)
+  def all = cartStore
+
+  def getCart(id: Int): Option[Cart] = all.find(id == _.id)
+
+  /**
+   * Creates cart if given cart doesn't exists
+   * Updates otherwise
+   *
+   * @param cart Cart to add or update
+   */
+  def createCart(cart: Cart) = {
+    cartStore = cartStore :+ cart
+  }
+
+  /**
+   * Updates or creates cart
+   * @param cart Cart to add
+   */
+  def updateCart(cart: Cart) = {
+    var updated = false
+    cartStore = cartStore.foldLeft(Seq[Cart]()) { (result, it) =>
+      if (it.id == cart.id) {
+        updated = true
+        result :+ cart
+      } else {
+        result :+ it
+      }
+    }
+
+    if (updated == false) createCart(cart)
+  }
 
   def getCartByUserId(id: Int) = all.filter(_.cid == id)(0)
 
   def delCartByUserId(id: Int) = all.filter(_.cid != id)
 
-  def checkoutCartByUserId(id: Int) = {
-    all = all.filter(_.cid != id)
-    all
+  /**
+   * Removes cart for customer.
+   * @param id Customer ID
+   */
+  def checkoutCartByCartId(id: Int) = {
+    cartStore = cartStore.filter(_.id != id)
   }
 
-  def _seedDatabase {
-    all = initialState
-  }
+  def _seedDatabase = Logger.error("Beni sil")
 }

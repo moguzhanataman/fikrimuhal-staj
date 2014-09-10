@@ -35,6 +35,5 @@ GET           /api/customers/:id/cart/checkout         controllers.CartControlle
 
 # Test Purposes
 GET           /api/test/POST/customers/:id/cart        controllers.TestController.testUpdateCart(id: Int)
-GET           /api/test/customers/cart/seed            controllers.CartController._seedDatabase
 GET           /api/test/base64images                   controllers.TestController.testImages()
 GET           /api/test/websocket                      controllers.TestController.websocket()

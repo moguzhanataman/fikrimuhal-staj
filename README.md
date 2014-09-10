@@ -1,6 +1,10 @@
 fikrimuhal-staj
 ===============
 
+API Dökümantasyonu
+------------------
+[Dökümantasyon Index](specs/Home.md) (Geliştirme aşamasında)
+
 Kullanılacak Teknolojiler
 -------------------------
 - AngularJS
@@ -29,3 +33,4 @@ google-chrome --disable-web-security
 
 Git reposunda olan bir dosyayı değişse bile değişmemiş olarak işaretlemek için.
 git update-index --assume-unchanged /Users/sumnulu/Projects/staj/server/fikrimuhal-json-api/conf
+
