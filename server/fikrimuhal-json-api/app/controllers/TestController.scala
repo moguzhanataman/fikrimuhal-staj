@@ -8,7 +8,6 @@ import play.api.libs.json.Json
 import play.api.libs.ws._
 import play.api.mvc.{Action, Controller, WebSocket}
 
-import scala.collection.mutable.ListBuffer
 import scala.concurrent.ExecutionContext.Implicits.global
 
 
@@ -34,6 +33,7 @@ object TestController extends Controller {
   }
 
   import scala.collection.mutable.ListBuffer
+
   var channelSeq = ListBuffer[Concurrent.Channel[String]]()
 
   def websocket = WebSocket.using[String] { request =>
