@@ -54,6 +54,10 @@ object Cart {
     cartStore = cartStore :+ cart
   }
 
+  /**
+   * Updates or creates cart
+   * @param cart Cart to add
+   */
   def updateCart(cart: Cart) = {
     var updated = false
     cartStore = cartStore.foldLeft(Seq[Cart]()) { (result, it) =>
@@ -72,7 +76,10 @@ object Cart {
 
   def delCartByUserId(id: Int) = all.filter(_.cid != id)
 
-  // TODO burayı düzelt
+  /**
+   * Removes cart for customer.
+   * @param id Customer ID
+   */
   def checkoutCartByCartId(id: Int) = {
     cartStore = cartStore.filter(_.id != id)
   }
