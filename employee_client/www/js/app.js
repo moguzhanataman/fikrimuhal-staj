@@ -35,7 +35,7 @@ fikrimuhalStaj.run(['$ionicPlatform', '$rootScope', '$state', 'loginService','pr
 
 }])
 
-    .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    .config(['$httpProvider','$stateProvider', '$urlRouterProvider' , function ($httpProvider,$stateProvider, $urlRouterProvider, dataInProgressService) {
 
         // Ionic uses AngularUI Router which uses the concept of states
         // Learn more here: https://github.com/angular-ui/ui-router
@@ -95,9 +95,7 @@ fikrimuhalStaj.run(['$ionicPlatform', '$rootScope', '$state', 'loginService','pr
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/login');
-
-        /* Access-Control-Allow-Origin hatasını düzeltmek için konuldu releasede kaldırılacak*/
-        /* TODO releseade kalkacak*/
+        $httpProvider.interceptors.push('dataInProgressService');
 
     }]);
 
@@ -148,3 +146,28 @@ fikrimuhalStaj.controller('AttendeesCtrl', function ($scope) {
     };
 
 });
+
+
+fikrimuhalStaj.factory('dataInProgressService',['$rootScope',function ($rootScope){
+    var countDownLatch = 0;
+    return {
+        'request': function(config) {
+            if(countDownLatch == 0){
+                $rootScope.dataInProgress = true;
+            }
+            countDownLatch += 1;
+            console.log("requests in progress countDownLatch is ", countDownLatch);
+            return config;
+        },
+
+        'response': function(response) {
+            countDownLatch -= 1;
+            if(countDownLatch == 0){
+                $rootScope.dataInProgress = false;
+            }
+            console.log("response has came countDownLatch is ", countDownLatch);
+            return response;
+        }
+    
+    }
+}]);

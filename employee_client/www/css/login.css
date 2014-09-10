@@ -90,4 +90,10 @@ p.photo_description_content{
     margin:0;
 }
 /* === End of Inline CSS from login.html === */
-
+.dataInProgress{
+    position: absolute;
+    z-index: 999;
+    top: 5px;
+    right: 5px;
+    color: white;
+}

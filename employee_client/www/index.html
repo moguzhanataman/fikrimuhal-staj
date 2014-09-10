@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/ionic.min.css">
     <link rel="stylesheet" href="css/login.css">
 
+
     <script src="js/libs/lodash.min.js"></script>
     <script src="js/utils.js"></script>
 
@@ -41,6 +42,9 @@
 <ion-side-menus>
 
     <ion-side-menu-content edge-drag-threshold="25">
+        <div class="dataInProgress" ng-show="dataInProgress">
+            <i style="font-size:larger;" class="icon ion-radio-waves"></i>
+        </div>
         <ion-nav-bar class="bar-positive">
             <ion-nav-back-button class="button-icon ion-arrow-left-c">
             </ion-nav-back-button>
@@ -49,15 +53,6 @@
             <button class="button button-icon button-clear ion-navicon" ng-click="toggleLeft()">
             </button>
         </ion-nav-buttons>
-        <div class="tog" side="right">
-            Müşteri lock
-                <label class="toggle toggle-assertive">
-                  <input type="checkbox">
-                  <div class="track">
-                    <div class="handle"></div>
-                  </div>
-                </label>
-        </div>
         <ion-nav-view animation="no-animation" name="main"></ion-nav-view>
     </ion-side-menu-content>
 
