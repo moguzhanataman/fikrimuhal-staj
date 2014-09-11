@@ -24,11 +24,12 @@ object ShopCustomer {
   var _now = new Date().getTime()
 
   def all = Customer.all.map { c =>
-    val now: Long = _now + 111 * 1111 * c.id
+    val now: Long = _now - 111 * 1111 * c.id
     val currentEmployeeId = {
       val x = c.id % 7
       if (x == 0) None else Some(x)
     }
+    val doNotDisturbMe = c.id % 9 == 0
 
     ShopCustomer(
       c.id,
@@ -36,7 +37,7 @@ object ShopCustomer {
       c.photoData,
       170,
       now,
-      false,
+      doNotDisturbMe,
       false,
       currentEmployeeId,
       now)
