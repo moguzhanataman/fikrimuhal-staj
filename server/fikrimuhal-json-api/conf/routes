@@ -37,3 +37,4 @@ GET           /api/customers/:id/cart/checkout         controllers.CartControlle
 GET           /api/test/POST/customers/:id/cart        controllers.TestController.testUpdateCart(id: Int)
 GET           /api/test/base64images                   controllers.TestController.testImages()
 GET           /api/test/websocket                      controllers.TestController.websocket()
+GET           /api/test/rank                           controllers.CustomerController.getRank()

@@ -34,7 +34,6 @@ object CustomerController extends Controller {
     })
     val customerAsJson = Json.toJson(customerAsMap)
     Ok(customerAsJson)
-
   }
 
   // TODO
@@ -68,5 +67,11 @@ object CustomerController extends Controller {
         product.id
       }))
     }
+  }
+
+  // Test
+  def getRank() = Action {
+    val result = Json.toJson(ShopCustomer.rankShopCustomers)
+    Ok(result)
   }
 }
