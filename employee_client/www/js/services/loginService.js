@@ -21,6 +21,7 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
 
     function initEmployee() {
         _loggedinEmployee = getLastLoggedinEmployee();
+        console.log("asdf",_loggedinEmployee);
     }
 
     /**
@@ -80,6 +81,18 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
         return CryptoJS.MD5(passcode).toString();
     }
 
+    function getEmployeeById(id){
+        var list;
+        var defered = $q.defer();
+
+        defered.resolve(getEmployees().then(function (employeeList){
+            list = employeeList;
+            return _.find(list,{"id":id});
+        }));
+
+        return defered.promise;
+    }
+
     initEmployee();
 
     return {
@@ -89,6 +102,7 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
         'isAuth': isLoggedin,
         'isLoggedin':isLoggedin,
         'getLastLoggedinEmployee': getLastLoggedinEmployee,
+        'getEmployeeById': getEmployeeById,
         'logout': logout
     }
 }]);

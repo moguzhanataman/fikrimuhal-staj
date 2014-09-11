@@ -8,7 +8,7 @@ if (config.runLocal) {
 	config.api.ip = "localhost";
 } else {
     // Mac
-	config.api.ip = "192.168.1.11";
+	config.api.ip = "192.168.1.9";
 }
 
 config.api.port = "9000";
