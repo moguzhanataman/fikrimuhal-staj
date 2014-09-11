@@ -168,7 +168,32 @@ Bir sonraki çalışma günü yapılması planlananlar
 
 09/09/2014
 ----------
+- Ürün fotoğraflarının gösterilmeme problemi çözüldü.
+- Customer list fotoğrafları artık ShopCustomer modelinden geliyor.
+- Customer list view'da müşteri seçerken id nin gelmemesi problemi çözüldü.
+- Controller'ın 2 defa çağrılması problemi düzeltildi.
+- Cart sayfasındayken ürünlerin miktarı arttırılıp azaltılabiliyor.
 
 10/09/2014
 ----------
 - Cart server tarafından alınabiliyor. Server tarafına da eklenebiliyor.
+- Müşteri listesi sayfası serverdan alınan datalarla oluşturuldu.
+- Müşterinin mağazaya ne zaman girdiği ve en son ne zaman ilgilenildiği insan zamanına dönüştürüldü.
+- Server ile data alışverişi yapıldığını belli etmek için simge eklendi.
+- Ücret gösterimindeki floating point number hatasını gidermek için numeral.js kütüphanesi kullanıldı.
+
+Bir sonraki çalışma günü yapılması planlananlar
+-----------------------------------------------
+- Ranking fonksiyonu düzeltilecek.
+- Dökümantasyon ve test yazımına başlanacak.
+
+11/09/2014
+----------
+- Ranking fonksiyonu yazıldı.
+- Customer list sayfasındaki müşteriyle hangi çalışanın ilgilendiğinin gösterildiği kısım düzeltildi.
+
+Bir sonraki çalışma günü yapılması planlananlar
+-----------------------------------------------
+- Dökümantasyon ve test yazımına başlanacak.
+- Müşteri listesi sayfasındaki renk hatası düzeltilecek.
+- Server ile client'ın sepeti senkronize edilecek.
