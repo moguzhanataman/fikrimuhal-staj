@@ -14,7 +14,9 @@
                         <hr/>
 
                         <p>Geliş zamanı:    <b>{{customer.shopEnterTime}}</b> önce</p>
-                        <p>Kİ:  <b>Burcu Esmersoy</b>, <span style="font-size: smaller">{{customer.lastUpdateTime}}</span></p>
+                        <div ng-show="customer.employeeId">
+                            <p>Kİ:  <b>{{customer.employeeName}}</b>, <span style="font-size: smaller">{{customer.lastUpdateTime}}</span></p>
+                        </div>
                         <br/>
                         <small style="float: right">15`</small>
                         <p>

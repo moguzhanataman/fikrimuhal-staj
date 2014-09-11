@@ -12,6 +12,18 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' , 'loginService', 'custo
         customerList = _.map(customerList, function(it){
             it.lastUpdateTime = moment(it.lastUpdateTime).fromNow();
             it.shopEnterTime = moment(it.shopEnterTime).fromNow();
+
+            if(!!it.employeeId){
+                loginService.getEmployeeById(it.employeeId).then(function(res){
+                    console.log("employee isimler değişmeden",it.employeeName , res.name, res.id );
+                    it.employeeName = res.name;
+                    console.log("employee isimler değişti",it.employeeName , res.name, res.id );
+                })
+            }
+            else{
+                it.employeeId = false;
+            }
+
             return it;
         })
         $scope.customerList = splitArray(customerList);

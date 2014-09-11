@@ -56,8 +56,6 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
     */
     function fetchCustomersFromServer(){
         return $http({method: 'GET', url: config.api.urls.customerList}).then(function (response) {
-
-            console.log("data", response.data.customers);
             return response.data.customers;
         });
     }
