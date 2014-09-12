@@ -11,7 +11,7 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' , 'loginService', 'custo
     }
 
     customerService.getCustomerList().then(function (customerList) {
-
+        var c_5 = 20000;
         customerList = _.map(customerList, function(it){
             it.lastUpdateTime = moment(it.lastUpdateTime).fromNow();
             it.shopEnterTime = moment(it.shopEnterTime).fromNow();
@@ -23,15 +23,27 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' , 'loginService', 'custo
             }
                        
             it.employeeStatusIcons = {
-                "locked": it.employeeId != currentEmployeeId,
+                "locked": it.employeeId && (it.employeeId != currentEmployeeId),
                 "unlocked": it.employeeId == currentEmployeeId
             };
 
+            var w_5;
+
+            if(it.employeeId == currentEmployeeId){
+                w_5 = 1;
+            }
+            else if( it.employeeId == undefined){
+                w_5 = 0.90;
+            }else{
+                w_5 = 0.1;
+            }
+            
+            it.rank = it.rank + c_5 * w_5;
             return it;
         })
 
-        _.sortBy(customerList, function(rank){
-            return -rank;
+        customerList = _.sortBy(customerList, function(customer){
+            return -customer.rank;
         })
 
         $scope.customerList = splitArray(customerList);
