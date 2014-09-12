@@ -99,9 +99,6 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
     $scope.deletedProducts = deletedList;
     $scope.message = 'Ürün seçin';
     numeral.language('tr');
-    $scope.deneme = 5;
-    $scope.deneme2=numeral(1236.235).format('0,0[.]00 $');
-
     init();
 
 }]);
