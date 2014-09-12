@@ -136,8 +136,6 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
             return {"p": it.p.id, "q": it.q};
         })
         var tempData = {"id":cartId, "cid": getCCID(), "itemList":deneme}
-        console.log("json", angular.toJson(tempData, a));
-        //console.log("cart", deneme);
         return $http({ method: 'POST', url: cartURL, data: angular.toJson(tempData) }).success(function (response) {
                 return response;
             }).error(function(er){
