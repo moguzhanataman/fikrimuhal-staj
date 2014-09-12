@@ -1,15 +1,24 @@
 fikrimuhalStaj.controller('customerListCtrl', ['$scope' , 'loginService', 'customerService', 'currentCustomerService', '$state' , function ($scope, loginService, customerService, currentCustomerService, $state) {
 
+    // numeral.js nin çalışacağı local değişkenini Türkiye olarak değiştirir default olarak Great Britain'dir
     moment.locale("tr");
 
     var currentEmployeeId = loginService.loggedinEmployee().id;
-
+    /**
+     * Description: Seçilen müşterinin idsini alır ve belirlenen müşteri için oluşturulmuş ürün öneri sayfasına yönlendirir
+     * @param: {number} seçilen müşterinin idsi
+     */
     function selectCustomer(id) {
-        // customerService.setCustomer(id);
         currentCustomerService.setCustomerById(id);
         $state.go('customerDetail');
     }
 
+    /**
+    * Description: Serverdan müşteri listesini ister dönen listeyi ranking fonskiyonundan geçirip dizer,
+    * Serverdan müşterilerle ilgilenen çalışanları idsi geldiği için çalışanların idleri üzerinden isimlerine ulaşır
+    * customerList i scope'a göndermeden önce müşteri ile ilgilenen çalışana göre simge değişkenin değerini belirler
+    * ortaya çıkan arrayi ikiye böler(sağ ve sol)
+    */
     customerService.getCustomerList().then(function (customerList) {
         var c_5 = 20000;
         customerList = _.map(customerList, function(it){

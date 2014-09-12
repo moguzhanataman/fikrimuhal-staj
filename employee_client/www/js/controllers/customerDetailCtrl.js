@@ -20,8 +20,12 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
 
     }
 
-    /* TODO  lodash kur lodashle sil */
-    function slideHasChanged(product, index, listNo) {
+    /**
+    * Description: Ürün öneri sayfasındaki sliderların değişimlerini gözler ve değişimlere göre ürünleri siler veya sepete ekler
+    * @param: {object} Slideri değişen ürünü obje olarak alır
+    * @param: {number} Sliderin son indexini alır 2 silme, 0 ekleme, 1 ürünün bulunduğu index numarasıdır
+    */
+    function slideHasChanged(product, index) {
         var listSplit= $scope.productList;
 
         var indexofProductL = listSplit.left.indexOf(product);
@@ -63,7 +67,12 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
         }
     }
 
-    function deletedItemSlideHasChanged(product, index, listNo) {
+    /**
+    * Description: Silinen ürünlerin bulunduğu slayttır.
+    * @param: {object} Slideri değişen ürün
+    * @param: {number} Sliderin son anki index numarası 2 silme, 0 ekleme, 1 ürünün bulunduğu index numarasıdır
+    */
+    function deletedItemSlideHasChanged(product, index) {
 
         var indexofProduct = deletedList.indexOf(product);
 
@@ -82,9 +91,11 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
     $scope.sliderState = 1;
     $scope.deletedItemSlideHasChanged = deletedItemSlideHasChanged;
     $scope.slideHasChanged = slideHasChanged;
+
     $scope.goToCart = function goToCart(){ 
         $state.go('cart');
     };
+    
     $scope.deletedProducts = deletedList;
     $scope.message = 'Ürün seçin';
     numeral.language('tr');

@@ -33,6 +33,10 @@ fikrimuhalStaj.factory('productService', ['$http', '$q', 'storageService' , func
         })
     }
 
+    /**
+    * Description: Bütün ürünleri serverdan ister ve başarılı olması durumunda gelen arrayi döndürür
+    * @returns: {array} Serverdaki bütün ürünler
+    */
     function fetchProductsFromServer() {
         return $http({method: 'GET', url: config.api.urls.productList}).then(function (response) {
             return response.data.products;

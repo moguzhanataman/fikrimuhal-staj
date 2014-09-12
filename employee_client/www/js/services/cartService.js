@@ -14,6 +14,9 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
     var allCarts = {};
     var cartId = 0;
 
+    /**
+    * Description: Güncel müşteriye  göre sepeti oluşturur.
+    */
     function initForCurrentUser() {
 
 
@@ -30,6 +33,10 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
         }
     }
 
+    /**
+    * Description: Güncel müşteriye ait olan sepeti varsa serverdan ister ve döndürür
+    * @returns: {object} müşterinin sepetini obje olarak döndürür
+    */ 
     function fetchCartFromServer() {
         var cartURL = config.api.base + "api/customers/" + getCCID() + "/cart";
 
@@ -118,12 +125,14 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
 
     /**
      * Description: Bu fonksion serverdaki ve clienttaki cartları karşılaştırarak sepetleri senkronize eder
-     * TODO: timestampleri karşılaştır
      */
     function cartSync(){
         sentCartToServer();
     }
 
+    /**
+    * Description: Güncel müşteriye ait olan sepeti servera gönderir
+    */
     function sentCartToServer(){
         var cartURL = config.api.base + "api/customers/" + getCCID() + "/cart";
         var a = true;

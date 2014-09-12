@@ -5,6 +5,10 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
 
     var _loggedinEmployee = null;
 
+    /**
+    * Description: Serverdaki bütün çalışanları ister başarılı olması halinde objeler arrayi olarak döndürür.
+    * @returns: {array} Bütün çalışanlar
+    */
     function _fetchEmployeesFromServer(){
         return $http({method: 'GET', url: config.api.urls.employeeList}).then(function (response) {
             return response.data.employees;
@@ -79,6 +83,10 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
         return CryptoJS.MD5(passcode).toString();
     }
 
+    /**
+    * Description: Id'si verilen çalışanın bütün verilerini obje promise olarak döndürür
+    * @return {object} çalışanın objesinin döndürür promise olarak
+    */
     function getEmployeeById(id){
         var list;
         var defered = $q.defer();

@@ -84,7 +84,7 @@
             <div class="row">
                 <ion-list>
                     <ion-item>
-                        <div class="row" ng-repeat="it in deletedProducts | limitTo:10">
+                        <div class="row" ng-repeat="it in deletedProducts | limitTo:100">
                             <div class="col">
                                 <ion-slide-box on-slide-changed="deletedItemSlideHasChanged(it,$index)" active-slide="sliderState" show-pager="false">
                                     <ion-slide>

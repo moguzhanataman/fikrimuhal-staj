@@ -1,5 +1,6 @@
 fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate', 'cartService', 'currentCustomerService', function ($scope, $state, $ionicSlideBoxDelegate, cartService, currentCustomerService) {
 
+    // Illegal State exceptionını yakalamak için konulmuştur
     try{
         var cartItems = cartService.getCart();
         var totalPrice = numeral(cartService.getTotalPrice()).format('0,0[.]00 $');
@@ -11,6 +12,11 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
         });
 
         /* setTimeOut() index geç alındığı için setTimeOut ile beklendi ionic frameworkün kendi bugu */
+        /**
+        * Description: Sepet sayfasındaki sliderların değişimlerini gözler ve değişimlere göre ürünleri siler veya sepete ekler
+        * @param: {object} Slideri değişen ürünü obje olarak alır
+        * @param: {number} Sliderin son indexini alır 2 silme, 0 miktar artırma, 1 ürünün bulunduğu index numarasıdır
+        */
         function cartSlideHasChanged(it, index) {
             indexOfItem = cartItems.indexOf(it);
 
@@ -42,6 +48,9 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
             $scope.cart = {'cartItems': cartItems, 'totalPrice': totalPrice, 'totalDiscountedPrice': totalDiscountedPrice};
         }
 
+        /**
+        * Description: Alışverişin bitmesi yahut sepetin sıfırlanması durumunda çağırılır. Sepeti boş hale getiririr.
+        */
         function cartResetter(){
             cartService.cartReset();
             cartItems = [];
@@ -60,7 +69,7 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
 
 
     }
-
+    // Illegal state exceptionını tutar gelen başka bir exception ise yeniden fırlatır.
     catch(error){
         if(error instanceof IllegalState){
             console.error("current customer olmadığı için customerListe geri yolluyorum", error);
