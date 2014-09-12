@@ -19,16 +19,12 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
 
         var ccid = getCCID();
         if (!fetchFromServerInProgress && !allCarts[ccid]) {
-            console.log("Sunucudan cart güncellemesi yapılmaya başlandı kullanıcıID:", getCCID());
             fetchFromServerInProgress = true;
 
             fetchCartFromServer().then(function (cartFromServer) {
                 allCarts[ccid] = cartFromServer;
                 fetchFromServerInProgress = false;
-                console.log("Sunucudan cart güncellemesi TAMAMLANDI");
             }).catch(function (e) {
-                console.log("Sunucudan cart güncellemesi TAMAMLANDI");
-                console.log("sepet serverdan gelmedi");
                 fetchFromServerInProgress = false;
             })
         }
@@ -92,7 +88,6 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
             sum += (item.p.discountedPrice || item.p.price) * item.q;
             return sum;
         }, 0)
-        console.log("asdfxxx",result);
         return result;
     }
 

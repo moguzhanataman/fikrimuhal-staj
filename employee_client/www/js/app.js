@@ -19,10 +19,6 @@ fikrimuhalStaj.run(['$ionicPlatform', '$rootScope', '$state', 'loginService','pr
 
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-//        console.log("event change caught toState", toState);
-//        console.log("event change caught fromState", fromState);
-//        console.log("event change caught toParams", toParams);
-//        console.log("event change caught fromParams", fromParams);
 
         if (toState.name != "login" && !loginService.isAuth()) {
             event.preventDefault();
@@ -111,7 +107,6 @@ fikrimuhalStaj.factory('dataInProgressService',['$rootScope',function ($rootScop
                 $rootScope.dataInProgress = true;
             }
             countDownLatch += 1;
-            console.log("requests in progress countDownLatch is ", countDownLatch);
             return config;
         },
 
@@ -120,7 +115,6 @@ fikrimuhalStaj.factory('dataInProgressService',['$rootScope',function ($rootScop
             if(countDownLatch == 0){
                 $rootScope.dataInProgress = false;
             }
-            console.log("response has came countDownLatch is ", countDownLatch);
             return response;
         }
     

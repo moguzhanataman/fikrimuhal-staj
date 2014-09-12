@@ -39,10 +39,6 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
         return currentCustomerID;
     }
 
-    function getCustomer(id) {
-        console.log("TODO");
-    }
-
     /**
      * @param {boolean} updateFromServer first update then return
      * promise'in rejecti cache yolluyor kullanıcıya alert ile bağlantı hatası yeniden deneyin yazacak
@@ -81,7 +77,6 @@ fikrimuhalStaj.factory('customerService', ['$http', '$q' ,'productService' ,'car
         'setCustomer':currentCustomerSetter,
         'getCustomerList': getCustomerList,
         'getCustomerID':getCurrentCustomerID,
-        'getCustomer': getCustomer, //
         'updateCustomerList': fetchCustomersFromServer, // make private
         'addItem':updateCart,       // move to cartService
         'getDeletedProducts': getDeletedProducts // move to cartService

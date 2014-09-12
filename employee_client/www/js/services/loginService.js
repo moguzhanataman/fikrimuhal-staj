@@ -21,7 +21,6 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
 
     function initEmployee() {
         _loggedinEmployee = getLastLoggedinEmployee();
-        console.log("asdf",_loggedinEmployee);
     }
 
     /**
@@ -36,7 +35,6 @@ fikrimuhalStaj.factory('loginService', ['$http', '$q', 'storageService', functio
             _loggedinEmployee = employee;
             // Register employee in localStorage
             storageService.put(constant.storage.loggedEmployee, employee);
-            console.log("storing last logged employee");
         }
         else {
             //A kullanıcı login olmuşdurumda iken

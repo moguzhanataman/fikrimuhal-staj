@@ -14,7 +14,6 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
         customerService.getProducts().then(function (products) {
             $scope.productList = splitArray(products);
 
-            console.log("PRODUCT:::", products);
         }).catch(function (e) {
             $scope.productList = splitArray(e);
         });
@@ -44,7 +43,6 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
                 deletedList.reverse();
                 listSplit.right.splice(indexofProductR, 1);
             }
-            console.log("deleted", deletedList);
         }
 
         /* sepete ekleme*/
