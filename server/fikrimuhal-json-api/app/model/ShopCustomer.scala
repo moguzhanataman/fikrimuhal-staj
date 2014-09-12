@@ -2,7 +2,6 @@ package model
 
 import java.util.Date
 
-import play.api.Logger
 import play.api.libs.json.Json
 
 /**
@@ -16,7 +15,8 @@ case class ShopCustomer(customerId: Int,
                         doNotDisturbMe: Boolean,
                         isShoppingDone: Boolean,
                         employeeId: Option[Int],
-                        lastUpdateTime: Long)
+                        lastUpdateTime: Long,
+                        rank: Long)
 
 object ShopCustomer {
 
@@ -35,44 +35,53 @@ object ShopCustomer {
       if (x == 0) None else Some(x)
     }
     val doNotDisturbMe = c.id % 9 == 0
+    val distance = 170
+    val lastUpdateTime = now + c.id * 1000
+    val isShoppingDone = false
 
     ShopCustomer(
       c.id,
       c.name,
       c.photoData,
-      170,
+      distance,
       now,
       doNotDisturbMe,
-      false,
+      isShoppingDone,
       currentEmployeeId,
-      now + c.id * 1000
+      lastUpdateTime,
+      calculateCustomerRank(distance, lastUpdateTime, now, doNotDisturbMe, isShoppingDone)
     )
   }
 
   /** @return Sequence of ShopCustomers by their ranks */
-  def rankShopCustomers: Seq[ShopCustomer] = {
-    ShopCustomer.all.map { c =>
-      (c.customerId, getCustomerRank(c))
-    }.sortBy(_._2).map({
-      case (id, rank) => ShopCustomer.get(id)
-    }) flatten
-  }
+  def rankShopCustomers: Seq[ShopCustomer] = ShopCustomer.all.sortBy(-_.rank)
 
   /**
    * Finds rank of single customer by a custom function
    * @return rank
    */
-  def getCustomerRank(customer: ShopCustomer): Double = {
-    val d = customer.distance
-    val tu = customer.lastUpdateTime
+  def calculateCustomerRank(d: Int, tu: Long, shopEnterTime: Long, doNotDisturbMe: Boolean, isShoppingDone: Boolean): Long = {
     // Time elapsed
-    val ti = customer.shopEnterTime - tu
-    val w = if (customer.doNotDisturbMe) Int.MinValue else 0
-    val b = if (customer.isShoppingDone) Int.MinValue else 0
-    // Who helps this customer
-    val i = 0.5 // if(customer.employeeId.getOrElse(0) == 0)
+    val ti = tu - shopEnterTime
+    val w = if (doNotDisturbMe) 0 else 1
+    val b = if (isShoppingDone) 0 else 1
 
-    1000000 * 1 / d + 1000000 * 1 / ti + w + b + i + 1000000 * 1 / tu
+    // Who helps this customer
+    val i = 0 // if(customer.employeeId.getOrElse(0) == 0)
+
+    val c_1 = 1000
+    val c_2 = 1000
+    val c_3 = 1000
+    val c_4 = 1000
+    val c_5 = 1000
+    val c_6 = 1000
+
+    c_1 * 1 / d +       // Alete olan uzaklıgı
+      c_2 * 1 / ti +    // Mağazaya giriş zamanı
+      c_3 * w +         // Do not disturb me!
+      c_4 * b +         // Is shopping done?
+      c_5 * i +         // Müşteriye kim yardım ediyor? (ben: 1, başkası: 0.5, kimse:0.9)
+      c_6 * 1 / tu      // Son güncelleme zamanı
   }
 
 }

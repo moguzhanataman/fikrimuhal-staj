@@ -2,6 +2,7 @@ package controllers
 
 import play.api.libs.iteratee.{Enumerator, Iteratee}
 import play.api.mvc._
+
 import scala.concurrent.ExecutionContext.Implicits.global
 
 object Application extends Controller {
@@ -28,6 +29,14 @@ object Application extends Controller {
     val out = Enumerator("Hello!")
 
     (in, out)
+  }
+
+  def preflight(all: String) = Action {
+    Ok("").withHeaders("Access-Control-Allow-Origin" -> "*",
+      "Allow" -> "*",
+      "Access-Control-Allow-Methods" -> "POST, GET, PUT, DELETE, OPTIONS",
+      "Access-Control-Max-Age" -> "1728000",
+      "Access-Control-Allow-Headers" -> "Origin, X-Requested-With, Content-Type, Accept, Referrer, User-Agent");
   }
 
 }

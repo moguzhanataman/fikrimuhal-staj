@@ -2,6 +2,8 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+OPTIONS        /*all                                controllers.Application.preflight(all: String)
+
 # Home page
 GET           /                                        controllers.Application.index
 
