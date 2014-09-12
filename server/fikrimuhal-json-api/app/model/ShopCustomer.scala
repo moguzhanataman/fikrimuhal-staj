@@ -37,14 +37,17 @@ object ShopCustomer {
     val doNotDisturbMe = c.id % 9 == 0
     val distance = 170
     val lastUpdateTime = now + c.id * 1000
+    val shopEnterTime = now
     val isShoppingDone = false
+
+
 
     ShopCustomer(
       c.id,
       c.name,
       c.photoData,
       distance,
-      now,
+      shopEnterTime,
       doNotDisturbMe,
       isShoppingDone,
       currentEmployeeId,
@@ -60,23 +63,28 @@ object ShopCustomer {
    * Finds rank of single customer by a custom function
    * @return rank
    */
-  def calculateCustomerRank(d: Int, tu: Long, shopEnterTime: Long, doNotDisturbMe: Boolean, isShoppingDone: Boolean): Long = {
+  def calculateCustomerRank(d: Int, lastUpdateTime: Long, shopEnterTime: Long, doNotDisturbMe: Boolean, isShoppingDone: Boolean): Long = {
+    val _now = new Date().getTime()
+
     // Time elapsed
-    val ti = tu - shopEnterTime
-    val w = if (doNotDisturbMe) 0 else 1
-    val b = if (isShoppingDone) 0 else 1
+    val ti = (_now - shopEnterTime) /  1000  //saniye
+    val tu = (_now - lastUpdateTime) / 1000 //saniye
+
+    val w = if (doNotDisturbMe) -1 else 0
+    val b = if (isShoppingDone) -1 else 0
 
     // Who helps this customer
     val i = 0 // if(customer.employeeId.getOrElse(0) == 0)
 
-    val c_1 = 1000
-    val c_2 = 1000
-    val c_3 = 1000
-    val c_4 = 1000
-    val c_5 = 1000
-    val c_6 = 1000
+    val c_1 = 1000000       // Alete olan uzaklıgı
+    val c_2 = 10000000       // Mağazaya giriş zamanı
+    val c_3 = 100000       // Do not disturb me!
+    val c_4 = 100000       // Is shopping done?
+    val c_5 = 0       // Müşteriye kim yardım ediyor? (ben: 1, başkası: 0.5, kimse:0.9)
+    val c_6 = c_2 / 2       // Son güncelleme zamanı, magazaya giris zamaninin onceliginin yarısı kadar olsun
 
-    c_1 * 1 / d +       // Alete olan uzaklıgı
+
+      c_1 * 1 / d +       // Alete olan uzaklıgı
       c_2 * 1 / ti +    // Mağazaya giriş zamanı
       c_3 * w +         // Do not disturb me!
       c_4 * b +         // Is shopping done?

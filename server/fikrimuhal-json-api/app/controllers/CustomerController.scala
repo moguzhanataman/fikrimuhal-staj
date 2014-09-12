@@ -27,7 +27,7 @@ object CustomerController extends Controller {
   def getCurrentCustomerList() = Action { request =>
     val host = request.headers.get("host").get
 
-    val customerAsMap = Map("customers" -> ShopCustomer.all.map { customer =>
+    val customerAsMap = Map("customers" -> ShopCustomer.rankShopCustomers.map { customer =>
       val host = Play.current.configuration.getString("server.host").getOrElse("localhost")
       val fullUrl = s"http://${host}:9000/api/customers/${customer.customerId}/photo"
       customer.copy(photoUrl = fullUrl)
