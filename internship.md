@@ -197,3 +197,10 @@ Bir sonraki çalışma günü yapılması planlananlar
 - Dökümantasyon ve test yazımına başlanacak.
 - Müşteri listesi sayfasındaki renk hatası düzeltilecek.
 - Server ile client'ın sepeti senkronize edilecek.
+
+12/08/2014
+----------
+- Dökümantasyon yazımı büyük ölçüde bitirildi
+- Test amaçlı mock datalar ve debug yazıları kaldırıldı
+- Ranking fonksiyonu yazıldı ve müşteri listesi sayfasında kullanılmaya başlandı
+- Giriş yapmış kullanıcı doğrudan müşteri listesi sayfasına yönlendirildi
