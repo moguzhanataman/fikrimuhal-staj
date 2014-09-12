@@ -22,20 +22,8 @@
                         <p>
 
                             <i class="icon ion-minus-circled" ng-show="customer.doNotDisturbMe"></i>
-
-                            <!--<i class="icon ion-ios7-pricetagr"></i>
-                            <i class="icon ion-ios7-star-half"></i>
-                            <i class="icon ion-ios7-star"></i>
-                            <i class="icon ion-ios7-star-outline"></i>
-                            <i class="icon ion-ios7-cart"></i>
-                            <i class="icon ion-ios7-clock-outline"></i>
-                            <i class="icon ion-ios7-pulse"></i>
-                            <i class="icon ion-ios7-locked"></i>
-                            <i class="icon ion-ios7-bell-outline"></i>
-                            <i class="icon ion-android-timer"></i>
-                            <i class="icon ion-ios7-unlocked"></i>
-                            <i class="icon ion-ios7-infinite"></i>
-                            <i class="icon ion-ios7-calculator"></i> -->
+                            <i ng-show="customer.employeeStatusIcons.locked" class="icon ion-person-stalker"></i>
+                            <i ng-show="customer.employeeStatusIcons.unlocked" class="icon ion-chatbubble"></i>
                         </p>
 
                     </div>

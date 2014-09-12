@@ -2,6 +2,8 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' , 'loginService', 'custo
 
     moment.locale("tr");
 
+    var currentEmployeeId = loginService.loggedinEmployee().id;
+
     function selectCustomer(id) {
         // customerService.setCustomer(id);
         currentCustomerService.setCustomerById(id);
@@ -9,6 +11,7 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' , 'loginService', 'custo
     }
 
     customerService.getCustomerList().then(function (customerList) {
+
         customerList = _.map(customerList, function(it){
             it.lastUpdateTime = moment(it.lastUpdateTime).fromNow();
             it.shopEnterTime = moment(it.shopEnterTime).fromNow();
@@ -18,12 +21,21 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' , 'loginService', 'custo
                     it.employeeName = res.name;
                 })
             }
-            else{
-                it.employeeId = false;
-            }
+                       
+            it.employeeStatusIcons = {
+                "locked": it.employeeId != currentEmployeeId,
+                "unlocked": it.employeeId == currentEmployeeId
+            };
 
             return it;
         })
+
+        _.sortBy(customerList, function(rank){
+            return -rank;
+        })
+
+        console.log("customer ranked", customerList);
+
         $scope.customerList = splitArray(customerList);
     }).catch(function (e) {
         $scope.customerList = splitArray(e);
@@ -38,5 +50,7 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' , 'loginService', 'custo
     var ws = new WebSocket("ws://localhost:9000/api/test/websocket");
     ws.onmessage = function( message ) { console.log( message ); };
     */
+
+
 
 }]);
