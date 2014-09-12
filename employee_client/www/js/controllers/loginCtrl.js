@@ -31,10 +31,14 @@ fikrimuhalStaj.controller('LoginCtrl', ['$scope', '$state', 'loginService', func
     }
 }]);
 
-fikrimuhalStaj.controller('passcodeCtrl', ['$scope', 'loginService', function ($scope, loginService) {
+fikrimuhalStaj.controller('passcodeCtrl', ['$scope', '$state', 'loginService', function ($scope, $state, loginService) {
 
     var parentScope = $scope.$parent;
-
+    var decider = function(){
+        if(loginService.isLoggedin() != true){
+            $state.go('customerList');
+        }
+    }
     /* bir ust scope dan parent.selectedEmployeeId geliyor,
      Directive e cevrilince buna gerek kalmayacak. */
     /*parent.selectedEmployeeId*/

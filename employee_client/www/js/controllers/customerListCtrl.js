@@ -34,8 +34,6 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' , 'loginService', 'custo
             return -rank;
         })
 
-        console.log("customer ranked", customerList);
-
         $scope.customerList = splitArray(customerList);
     }).catch(function (e) {
         $scope.customerList = splitArray(e);
