@@ -52,12 +52,13 @@ fikrimuhalStaj.controller('customerDetailCtrl',[ '$scope', '$state', 'customerSe
 
             if (indexofProductL > -1) {
                 customerService.addItem(listSplit.left[indexofProductL]);
+                cartService.cartSync();
                 listSplit.left.splice(indexofProductL, 1);
             }
             
             if (indexofProductR > -1) {
-
                 customerService.addItem(listSplit.right[indexofProductR]);
+                cartService.cartSync();
                 listSplit.right.splice(indexofProductR, 1);
             }
 

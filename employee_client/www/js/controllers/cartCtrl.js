@@ -25,6 +25,7 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
                 }else{
                     cartItems.splice(indexOfItem, 1);
                 }
+                cartService.cartSync();
             }
 
             if (index == 0) {
@@ -32,6 +33,8 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
                 setTimeout(function () {
                     $ionicSlideBoxDelegate.slide(1, 1000);
                 }, 0)
+                cartService.cartSync();
+
             }
 
             totalPrice = numeral(cartService.getTotalPrice()).format('0,0[.]00 $');
@@ -43,6 +46,7 @@ fikrimuhalStaj.controller('cartCtrl', ['$scope','$state','$ionicSlideBoxDelegate
             cartService.cartReset();
             cartItems = [];
             $scope.cart = {'cartItems': cartItems, 'totalPrice': 0, 'totalDiscountedPrice': 0};
+            cartService.cartSync();
             $state.go('customerList');
         }
 

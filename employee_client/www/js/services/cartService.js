@@ -12,6 +12,7 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
     }
 
     var allCarts = {};
+    var cartId = 0;
 
     function initForCurrentUser() {
 
@@ -37,6 +38,7 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
         var cartURL = config.api.base + "api/customers/" + getCCID() + "/cart";
 
         return $http({method: 'GET', url: cartURL}).then(function (response) {
+            cartId = response.data.id;
             return _.map(response.data.itemList, function (i) {
                 i.p = productService.getProductById(i.p);
                 return i;
@@ -129,9 +131,18 @@ fikrimuhalStaj.factory('cartService', ['currentCustomerService', '$http', 'produ
 
     function sentCartToServer(){
         var cartURL = config.api.base + "api/customers/" + getCCID() + "/cart";
-
-        return $http({method: 'POST', url: cartURL, data: allCarts[getCCID()]}).success(function (response) {
+        var a = true;
+        var deneme = _.map(getCart(),function (it){
+            return {"p": it.p.id, "q": it.q};
+        })
+        var tempData = {"id":cartId, "cid": getCCID(), "itemList":deneme}
+        console.log("json", angular.toJson(tempData, a));
+        //console.log("cart", deneme);
+        return $http({ method: 'POST', url: cartURL, data: angular.toJson(tempData) }).success(function (response) {
                 return response;
+            }).error(function(er){
+                console.log("postta hata var", er);
+                return er;
             });
     }
 

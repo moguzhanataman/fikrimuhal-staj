@@ -15,9 +15,7 @@ fikrimuhalStaj.controller('customerListCtrl', ['$scope' , 'loginService', 'custo
 
             if(!!it.employeeId){
                 loginService.getEmployeeById(it.employeeId).then(function(res){
-                    console.log("employee isimler değişmeden",it.employeeName , res.name, res.id );
                     it.employeeName = res.name;
-                    console.log("employee isimler değişti",it.employeeName , res.name, res.id );
                 })
             }
             else{
